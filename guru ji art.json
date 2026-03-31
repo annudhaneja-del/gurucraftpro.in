@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Guru Ji Art Work | Gurucraftpro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#e364a7",
+              "error-container": "#93000a",
+              "on-secondary-fixed": "#2c0051",
+              "secondary-fixed-dim": "#ddb7ff",
+              "surface-container-low": "#1b1b1b",
+              "outline-variant": "#464554",
+              "on-secondary-container": "#d6a9ff",
+              "primary-container": "#8083ff",
+              "inverse-surface": "#e2e2e2",
+              "tertiary": "#ffafd3",
+              "on-surface-variant": "#c7c4d7",
+              "tertiary-fixed-dim": "#ffafd3",
+              "on-tertiary": "#620040",
+              "primary-fixed": "#e1e0ff",
+              "tertiary-fixed": "#ffd8e7",
+              "on-primary-fixed": "#07006c",
+              "primary-fixed-dim": "#c0c1ff",
+              "inverse-on-surface": "#303030",
+              "on-tertiary-fixed-variant": "#85145a",
+              "surface-container-lowest": "#0e0e0e",
+              "primary": "#c0c1ff",
+              "surface-tint": "#c0c1ff",
+              "on-primary": "#1000a9",
+              "surface-dim": "#131313",
+              "surface-container-highest": "#353535",
+              "inverse-primary": "#494bd6",
+              "on-tertiary-container": "#560038",
+              "error": "#ffb4ab",
+              "on-primary-fixed-variant": "#2f2ebe",
+              "on-error-container": "#ffdad6",
+              "on-background": "#e2e2e2",
+              "outline": "#908fa0",
+              "surface-container": "#1f1f1f",
+              "surface-variant": "#353535",
+              "secondary-fixed": "#f0dbff",
+              "on-tertiary-fixed": "#3d0026",
+              "on-secondary-fixed-variant": "#6900b3",
+              "surface-bright": "#393939",
+              "background": "#131313",
+              "secondary-container": "#6f00be",
+              "on-error": "#690005",
+              "on-secondary": "#490080",
+              "surface-container-high": "#2a2a2a",
+              "surface": "#131313",
+              "secondary": "#ddb7ff",
+              "on-primary-container": "#0d0096",
+              "on-surface": "#e2e2e2"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .glass-panel {
+            background: rgba(53, 53, 53, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(192, 193, 255, 0.15), transparent),
+                        radial-gradient(circle at bottom left, rgba(111, 0, 190, 0.1), transparent);
+        }
+        .pillar-card-hover:hover {
+            background: linear-gradient(135deg, rgba(192, 193, 255, 0.1), rgba(111, 0, 190, 0.1));
+            transform: translateY(-4px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-[#131313]/40 backdrop-blur-3xl flex justify-between items-center px-6 h-20 w-full bg-gradient-to-b from-[#1b1b1b] to-transparent shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#c0c1ff] cursor-pointer hover:scale-105 transition-all">menu</span>
+<span class="text-2xl font-black bg-gradient-to-br from-[#c0c1ff] to-[#8083ff] bg-clip-text text-transparent font-headline tracking-tight">Gurucraftpro</span>
+</div>
+<div class="hidden md:flex items-center gap-8 font-label text-[10px] uppercase tracking-widest">
+<a class="text-[#e2e2e2]/60 hover:text-[#c0c1ff] transition-all" href="#">Graphic Design</a>
+<a class="text-[#c0c1ff] font-bold" href="#">Guru Ji Art Work</a>
+<a class="text-[#e2e2e2]/60 hover:text-[#c0c1ff] transition-all" href="#">About Us</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#c0c1ff] cursor-pointer hover:scale-105 transition-all">dark_mode</span>
+</div>
+</nav>
+<main class="pt-20 pb-24 md:pb-12 hero-gradient min-h-screen">
+<!-- Hero Section -->
+<section class="px-6 py-16 md:py-24 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+<div class="md:w-1/2 text-left">
+<span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-6">Sacred Creations</span>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold tracking-tighter text-on-surface leading-[1.1] mb-6">
+                    Guru Ji <br/><span class="text-primary">Art Work</span>
+</h1>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-md leading-relaxed mb-8">
+                    Discover a curated sanctuary of spiritual art and daily inspirations designed to bring peace to your digital and physical spaces.
+                </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary-container px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:shadow-[0_0_20px_rgba(192,193,255,0.4)] transition-all">
+<span>Explore Shop</span>
+<span class="material-symbols-outlined text-sm">arrow_downward</span>
+</button>
+<button class="glass-panel border border-outline-variant/15 px-8 py-4 rounded-xl font-bold hover:bg-surface-container-highest transition-all">
+                        Digital Gallery
+                    </button>
+</div>
+</div>
+<div class="md:w-1/2 relative">
+<div class="relative w-full aspect-square rounded-[3rem] overflow-hidden shadow-2xl group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Modern ethereal spiritual art with glowing violet and teal mandalas against a dark cosmic background, 3d rendered style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZp_JWI8sIwGS46e1sq8z-YKU3h6VWCi0jq66aodqZzJxc7sUJJVcjdDj2k5VfZRXUZnpqH-Yt8lOo-VQ2Ipqs3qHB8f4tLRPaMy2YzbY4U1OGEaIQF8-4xM_bQ4qaZ6IVzo4vJmeDJsRR0_Rr9_thh_1ZzlZJwYO1dDXP9smo4E5Depu52YJIEPY-EUQ24EQbGoKWECZ7QOksJui6d9lczEOMIklHehgrJzH3qt4EUg9UsIMH5b0EuvV2IVH2iCD-UJMVK9-I6g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
+</div>
+<div class="absolute -bottom-6 -left-6 glass-panel p-6 rounded-3xl border border-outline-variant/15 shadow-xl md:flex hidden animate-bounce-slow">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-white">brush</span>
+</div>
+<div>
+<p class="text-xs font-label opacity-60">Daily Inspiration</p>
+<p class="font-bold text-primary">New Vachan Live</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Spiritual Accessories Shop -->
+<section class="px-6 py-20 bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="text-3xl md:text-4xl font-headline font-bold mb-2">Sacred Shop</h2>
+<p class="text-on-surface-variant">Curated spiritual accessories and artisan bracelets.</p>
+</div>
+<button class="text-primary font-bold flex items-center gap-2 hover:translate-x-1 transition-transform">
+                        View All <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Product 1 -->
+<div class="group relative bg-surface rounded-3xl overflow-hidden pillar-card-hover transition-all duration-300">
+<div class="aspect-[4/5] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Close up of a handcrafted spiritual wooden bead bracelet with a small silver charm on a dark textured fabric background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN2HD4ye6Sboola6R9YjAwUV5kHYT306iJlpFx2K9gSQbt6BUMZylVWOUCdrey57hlNibL5PWN-KycwAooTozzswTGlEKmW5UDuS62_tySm0bEFrIIUCk978SxWQk8ZP2XTTKGwjgpps_9Im9kWi185MeaoNMm0b7QazTuf6Ltivx869sokzudKBB5co_eKTo7pj4MVz8JiKZyJ59F0W1rjISnTdmkyBUC3NvKrVnV_lDzFxsCWpa7SBJnpwYUjIazUJHj8Q_fKg"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-xl font-bold">Divine Lotus Bracelet</h3>
+<span class="text-primary font-bold">₹1,299</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">Hand-carved sandalwood beads with a sterling silver lotus pendant for inner peace.</p>
+<button class="w-full py-3 rounded-xl bg-surface-container-highest font-bold text-sm hover:bg-primary hover:text-on-primary-container transition-colors">Add to Cart</button>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="group relative bg-surface rounded-3xl overflow-hidden pillar-card-hover transition-all duration-300">
+<div class="aspect-[4/5] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A collection of vibrant meditation beads with silk tassels laid out on a clean white marble surface with soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOEQniqDqXUFGnPdRx66ccDUZvn0GVxcccHymGBMjyd9V798DU0ydBsFR3MuOTPBvG73kE9FIBA2gY7bnEXKxrEoGfTyxwrCD0qoaYzGu06I8-N2EaPcxLfTmIG7mI9FuTt6m3rg7ghyNRtadSXC_kwjl-E266A3EiGD2HTQVBUC66EJOEHGEGkEZM5Rz2wHbgH82YbVPZy1xTvB8s2GlQ3Fk_J5irfjUGPp05MkmaAuMjZCyTO3FiPAe2xVMRhP8KbcAAG6oV9g"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-xl font-bold">Chakra Healing Mala</h3>
+<span class="text-primary font-bold">₹2,499</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">108 natural stone beads curated to balance your daily energy flow and meditation.</p>
+<button class="w-full py-3 rounded-xl bg-surface-container-highest font-bold text-sm hover:bg-primary hover:text-on-primary-container transition-colors">Add to Cart</button>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="group relative bg-surface rounded-3xl overflow-hidden pillar-card-hover transition-all duration-300">
+<div class="aspect-[4/5] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Ethereal crystal pyramid on a dark wooden table with soft purple backlighting and light dust particles in the air" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwx6v3mDATHNAK4OEgO0jXNIKVs7ttH1B3eN6Td8G8np9GoJtESIAUMl4G6kpf1Qolxn6jvRnHBHkr74fgLfKaBZ5jX8xvoAWglckaCyy2LkNPXZaY9xls-fA5O3R_tF4YjuTuJ6c2HC0a1GU_r6JTsUBDi7fnAMEww-HbImXJuJpjqblNDcu6kPse-kZNH4nqTl3XPR9vNQSCdg31NdsD06pNaBN7prcmKXZLW_2H-qUQOh1M1w0bDy14jZD5dJrOHwd7bhZ11Q"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-xl font-bold">Aura Crystal Desk Piece</h3>
+<span class="text-primary font-bold">₹3,999</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">Amethyst crystal cluster programmed for workspace tranquility and focus.</p>
+<button class="w-full py-3 rounded-xl bg-surface-container-highest font-bold text-sm hover:bg-primary hover:text-on-primary-container transition-colors">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Digital Content Gallery (Bento Style) -->
+<section class="px-6 py-24 max-w-7xl mx-auto">
+<h2 class="text-4xl font-headline font-bold text-center mb-16">Digital Sanctuary</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[800px]">
+<!-- Mobile Wallpapers -->
+<div class="md:col-span-2 md:row-span-2 relative group rounded-[2rem] overflow-hidden bg-surface-container shadow-2xl">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Minimalist abstract digital artwork with flowing waves of purple and teal light, vertical mobile wallpaper orientation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdUyu2d0pEd79XLarwB0SaGWnrt0qpvlFJRV34xuuUqMgaLYBAXR1Lpf2cABY5NZvpcXbO1sdjnF4S7R4koMIS1WV1IO0Ms6bzg3C-RowOj_k3F2MvITPLesa8WEWVq_-HyTcJGtmEMIwJDdYCpiu35qOxJSlN6mfNVU0g352foJ4_33IntyFMxi9kyqSrhRiZ2AYH45ZW6b5QwpHV9D5vZn6TGn9T9602FRihnUfzS5vmgbJUnCcu4VUQdsvf7yH2OuJDUuoBrw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
+<h3 class="text-2xl font-bold mb-2">Mobile Wallpapers</h3>
+<p class="text-sm text-on-surface-variant mb-6">4K Spiritual aesthetic wallpapers for your daily peace.</p>
+<button class="w-fit bg-white/10 backdrop-blur-md hover:bg-white/20 px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined">download</span>
+<span>Download Set</span>
+</button>
+</div>
+</div>
+<!-- Daily Vachan -->
+<div class="md:col-span-2 bg-gradient-to-br from-[#353535] to-[#1b1b1b] rounded-[2rem] p-8 flex flex-col justify-between border border-outline-variant/10">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary">Daily Update</span>
+</div>
+<div>
+<h3 class="text-2xl font-bold mb-2">Daily Quotes &amp; Vachan</h3>
+<p class="text-on-surface-variant mb-6">Receive daily wisdom directly on your lock screen.</p>
+<div class="flex gap-4">
+<button class="flex-1 py-3 bg-surface-container-highest rounded-xl font-bold text-sm hover:text-primary transition-colors">Today's Vachan</button>
+<button class="flex-1 py-3 bg-surface-container-highest rounded-xl font-bold text-sm hover:text-primary transition-colors">Archive</button>
+</div>
+</div>
+</div>
+<!-- Digital Stickers -->
+<div class="bg-primary/5 border border-primary/10 rounded-[2rem] p-6 flex flex-col items-center justify-center text-center group hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-4xl text-primary mb-4" data-weight="fill">favorite</span>
+<h3 class="text-lg font-bold">Jai Guru Ji Stickers</h3>
+<p class="text-xs text-on-surface-variant mt-2 mb-4">Pack of 20 WhatsApp &amp; Telegram stickers</p>
+<button class="text-primary font-bold text-sm flex items-center gap-1">
+                        Download <span class="material-symbols-outlined text-sm">download</span>
+</button>
+</div>
+<!-- Status Graphics -->
+<div class="bg-tertiary/5 border border-tertiary/10 rounded-[2rem] p-6 flex flex-col items-center justify-center text-center group hover:bg-tertiary/10 transition-colors">
+<span class="material-symbols-outlined text-4xl text-tertiary mb-4">share_reviews</span>
+<h3 class="text-lg font-bold">Story Graphics</h3>
+<p class="text-xs text-on-surface-variant mt-2 mb-4">Aesthetic templates for your social media.</p>
+<button class="text-tertiary font-bold text-sm flex items-center gap-1">
+                        Get Templates <span class="material-symbols-outlined text-sm">download</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Donation Section -->
+<section class="px-6 py-24 bg-[#1b1b1b]/30">
+<div class="max-w-3xl mx-auto glass-panel p-8 md:p-12 rounded-[3rem] border border-outline-variant/15 text-center">
+<div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-tertiary/20 mb-8">
+<span class="material-symbols-outlined text-3xl text-primary">volunteer_activism</span>
+</div>
+<h2 class="text-3xl md:text-4xl font-headline font-bold mb-4">Support Our Craft</h2>
+<p class="text-on-surface-variant leading-relaxed mb-10">Your contributions help us maintain the digital sanctuary and continue creating sacred art for the global Guru Ji community. Every bit counts towards spreading positivity.</p>
+<div class="grid grid-cols-3 gap-4 mb-8">
+<button class="py-4 rounded-2xl bg-surface-container-highest border border-outline-variant/15 font-bold hover:border-primary transition-all">₹501</button>
+<button class="py-4 rounded-2xl bg-surface-container-highest border border-outline-variant/15 font-bold hover:border-primary transition-all">₹1,100</button>
+<button class="py-4 rounded-2xl bg-surface-container-highest border border-outline-variant/15 font-bold hover:border-primary transition-all">₹2,100</button>
+</div>
+<div class="relative mb-8 group">
+<input class="w-full bg-transparent border-b-2 border-outline-variant focus:border-primary focus:ring-0 py-4 px-2 transition-colors outline-none text-center text-2xl font-bold" placeholder="Enter Custom Amount" type="number"/>
+</div>
+<button class="w-full py-5 rounded-2xl bg-gradient-to-br from-primary to-primary-container text-on-primary-container font-extrabold text-lg shadow-xl shadow-primary/10 hover:scale-[1.02] transition-transform">
+                    Make a Contribution
+                </button>
+<p class="mt-6 text-[10px] text-on-surface-variant uppercase tracking-widest font-medium">Safe &amp; Secure Payment Gateway • All proceeds support the art</p>
+</div>
+</section>
+</main>
+<!-- Footer Space for Navigation -->
+<div class="h-20 md:hidden"></div>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full rounded-t-[2rem] z-50 bg-[#1b1b1b]/40 backdrop-blur-2xl border-t border-[#464554]/15 shadow-[0_-10px_30px_rgba(0,0,0,0.5)] flex justify-around items-center h-20 px-8 pb-safe">
+<a class="flex flex-col items-center justify-center text-[#e2e2e2]/50 w-12 h-12" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#c0c1ff] to-[#8083ff] text-[#131313] rounded-full w-12 h-12 shadow-[0_0_15px_rgba(192,193,255,0.3)] animate-pulse-subtle scale-110" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#e2e2e2]/50 w-12 h-12" href="#">
+<span class="material-symbols-outlined">person</span>
+</a>
+</nav>
+<!-- Navigation Drawer (Conceptual) -->
+<div class="fixed left-0 top-0 h-full w-80 bg-[#131313] rounded-r-3xl shadow-2xl z-[60] transform -translate-x-full transition-transform duration-300 hidden">
+<div class="text-[#c0c1ff] font-bold text-xl px-6 py-8">Gurucraft Pillars</div>
+<div class="flex flex-col py-6 divide-y divide-[#464554]/10">
+<div class="px-6 py-4 flex items-center gap-4 text-[#e2e2e2]/70 hover:bg-[#1b1b1b] hover:translate-x-2 transition-all cursor-pointer font-medium text-sm">
+<span class="material-symbols-outlined">palette</span>
+<span>Graphic Design</span>
+</div>
+<div class="px-6 py-4 flex items-center gap-4 bg-[#353535] text-[#c0c1ff] font-bold border-l-4 border-[#c0c1ff] cursor-pointer text-sm">
+<span class="material-symbols-outlined">brush</span>
+<span>Guru Ji Art Work</span>
+</div>
+<div class="px-6 py-4 flex items-center gap-4 text-[#e2e2e2]/70 hover:bg-[#1b1b1b] hover:translate-x-2 transition-all cursor-pointer font-medium text-sm">
+<span class="material-symbols-outlined">checkroom</span>
+<span>7-Day Cloths</span>
+</div>
+</div>
+</div>
+</body></html>

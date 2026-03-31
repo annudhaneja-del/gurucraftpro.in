@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Photo Editor | Gurucraftpro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-panel {
+      background: rgba(27, 27, 27, 0.4);
+      backdrop-filter: blur(20px);
+    }
+    .pillar-gradient {
+      background: linear-gradient(135deg, #c0c1ff 0%, #8083ff 100%);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "tertiary-container": "#e364a7",
+            "error-container": "#93000a",
+            "on-secondary-fixed": "#2c0051",
+            "secondary-fixed-dim": "#ddb7ff",
+            "surface-container-low": "#1b1b1b",
+            "outline-variant": "#464554",
+            "on-secondary-container": "#d6a9ff",
+            "primary-container": "#8083ff",
+            "inverse-surface": "#e2e2e2",
+            "tertiary": "#ffafd3",
+            "on-surface-variant": "#c7c4d7",
+            "tertiary-fixed-dim": "#ffafd3",
+            "on-tertiary": "#620040",
+            "primary-fixed": "#e1e0ff",
+            "tertiary-fixed": "#ffd8e7",
+            "on-primary-fixed": "#07006c",
+            "primary-fixed-dim": "#c0c1ff",
+            "inverse-on-surface": "#303030",
+            "on-tertiary-fixed-variant": "#85145a",
+            "surface-container-lowest": "#0e0e0e",
+            "primary": "#c0c1ff",
+            "surface-tint": "#c0c1ff",
+            "on-primary": "#1000a9",
+            "surface-dim": "#131313",
+            "surface-container-highest": "#353535",
+            "inverse-primary": "#494bd6",
+            "on-tertiary-container": "#560038",
+            "error": "#ffb4ab",
+            "on-primary-fixed-variant": "#2f2ebe",
+            "on-error-container": "#ffdad6",
+            "on-background": "#e2e2e2",
+            "outline": "#908fa0",
+            "surface-container": "#1f1f1f",
+            "surface-variant": "#353535",
+            "secondary-fixed": "#f0dbff",
+            "on-tertiary-fixed": "#3d0026",
+            "on-secondary-fixed-variant": "#6900b3",
+            "surface-bright": "#393939",
+            "background": "#131313",
+            "secondary-container": "#6f00be",
+            "on-error": "#690005",
+            "on-secondary": "#490080",
+            "surface-container-high": "#2a2a2a",
+            "surface": "#131313",
+            "secondary": "#ddb7ff",
+            "on-primary-container": "#0d0096",
+            "on-surface": "#e2e2e2"
+          },
+          fontFamily: {
+            "headline": ["Plus Jakarta Sans"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 min-h-screen flex flex-col">
+<header class="fixed top-0 w-full z-50 bg-[#131313]/40 backdrop-blur-3xl bg-gradient-to-b from-[#1b1b1b] to-transparent shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+<div class="flex justify-between items-center px-6 h-20 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl cursor-pointer hover:scale-105 transition-all">menu</span>
+<h1 class="text-2xl font-black bg-gradient-to-br from-[#c0c1ff] to-[#8083ff] bg-clip-text text-transparent font-headline tracking-tight">Gurucraftpro</h1>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#c0c1ff] font-bold tracking-tight hover:scale-105 transition-all" href="#">Photo Editor</a>
+<a class="text-[#e2e2e2]/60 hover:text-[#c0c1ff] transition-all" href="#">Graphic Design</a>
+<a class="text-[#e2e2e2]/60 hover:text-[#c0c1ff] transition-all" href="#">Pillars</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-105 transition-all">dark_mode</span>
+<button class="hidden md:block bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold px-6 py-2 rounded-xl text-sm shadow-[0_0_15px_rgba(192,193,255,0.3)] hover:scale-105 transition-all">Upgrade Pro</button>
+</div>
+</div>
+</header>
+<main class="flex-1 pt-24 pb-32 px-4 md:px-8 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<aside class="lg:col-span-3 space-y-6">
+<div class="bg-surface-container-low rounded-3xl p-6 shadow-2xl space-y-8">
+<div>
+<h3 class="text-xs font-bold uppercase tracking-widest text-primary mb-4">Edit Tools</h3>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-highest rounded-2xl hover:bg-primary/10 transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-2">crop</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Crop</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-highest rounded-2xl hover:bg-primary/10 transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-2">flip</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Flip</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-highest rounded-2xl hover:bg-primary/10 transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-2">crop_square</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Square</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-highest rounded-2xl hover:bg-primary/10 transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary mb-2">background_replace</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">BG Change</span>
+</button>
+</div>
+</div>
+<div>
+<h3 class="text-xs font-bold uppercase tracking-widest text-primary mb-4">Resizing</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between text-sm bg-surface-container-highest/50 p-3 rounded-xl">
+<span class="text-on-surface-variant">Width</span>
+<input class="w-16 bg-transparent border-none text-right font-bold focus:ring-0" type="text" value="1920"/>
+</div>
+<div class="flex items-center justify-between text-sm bg-surface-container-highest/50 p-3 rounded-xl">
+<span class="text-on-surface-variant">Height</span>
+<input class="w-16 bg-transparent border-none text-right font-bold focus:ring-0" type="text" value="1080"/>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-xs font-bold uppercase tracking-widest text-primary mb-4">Conversion</h3>
+<div class="space-y-2">
+<button class="w-full text-left px-4 py-3 rounded-xl bg-surface-container-highest/30 hover:bg-surface-container-highest text-sm flex items-center justify-between group transition-all">
+<span>JPG to PDF</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-all">arrow_forward</span>
+</button>
+<button class="w-full text-left px-4 py-3 rounded-xl bg-surface-container-highest/30 hover:bg-surface-container-highest text-sm flex items-center justify-between group transition-all">
+<span>PDF to JPG</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-all">arrow_forward</span>
+</button>
+<button class="w-full text-left px-4 py-3 rounded-xl bg-surface-container-highest/30 hover:bg-surface-container-highest text-sm flex items-center justify-between group transition-all">
+<span>PNG to WebP</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-all">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</aside>
+<section class="lg:col-span-9 space-y-8">
+<div class="relative aspect-video w-full bg-surface-container-low rounded-[2.5rem] overflow-hidden shadow-2xl group border border-outline-variant/10">
+<div class="absolute inset-0 flex items-center justify-center p-8">
+<div class="w-full h-full relative group cursor-ew-resize">
+<img alt="Edited Image" class="w-full h-full object-cover rounded-2xl" data-alt="vibrant architectural photo of a modern glass building at dusk with neon internal lights and deep blue sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7neSBNTCJYI3SBQkkwu-_BZDP9DO3PMQ6w5CF4YG-urZgaHN_qevZ5TYS_3FswlvQygHdCLAHYbXLldNztMlrgg4b52uDGSFMmLhOMM_LubNxQ9T8wweorUy-LAOCPWSl_2iXkEkY9mE6emWP76qZeNJa9TBm-yxkfDqQ2m3a7I0o94cJABBsIoAw4UNoFTRIfcJ59e_hS135Esfngc9fUXUwPN9D9Bk1KkeyWDznqzULlNJ3K3wJmf9Tz0k7y9icb6PaNo4RIg"/>
+<div class="absolute inset-y-0 left-0 w-1/2 overflow-hidden border-r-2 border-primary z-10 pointer-events-none">
+<img alt="Original Image" class="absolute inset-0 h-full w-[200%] object-cover grayscale brightness-50" data-alt="raw unedited architectural photo of a modern building, flat colors and dim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO8rlGu3D1YuawQE308TLDJuYHch4BsSat5diORPj8bruzWSwIX3shDhXQrrhh4V34KB5xZ0Ds0SEsnnVrKtq4tvscqV50TMgrbGbCJA7SlR6AW5-MmGm1bbygdvSvqhTtKJcEwvF4XXDKGxad7dcjNgRLcK2ldK8qxjCNmrPQi1HzA9YhOhh5rf_AWwQRGCUWTetJfrDDJRQvNMwD96hfjXfGLvI2NM6RCM2Vb3-Lm09TJw1F01BhMXOV8tHBYPm5xc6_H32I3Q"/>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-lg pointer-events-none">
+<span class="material-symbols-outlined text-on-primary">unfold_more</span>
+</div>
+<div class="absolute bottom-6 left-6 z-30 bg-black/40 backdrop-blur-md px-4 py-1.5 rounded-full text-[10px] uppercase tracking-widest font-bold">Original</div>
+<div class="absolute bottom-6 right-6 z-30 bg-primary/40 backdrop-blur-md px-4 py-1.5 rounded-full text-[10px] uppercase tracking-widest font-bold text-on-primary-container">Enhanced</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container rounded-3xl p-8 border border-outline-variant/5">
+<div class="flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex-1 w-full">
+<div class="relative group h-32 md:h-24 border-2 border-dashed border-outline-variant/30 rounded-2xl flex items-center justify-center hover:border-primary/50 transition-all cursor-pointer">
+<div class="flex items-center gap-4 px-6">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">cloud_upload</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Drop new file here</p>
+<p class="text-xs text-on-surface-variant">Supports JPG, PNG, WEBP, PDF (Max 25MB)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold px-8 py-4 rounded-2xl shadow-xl hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined">download</span>
+              Download
+            </button>
+<button class="flex items-center justify-center w-14 h-14 bg-surface-container-highest rounded-2xl hover:text-primary transition-all">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+<div class="mt-8 flex flex-wrap gap-3">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant w-full mb-2">Share to:</span>
+<button class="px-4 py-2 bg-surface-container-highest/40 rounded-full text-xs hover:bg-primary/20 transition-all">Instagram</button>
+<button class="px-4 py-2 bg-surface-container-highest/40 rounded-full text-xs hover:bg-primary/20 transition-all">Behance</button>
+<button class="px-4 py-2 bg-surface-container-highest/40 rounded-full text-xs hover:bg-primary/20 transition-all">Pinterest</button>
+<button class="px-4 py-2 bg-surface-container-highest/40 rounded-full text-xs hover:bg-primary/20 transition-all">X (Twitter)</button>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 w-full rounded-t-[2rem] z-50 bg-[#1b1b1b]/40 backdrop-blur-2xl border-t border-[#464554]/15 shadow-[0_-10px_30px_rgba(0,0,0,0.5)] md:hidden">
+<div class="flex justify-around items-center h-20 px-8 pb-safe">
+<div class="flex flex-col items-center justify-center text-[#e2e2e2]/50 w-12 h-12 hover:text-[#c0c1ff] transition-colors">
+<span class="material-symbols-outlined">home</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#c0c1ff] to-[#8083ff] text-[#131313] rounded-full w-12 h-12 shadow-[0_0_15px_rgba(192,193,255,0.3)] animate-pulse-subtle scale-110">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e2e2e2]/50 w-12 h-12 hover:text-[#c0c1ff] transition-colors">
+<span class="material-symbols-outlined">person</span>
+</div>
+</div>
+</nav>
+</body></html>

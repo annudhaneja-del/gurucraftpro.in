@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gurucraftpro | Digital Merchant on Demand</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#e364a7",
+              "error-container": "#93000a",
+              "on-secondary-fixed": "#2c0051",
+              "secondary-fixed-dim": "#ddb7ff",
+              "surface-container-low": "#1b1b1b",
+              "outline-variant": "#464554",
+              "on-secondary-container": "#d6a9ff",
+              "primary-container": "#8083ff",
+              "inverse-surface": "#e2e2e2",
+              "tertiary": "#ffafd3",
+              "on-surface-variant": "#c7c4d7",
+              "tertiary-fixed-dim": "#ffafd3",
+              "on-tertiary": "#620040",
+              "primary-fixed": "#e1e0ff",
+              "tertiary-fixed": "#ffd8e7",
+              "on-primary-fixed": "#07006c",
+              "primary-fixed-dim": "#c0c1ff",
+              "inverse-on-surface": "#303030",
+              "on-tertiary-fixed-variant": "#85145a",
+              "surface-container-lowest": "#0e0e0e",
+              "primary": "#c0c1ff",
+              "surface-tint": "#c0c1ff",
+              "on-primary": "#1000a9",
+              "surface-dim": "#131313",
+              "surface-container-highest": "#353535",
+              "inverse-primary": "#494bd6",
+              "on-tertiary-container": "#560038",
+              "error": "#ffb4ab",
+              "on-primary-fixed-variant": "#2f2ebe",
+              "on-error-container": "#ffdad6",
+              "on-background": "#e2e2e2",
+              "outline": "#908fa0",
+              "surface-container": "#1f1f1f",
+              "surface-variant": "#353535",
+              "secondary-fixed": "#f0dbff",
+              "on-tertiary-fixed": "#3d0026",
+              "on-secondary-fixed-variant": "#6900b3",
+              "surface-bright": "#393939",
+              "background": "#131313",
+              "secondary-container": "#6f00be",
+              "on-error": "#690005",
+              "on-secondary": "#490080",
+              "surface-container-high": "#2a2a2a",
+              "surface": "#131313",
+              "secondary": "#ddb7ff",
+              "on-primary-container": "#0d0096",
+              "on-surface": "#e2e2e2"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+      }
+      .glass-card {
+        background: rgba(53, 53, 53, 0.4);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .hero-gradient {
+        background: radial-gradient(circle at top right, rgba(192, 193, 255, 0.15), transparent 50%),
+                    radial-gradient(circle at bottom left, rgba(111, 0, 190, 0.1), transparent 50%);
+      }
+      @keyframes pulse-subtle {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.05); opacity: 0.8; }
+      }
+      .animate-pulse-subtle {
+        animation: pulse-subtle 3s infinite ease-in-out;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313]/40 backdrop-blur-3xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] bg-gradient-to-b from-[#1b1b1b] to-transparent">
+<nav class="flex justify-between items-center px-6 md:px-12 h-20 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#c0c1ff] text-2xl cursor-pointer hover:scale-110 transition-transform">menu</span>
+<span class="text-2xl font-black bg-gradient-to-br from-[#c0c1ff] to-[#8083ff] bg-clip-text text-transparent font-headline tracking-tight">Gurucraftpro</span>
+</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-[#c0c1ff] font-bold font-headline transition-all hover:scale-105" href="#">Home</a>
+<a class="text-[#e2e2e2]/60 font-headline hover:text-[#c0c1ff] transition-all hover:scale-105" href="#">Services</a>
+<a class="text-[#e2e2e2]/60 font-headline hover:text-[#c0c1ff] transition-all hover:scale-105" href="#">Portfolio</a>
+<a class="text-[#e2e2e2]/60 font-headline hover:text-[#c0c1ff] transition-all hover:scale-105" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#c0c1ff] p-2 hover:bg-surface-container-highest rounded-full transition-colors">dark_mode</button>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary-container px-6 py-2.5 rounded-xl font-bold text-sm hover:scale-105 transition-all shadow-[0_0_20px_rgba(192,193,255,0.2)]">Start Crafting</button>
+</div>
+</nav>
+</header>
+<main class="relative pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[795px] flex items-center px-6 md:px-12 hero-gradient overflow-hidden">
+<div class="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto w-full">
+<div class="z-10">
+<span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-[0.2em] uppercase mb-6 border border-primary/20">Elite Creative Studio</span>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold tracking-tight mb-6 leading-[1.1]">
+                        Digital Merchant <br/>
+<span class="bg-gradient-to-r from-primary via-secondary to-tertiary bg-clip-text text-transparent">on Demand.</span>
+</h1>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-lg mb-10 leading-relaxed">
+                        Curating bespoke digital experiences and craftsmanship across seven creative pillars. From high-fashion to immersive gaming landscapes.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="px-8 py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary-container rounded-xl font-bold flex items-center gap-3 hover:scale-105 transition-all shadow-xl group">
+                            Explore Services
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="px-8 py-4 bg-surface-container-highest/50 backdrop-blur-md text-on-surface border border-outline-variant/20 rounded-xl font-bold hover:bg-surface-container-highest transition-all">
+                            View Portfolio
+                        </button>
+</div>
+</div>
+<div class="relative hidden md:block group">
+<div class="absolute -inset-4 bg-primary/20 blur-3xl rounded-full group-hover:bg-primary/30 transition-all duration-700"></div>
+<div class="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl rotate-3 group-hover:rotate-0 transition-transform duration-700">
+<img alt="Digital Craftsmanship" class="w-full h-full object-cover" data-alt="abstract 3D glass sculpture with neon purple and teal light refractions on a dark deep space background with ethereal particles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlSUW2a8X8O2DDHn1cLI7zm1UxA8JJZDHPK4FWHE9PysG0GyIew-12M7HhDYxbxyGtJXbUJR7KdUUPLW09hDT3kKyleMd6gPwFgdzZc6nVSfvrddZi-Eau59ckqOFsHa_8v8F2dWPkCoWZd_0xR_OMh3PwljJyiEPUTPwTJhkYKKZu7DXoNOSevTnXby30E7Y_sUIW2lm_uWROoZnmM27fu-NjfAqgnkWGg5UPcY-M5NUUddD6oUG4Aq-ZzyjZV4TpH7VRoWAsuQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
+</div>
+<!-- Floating Badge -->
+<div class="absolute -bottom-6 -left-6 glass-card p-6 rounded-3xl border border-outline-variant/10 shadow-2xl">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant font-medium">TRUSTED BY</p>
+<p class="text-lg font-bold text-on-surface">500+ Global Clients</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Highlight -->
+<section class="py-12 bg-surface-container-low px-6">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 glass-card p-8 rounded-[2.5rem] border border-outline-variant/5">
+<div class="flex items-center gap-6">
+<div class="px-4 py-2 bg-tertiary/20 text-tertiary rounded-lg text-xs font-black uppercase tracking-widest">Popular Now</div>
+<h3 class="text-2xl font-headline font-bold">Wedding Planning</h3>
+</div>
+<p class="text-on-surface-variant max-w-md text-sm md:text-base">Experience the magic of seamless matrimonial coordination with our elite planners. Now booking for the next season.</p>
+<a class="text-primary font-bold flex items-center gap-2 hover:translate-x-1 transition-transform" href="#">
+                    Learn More <span class="material-symbols-outlined">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- Seven Service Pillars Grid (Bento Style) -->
+<section class="py-24 px-6 md:px-12 bg-background">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-20">
+<h2 class="text-4xl md:text-5xl font-headline font-extrabold mb-4">The Seven Pillars</h2>
+<p class="text-on-surface-variant text-lg max-w-2xl mx-auto">Our ecosystem of specialized creative services designed to elevate every aspect of your brand and lifestyle.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Graphic Design -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-[2rem] bg-surface-container min-h-[350px] transition-all hover:scale-[1.01]">
+<div class="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="modern minimalist graphic design studio setup with colorful digital posters on a wall and high-end workstation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB23--TUpgigJ4nzBiqyTHMB0mmjTfyxPVG4NVQronFKxs6WAROBzesxdoERSBXx_6xirgiZhlQThO8mYd0BD5xsz2icsprGtNlDZ1MiWQcBUY16P6b31ysIODikIJO8FVmpv4omWQ27MMdbfT6xkzq2yTybOampRuMtEjt5uBEnBOSF6HECMB2dcFt1d9IFofoiUSJSJIM9KEPlGLL5Q7YGxEeXt7sG9jkU9p5W7tUcEvIj5kzw9taZaZMULj1NTATiw3dFqcdQg"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container/20 to-transparent p-10 flex flex-col justify-end">
+<span class="material-symbols-outlined text-primary mb-4 text-4xl">palette</span>
+<h4 class="text-3xl font-headline font-bold mb-2">Graphic Design</h4>
+<p class="text-on-surface-variant max-w-sm mb-6">Visual identities that resonate. We craft logos, branding, and digital assets that tell your unique story.</p>
+<button class="w-fit px-6 py-2 bg-white/10 backdrop-blur-md rounded-lg text-sm font-bold border border-white/10 hover:bg-white/20 transition-all">Explore Brandwork</button>
+</div>
+</div>
+<!-- 7-Day Cloths -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-[2rem] bg-surface-container min-h-[350px] transition-all hover:scale-[1.01]">
+<div class="absolute inset-0 opacity-30 group-hover:opacity-50 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="high-end fashion editorial shot with sleek fabrics and avant-garde clothing designs in a moody studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9XJO37SGq2f5qxkBDmIv1thr1YnhoeFMoY6CdDBI9k0putvLn1N1RHcIA3HS2iEjNG-z6V8i0NvX6QbmhwgWT51CNjgUVfec-MijXrGobJDLpkfiy8FjZVF-CmGDxpzulkbb3BsECoFgFLWVL2qtBd1qsDckh6XdHwYsbMKoJaXQarZMTeArCp9HJN6TcAWvs-snjY48AzB9e7zyK_lnj-yoD3Bsp63rTs0FmeY2A3u5rYkvj7NtdYy1CKNhltg410_k_KE7Avg"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container/20 to-transparent p-10 flex flex-col justify-end">
+<span class="material-symbols-outlined text-secondary mb-4 text-4xl">checkroom</span>
+<h4 class="text-2xl font-headline font-bold mb-2">Fashion Design</h4>
+<p class="text-on-surface-variant text-sm mb-6">Signature 7-Day Cloths collection.</p>
+</div>
+</div>
+<!-- Photo Editor -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-[2rem] bg-surface-container min-h-[350px] transition-all hover:scale-[1.01]">
+<div class="absolute inset-0 opacity-40">
+<img class="w-full h-full object-cover" data-alt="professional photographer editing high-end fashion photos on a dual monitor setup with cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS7eo393UOGmJmbcER9SSfLrNt6Mf4MvrEpWFERkIsGxYrHbfknOoGLloyxBz4TLG8Px46pV_VfF_-69xwOpC-nyeXy4BlR1c1VkaKjhj6K7EOzB2S5P0EXCDEiNWOr-fG47MKE9Oq7iP0NvOqAhuQ2kvhTbEiBGm35N9sEj8pSACq1SpP09iHcaey_Uvzoo6rCa__igeWKjhd0ZRM-JUaCHEY7HXphSVrU-_9Zl-gDQrwX1Cg1tyMJFMnAGv1t9kekuJeW-vX0w"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container/20 to-transparent p-10 flex flex-col justify-end">
+<span class="material-symbols-outlined text-tertiary mb-4 text-4xl">photo_camera</span>
+<h4 class="text-2xl font-headline font-bold mb-2">Photo Editor</h4>
+<p class="text-on-surface-variant text-sm mb-6">High-end retouching and editorial manipulation.</p>
+</div>
+</div>
+<!-- Guru Ji Art Work -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-[2rem] bg-surface-container min-h-[350px] transition-all hover:scale-[1.01]">
+<div class="absolute inset-0 opacity-30">
+<img class="w-full h-full object-cover" data-alt="spiritual abstract canvas art with gold leaf accents and deep cosmic purple paint swirls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9uZ0b_nHEY_COE6B4f-6uho9_oKFftqtf8-LTb39YH4IyXQu9EVqEEHoQE8c_1zbj5F2UdisbxybsvXOlNMChiKdIbUZzwdVt911s9HTyTmHMYJ9G379zWYje273dyKlcvUuT9PeSXdp99uUUN_L_JSXSSSezXIrTMoTfTYQtLJdPd89QtOYaIM6VVUaUWXYN8kfRmiGTVkKBxpB-0nGdAb5B1sGVhnsjfF2-er8EknUhkrlo8CGDHcLZKCfOj5Zuqrahf63d_A"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container/20 to-transparent p-10 flex flex-col justify-end text-center items-center">
+<span class="material-symbols-outlined text-primary mb-4 text-4xl">brush</span>
+<h4 class="text-2xl font-headline font-bold mb-2">Guru Ji Art Work</h4>
+<p class="text-on-surface-variant text-sm">Spiritual and contemporary masterpieces.</p>
+</div>
+</div>
+<!-- Interior Design -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-[2rem] bg-surface-container min-h-[350px] transition-all hover:scale-[1.01]">
+<div class="absolute inset-0 opacity-40">
+<img class="w-full h-full object-cover" data-alt="ultra-luxury modern living room with floor-to-ceiling windows and bespoke marble furniture at night" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFTkuIlDJbwd0VBMlJyo8fp9rWRwG-jO6o60DYbl3eAFC4-Y6wbQs6Hmje6Fvebkv4ZkEN1CAWQTg52fvUb-rWKTGDvb14x0B3oj0nSqPYlDzdxfhlDnxP70ZT2_jNg8LO1tT381xu8Zob2YU6aYCtXf7PPcokukEGIkmyfNMT2XuOWq1QzIh1ukb_VcktixpTWjp-4t-to6LF5DP5OCpLdBrOrkd0NtR1wWztwVLkYQcJGKcWMrdtf7E1nQkbaHl3GVRctyra9w"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container/20 to-transparent p-10 flex flex-col justify-end">
+<span class="material-symbols-outlined text-secondary mb-4 text-4xl">weekend</span>
+<h4 class="text-2xl font-headline font-bold mb-2">Interior Design</h4>
+<p class="text-on-surface-variant text-sm">Spatial alchemy for modern living.</p>
+</div>
+</div>
+<!-- Game Design -->
+<div class="md:col-span-12 group relative overflow-hidden rounded-[2rem] bg-surface-container min-h-[400px] transition-all hover:scale-[1.01]">
+<div class="absolute inset-0 opacity-50">
+<img class="w-full h-full object-cover" data-alt="futuristic cyberpunk game world being designed on a high-tech console with glowing holographic interface elements" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD51RdwGLp11wFOkda1UVaadIB1_okujYgE7ViHbkGQQvv6OlqZTDSddpfRWHXcCRj04Fl8i46LqT4mbMldhRAqtKApYuvjoTNfJHshJpCLOFPVrhNrJxEjEgSOvgBtUztz4cXEmOw32rwGFrrfWtR1M83IOKyf0iEFdfpWCFInsFACaoxeq9_ZeVd8ef10UHW6UuG0k1KYGTZyURwdHiQZt9JaJyY_JxvKVWE19K6Rj93QLuxuR0wjrlSSUzHjtKv7f4NUwhM8PQ"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-lowest via-surface-container-lowest/60 to-transparent p-12 flex flex-col justify-center max-w-2xl">
+<span class="material-symbols-outlined text-primary mb-6 text-5xl">sports_esports</span>
+<h4 class="text-4xl font-headline font-bold mb-4">Game Design</h4>
+<p class="text-on-surface-variant text-lg mb-8">Architecting immersive digital realms. We build the mechanics, environments, and narratives that define next-gen gaming experiences.</p>
+<button class="w-fit px-8 py-3 bg-gradient-to-br from-primary-container to-secondary-container text-white rounded-xl font-bold shadow-lg hover:shadow-primary/20 transition-all">Start a Project</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Work Showcase -->
+<section class="py-24 px-6 md:px-12 bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+<div>
+<h2 class="text-4xl font-headline font-extrabold mb-4">Crafted Chronicles</h2>
+<p class="text-on-surface-variant max-w-lg">A glimpse into our latest creative expeditions across multiple industries.</p>
+</div>
+<div class="flex gap-2">
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="flex gap-8 overflow-x-auto pb-10 no-scrollbar">
+<div class="min-w-[300px] md:min-w-[400px] flex-shrink-0 group">
+<div class="relative h-[500px] rounded-3xl overflow-hidden mb-6">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="ethereal outdoor wedding setup at twilight with thousands of hanging fairy lights and white floral arrangements" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLBIBjB9mnIRcOYx7-HGK2VMC7wJfoWcyxSfRXiAYp3tb2nvBlUYNQ3R495He7WKpaZ6J-c1aRmq-IYyNVobj-WMIRSugLyeUGHy8wJTad3yaf1N1e_xkNPcibyxMbDqWi6r_2B1egHKT71hLvkkeEZ5Y3yAhxG95Rlf7IdzOqwcBWdm5qYpz4fxpMbO_cawIPN5gQv6ZxIMe_HejnMxCGJlEcb--aYLYhDdTqxkWQljpS7TyHJnElkfUevBMf0Eaf9_PF2NVNiw"/>
+<div class="absolute top-6 left-6 px-4 py-1.5 bg-background/60 backdrop-blur-md rounded-lg text-xs font-bold uppercase">Wedding Planning</div>
+</div>
+<h5 class="text-xl font-bold mb-1">Aura de Blanc</h5>
+<p class="text-on-surface-variant text-sm">Luxury Destination Wedding in Maldives</p>
+</div>
+<div class="min-w-[300px] md:min-w-[400px] flex-shrink-0 group">
+<div class="relative h-[500px] rounded-3xl overflow-hidden mb-6">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="futuristic desktop setup with glowing neon lights, multiple mechanical keyboards and sleek gaming peripherals" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYy7LsHj_4NZPvPvxlE5ByqGUfP0nD1nfK555ds-RapaNnccb0k6-NbOQq9ydCb8uhyA8Waxv4S6HHKvfz2msIbkrSuGXaajzNxB_OaYofoQsxbp8VluO9Wd4dR1gK14i4oOHcxo_mEc6MzxBe1RQWUtKZgySfcCPr7omiUeInSZ5wKotvf0pv4mBDr6y_PZeK9yqu5qdqM9-oDKLm5PkLxazx_En2alV9bTkzvmR42js7q7s-rR2ot34AllVlB4NV55q6DtndVA"/>
+<div class="absolute top-6 left-6 px-4 py-1.5 bg-background/60 backdrop-blur-md rounded-lg text-xs font-bold uppercase">Game Design</div>
+</div>
+<h5 class="text-xl font-bold mb-1">Neon Genesis</h5>
+<p class="text-on-surface-variant text-sm">Level Design &amp; Character Rigging</p>
+</div>
+<div class="min-w-[300px] md:min-w-[400px] flex-shrink-0 group">
+<div class="relative h-[500px] rounded-3xl overflow-hidden mb-6">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="luxury boutique store interior with minimalist clothing racks and dramatic architectural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS1sLL3fsrMyGFepO7riVccfOvkUVH09vim_tfMKIdHm1y07pLfy6ENApIAAorhgKWJfpPe2lbQx6wiEJ-jaM3pmbz23QbWSSPZ-BfuxVoJ7SpmpxJleCgX5_7mlZ-EEht2D7bUovuBL-vIUN-phieA6BUwPUOvsfTQfXnQFWXn183Fmro3RFJrCQg1keQsryi_GJwz3UmCB8mItiKiGXev_NVIdFcRItEzegOC2zA5xuohhh0BSIZAg7uV76VH6hKQpDCeiIm8g"/>
+<div class="absolute top-6 left-6 px-4 py-1.5 bg-background/60 backdrop-blur-md rounded-lg text-xs font-bold uppercase">Fashion Design</div>
+</div>
+<h5 class="text-xl font-bold mb-1">Silk &amp; Steel</h5>
+<p class="text-on-surface-variant text-sm">Autumn Collection Editorial</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact & Quick Links -->
+<section class="py-24 px-6 bg-background relative overflow-hidden">
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full"></div>
+<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20">
+<div>
+<h2 class="text-4xl md:text-5xl font-headline font-extrabold mb-8">Ready to bring <br/>vision to life?</h2>
+<p class="text-on-surface-variant text-lg mb-12">Connect with our master artisans directly or follow our journey through the digital ether.</p>
+<div class="space-y-6">
+<a class="flex items-center gap-6 group" href="https://wa.me/">
+<div class="w-14 h-14 rounded-2xl bg-[#25D366]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[#25D366] text-3xl">chat</span>
+</div>
+<div>
+<p class="text-sm text-on-surface-variant uppercase tracking-widest font-bold">WhatsApp Direct</p>
+<p class="text-xl font-bold">+91 Gurucraft Team</p>
+</div>
+</a>
+<a class="flex items-center gap-6 group" href="#">
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">mail</span>
+</div>
+<div>
+<p class="text-sm text-on-surface-variant uppercase tracking-widest font-bold">Inquiries</p>
+<p class="text-xl font-bold">hello@gurucraftpro.com</p>
+</div>
+</a>
+</div>
+</div>
+<div class="glass-card p-10 rounded-[2.5rem] border border-outline-variant/10">
+<h3 class="text-2xl font-bold mb-8">Subscribe to Insights</h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="text-xs uppercase tracking-[0.2em] font-bold text-on-surface-variant ml-1">Full Name</label>
+<input class="w-full bg-surface-container-highest/30 border-b border-outline-variant focus:border-primary focus:ring-0 px-1 py-4 text-on-surface placeholder:text-on-surface-variant/30 transition-all outline-none" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs uppercase tracking-[0.2em] font-bold text-on-surface-variant ml-1">Email Address</label>
+<input class="w-full bg-surface-container-highest/30 border-b border-outline-variant focus:border-primary focus:ring-0 px-1 py-4 text-on-surface placeholder:text-on-surface-variant/30 transition-all outline-none" placeholder="john@example.com" type="email"/>
+</div>
+<button class="w-full py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary-container font-black rounded-2xl shadow-lg hover:shadow-primary/20 transition-all active:scale-[0.98]">Request Consultation</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest py-20 px-6 md:px-12">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 mb-20">
+<div class="col-span-2">
+<span class="text-3xl font-black bg-gradient-to-br from-[#c0c1ff] to-[#8083ff] bg-clip-text text-transparent font-headline tracking-tighter mb-6 block">Gurucraftpro</span>
+<p class="text-on-surface-variant max-w-xs mb-8">The digital sanctuary for bespoke creative solutions. Elevating commerce through unparalleled design craft.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-sm">social_leaderboard</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-sm">camera_alt</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-sm">alternate_email</span>
+</a>
+</div>
+</div>
+<div>
+<h6 class="text-white font-bold mb-6 uppercase tracking-widest text-xs">Pillars</h6>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Graphic Design</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Fashion Design</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Wedding Planning</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Guruji Artwork</a></li>
+</ul>
+</div>
+<div>
+<h6 class="text-white font-bold mb-6 uppercase tracking-widest text-xs">Digital</h6>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Photo Editing</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Game Design</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Interior Design</a></li>
+</ul>
+</div>
+<div>
+<h6 class="text-white font-bold mb-6 uppercase tracking-widest text-xs">Company</h6>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Privacy</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-12 border-t border-outline-variant/10 flex flex-col md:flex-row items-center justify-between gap-10">
+<p class="text-xs text-on-surface-variant/60">© 2024 Gurucraftpro Private Limited. All Rights Reserved.</p>
+<div class="flex items-center gap-8 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
+<img alt="Stripe" class="h-6" data-alt="Stripe payment provider logo in white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALRTumaBlXIaf8SYZbjlLPUHHNneejdm2EXMs1VC3Q6SWt9X-MDyqJWiA-EKAJ5iG0aRzMkfMivUHgf1uG43bHa6gt63GbUYhuTvJJOFHKzGp7Otw44uzumX5xzy3MnAfreLT_GC10pQ5fWUs_a_a1MlruX2I30zpgkfTtSXm0X_ylDB3HUcJj9tVSr7L-cjzO5f1B17714uXzUJb8azuHWF17eumBi-xQlkD8yoRKrQPK6aUymjjW3Auak-cnKv1gXBerHGqIcg"/>
+<img alt="Razorpay" class="h-5" data-alt="Razorpay payment provider logo in white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUuakt8RI4hf2nDZnGIsx91ofT6oZ0Kz0o6i8Q6Ds8nsGrlgQ_7SgjegvkYe1ivS6byQSUBiSIf7Osb9B3JqAzoFXgnYY8tqYSivlQzJkY8d16IqfarXWlDrxTeS8QU4_sNaH67yqbVOSqKEW7RJrayrxSn11TfhdzKrqSYO2neCywDqOS41yNlvDDRFlHiOdspSKcWJ5Gn-WsF8jWmtwoGnSy8X7do71HJfCsO4_mw91_jrHJOZvpTMBFlVk05dredu2qmrqcTA"/>
+<img alt="GPay" class="h-6" data-alt="Google Pay logo with multi-colored symbol" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwFz8PEnAl4-o4Qgub1MjqPA-C16chhF5LoZ47oMtBB9F2hq0iEFEYHImMbQo2SusSgQ-H7zNe-uFvuJzho-yyi8o_t6AA0rBj_ncfRnjDy_CwArfZohFjADX6-Pqpu2BDKhzxKLf_WCkHrhSp3nmQNidzOTYyCb9kJfOOi8xLldUv3aQfIJ76opW2mLI0zbj2W-_DMLoYT3sra-An8jH0dNBNYlM-HThKd82BSpveEtMmkrhmsXc1BULPR8VmzMX9C77A_-SEPg"/>
+</div>
+</div>
+</div>
+</footer>
+<!-- Bottom Nav for Mobile -->
+<nav class="md:hidden fixed bottom-0 w-full rounded-t-[2rem] z-50 bg-[#1b1b1b]/40 backdrop-blur-2xl border-t border-[#464554]/15 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
+<div class="flex justify-around items-center h-20 px-8 pb-safe">
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#c0c1ff] to-[#8083ff] text-[#131313] rounded-full w-12 h-12 shadow-[0_0_15px_rgba(192,193,255,0.3)] animate-pulse-subtle scale-110" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#e2e2e2]/50 w-12 h-12 hover:text-[#c0c1ff] transition-colors" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#e2e2e2]/50 w-12 h-12 hover:text-[#c0c1ff] transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+</a>
+</div>
+</nav>
+</main>
+</body></html>

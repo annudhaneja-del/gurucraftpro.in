@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gurucraftpro Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#e364a7",
+              "surface-tint": "#c0c1ff",
+              "on-secondary-container": "#d6a9ff",
+              "on-primary-fixed": "#07006c",
+              "on-secondary": "#490080",
+              "inverse-on-surface": "#303030",
+              "on-secondary-fixed-variant": "#6900b3",
+              "surface-dim": "#131313",
+              "error-container": "#93000a",
+              "surface-bright": "#393939",
+              "surface-container-high": "#2a2a2a",
+              "tertiary-fixed-dim": "#ffafd3",
+              "surface-container": "#1f1f1f",
+              "secondary-container": "#6f00be",
+              "on-error-container": "#ffdad6",
+              "outline-variant": "#464554",
+              "on-tertiary-fixed-variant": "#85145a",
+              "surface-container-highest": "#353535",
+              "outline": "#908fa0",
+              "on-primary-fixed-variant": "#2f2ebe",
+              "surface-container-low": "#1b1b1b",
+              "secondary-fixed-dim": "#ddb7ff",
+              "on-secondary-fixed": "#2c0051",
+              "on-error": "#690005",
+              "tertiary-fixed": "#ffd8e7",
+              "primary-fixed": "#e1e0ff",
+              "on-tertiary": "#620040",
+              "on-surface-variant": "#c7c4d7",
+              "surface-container-lowest": "#0e0e0e",
+              "error": "#ffb4ab",
+              "on-background": "#e2e2e2",
+              "on-tertiary-container": "#560038",
+              "on-primary-container": "#0d0096",
+              "on-primary": "#1000a9",
+              "primary-fixed-dim": "#c0c1ff",
+              "background": "#131313",
+              "tertiary": "#ffafd3",
+              "on-tertiary-fixed": "#3d0026",
+              "surface-variant": "#353535",
+              "secondary": "#ddb7ff",
+              "inverse-primary": "#494bd6",
+              "surface": "#131313",
+              "primary-container": "#8083ff",
+              "on-surface": "#e2e2e2",
+              "inverse-surface": "#e2e2e2",
+              "secondary-fixed": "#f0dbff",
+              "primary": "#c0c1ff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(53, 53, 53, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(70, 69, 84, 0.15);
+        }
+        .glow-primary {
+            box-shadow: 0 0 20px rgba(192, 193, 255, 0.15);
+        }
+        .metric-3d {
+            background: linear-gradient(135deg, rgba(192, 193, 255, 0.1) 0%, rgba(128, 131, 255, 0.05) 100%);
+            transition: transform 0.3s ease;
+        }
+        .metric-3d:hover {
+            transform: translateY(-4px) translateZ(10px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30">
+<!-- NavigationDrawer (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-8 bg-[#131313] dark:bg-[#131313] h-screen w-64 border-r border-[#464554]/15 shadow-[0_20px_40px_rgba(0,0,0,0.4)] z-50">
+<div class="px-6 mb-12">
+<span class="text-xl font-bold tracking-tighter text-[#c0c1ff] font-['Plus_Jakarta_Sans']">Gurucraftpro</span>
+</div>
+<nav class="flex-1 space-y-1 overflow-y-auto px-4">
+<!-- Active Tab: Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#c0c1ff] font-bold border-r-2 border-[#c0c1ff] bg-gradient-to-r from-[#c0c1ff]/10 to-transparent transition-all duration-300 hover:bg-[#1b1b1b]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Plus_Jakarta_Sans'] tracking-tight">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#e2e2e2]/60 hover:text-[#e2e2e2] transition-all duration-300 hover:bg-[#1b1b1b] scale-105 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="brush">brush</span>
+<span class="font-['Plus_Jakarta_Sans'] tracking-tight">Graphic Design</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#e2e2e2]/60 hover:text-[#e2e2e2] transition-all duration-300 hover:bg-[#1b1b1b]" href="#">
+<span class="material-symbols-outlined" data-icon="apparel">apparel</span>
+<span class="font-['Plus_Jakarta_Sans'] tracking-tight">Fashion</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#e2e2e2]/60 hover:text-[#e2e2e2] transition-all duration-300 hover:bg-[#1b1b1b]" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-['Plus_Jakarta_Sans'] tracking-tight">Wedding</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#e2e2e2]/60 hover:text-[#e2e2e2] transition-all duration-300 hover:bg-[#1b1b1b]" href="#">
+<span class="material-symbols-outlined" data-icon="palette">palette</span>
+<span class="font-['Plus_Jakarta_Sans'] tracking-tight">Guruji Art</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#e2e2e2]/60 hover:text-[#e2e2e2] transition-all duration-300 hover:bg-[#1b1b1b]" href="#">
+<span class="material-symbols-outlined" data-icon="photo_camera">photo_camera</span>
+<span class="font-['Plus_Jakarta_Sans'] tracking-tight">Photo Editor</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#e2e2e2]/60 hover:text-[#e2e2e2] transition-all duration-300 hover:bg-[#1b1b1b]" href="#">
+<span class="material-symbols-outlined" data-icon="sports_esports">sports_esports</span>
+<span class="font-['Plus_Jakarta_Sans'] tracking-tight">Game Design</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#e2e2e2]/60 hover:text-[#e2e2e2] transition-all duration-300 hover:bg-[#1b1b1b]" href="#">
+<span class="material-symbols-outlined" data-icon="chair">chair</span>
+<span class="font-['Plus_Jakarta_Sans'] tracking-tight">Interior Design</span>
+</a>
+<div class="pt-4 mt-4 border-t border-[#464554]/15">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#e2e2e2]/60 hover:text-[#e2e2e2] transition-all duration-300 hover:bg-[#1b1b1b]" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-['Plus_Jakarta_Sans'] tracking-tight">Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#e2e2e2]/60 hover:text-[#e2e2e2] transition-all duration-300 hover:bg-[#1b1b1b]" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-['Plus_Jakarta_Sans'] tracking-tight">Orders</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TopAppBar (Shared Component) -->
+<header class="bg-[#131313]/40 backdrop-blur-3xl flex justify-between items-center px-8 py-4 sticky top-0 z-40 w-full transition-opacity hover:opacity-100">
+<div class="flex items-center gap-6">
+<button class="text-[#c0c1ff] hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-2xl" data-icon="menu">menu</span>
+</button>
+<h1 class="font-['Plus_Jakarta_Sans'] text-2xl font-bold text-[#c0c1ff]">Admin Overview</h1>
+</div>
+<div class="flex items-center gap-8">
+<!-- Search Bar -->
+<div class="relative group hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm" data-icon="search">search</span>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary w-64 transition-all focus-within:glow-primary text-on-surface" placeholder="Search craft analytics..." type="text"/>
+</div>
+<div class="flex items-center gap-4 cursor-pointer hover:opacity-80 transition-opacity">
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface">Admin Profile</p>
+<p class="text-xs text-outline">Master Alchemist</p>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-primary overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a professional male creative director with glasses in soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr6JMQFTKwhslKBGmaucUhhoXDl8eKq8IuFEVD5j_lCyTmcbJi3ZYyZxIFfngLTPH7J-9IR2gpel8MyT4xjLUmiMNgK3TzQUUV0ZKfke5We1sFWpeSQXJGfsJ17sKaXlbkTBSxPiq9CVHcs8UHEDDUMODpOm1ryVmswW90ouD99ck_MQOvJxdgwBpZjdBtjBItlx0bVa37mGLmanhc2lD1H2-FjpnAU8QwRbkSNuZMqvBTiNlPGYGAx0mSHJ42R7ekbn-QXMIT-Q"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="p-8 space-y-12">
+<!-- 3D Styled Metrics -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass-card metric-3d p-6 rounded-xl flex flex-col gap-4 relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all"></div>
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg" data-icon="payments">payments</span>
+<span class="text-xs text-primary font-bold bg-primary/10 px-2 py-1 rounded-full">+12.5%</span>
+</div>
+<div>
+<p class="text-outline text-sm uppercase tracking-widest font-bold">Total Sales</p>
+<h3 class="text-3xl font-bold font-headline mt-1">$48,290.00</h3>
+</div>
+</div>
+<div class="glass-card metric-3d p-6 rounded-xl flex flex-col gap-4 relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-all"></div>
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-secondary bg-secondary/10 p-2 rounded-lg" data-icon="shopping_basket">shopping_basket</span>
+<span class="text-xs text-secondary font-bold bg-secondary/10 px-2 py-1 rounded-full">+8 New</span>
+</div>
+<div>
+<p class="text-outline text-sm uppercase tracking-widest font-bold">New Orders</p>
+<h3 class="text-3xl font-bold font-headline mt-1">1,240</h3>
+</div>
+</div>
+<div class="glass-card metric-3d p-6 rounded-xl flex flex-col gap-4 relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-tertiary/10 rounded-full blur-2xl group-hover:bg-tertiary/20 transition-all"></div>
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-tertiary bg-tertiary/10 p-2 rounded-lg" data-icon="rocket_launch">rocket_launch</span>
+<span class="text-xs text-tertiary font-bold bg-tertiary/10 px-2 py-1 rounded-full">42 Live</span>
+</div>
+<div>
+<p class="text-outline text-sm uppercase tracking-widest font-bold">Active Projects</p>
+<h3 class="text-3xl font-bold font-headline mt-1">156</h3>
+</div>
+</div>
+</section>
+<!-- Bento Layout: Service Distribution & Activity -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Service Distribution (List View/Performance) -->
+<div class="lg:col-span-7 glass-card p-8 rounded-2xl flex flex-col gap-6">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-2xl font-bold font-headline tracking-tight text-primary">Service Distribution</h2>
+<p class="text-outline text-sm">Performance across the 7 Craft Pillars</p>
+</div>
+<button class="text-xs text-primary border border-primary/20 px-4 py-2 rounded-full hover:bg-primary/5 transition-colors">View Report</button>
+</div>
+<div class="space-y-6 pt-4">
+<!-- Service Item -->
+<div class="group">
+<div class="flex justify-between items-center mb-2">
+<span class="text-on-surface font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="palette">palette</span> Guruji Art
+                                </span>
+<span class="text-sm font-bold text-primary">34%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[34%] rounded-full"></div>
+</div>
+</div>
+<div class="group">
+<div class="flex justify-between items-center mb-2">
+<span class="text-on-surface font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="favorite">favorite</span> Wedding
+                                </span>
+<span class="text-sm font-bold text-secondary">28%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[28%] rounded-full"></div>
+</div>
+</div>
+<div class="group">
+<div class="flex justify-between items-center mb-2">
+<span class="text-on-surface font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="photo_camera">photo_camera</span> Photo Editor
+                                </span>
+<span class="text-sm font-bold text-tertiary">15%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[15%] rounded-full"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
+<div class="bg-surface-container-low p-3 rounded-xl border border-outline-variant/10">
+<p class="text-[10px] text-outline uppercase font-bold tracking-widest">Fashion</p>
+<p class="text-lg font-bold">12%</p>
+</div>
+<div class="bg-surface-container-low p-3 rounded-xl border border-outline-variant/10">
+<p class="text-[10px] text-outline uppercase font-bold tracking-widest">Game Design</p>
+<p class="text-lg font-bold">6%</p>
+</div>
+<div class="bg-surface-container-low p-3 rounded-xl border border-outline-variant/10">
+<p class="text-[10px] text-outline uppercase font-bold tracking-widest">Graphic Design</p>
+<p class="text-lg font-bold">4%</p>
+</div>
+<div class="bg-surface-container-low p-3 rounded-xl border border-outline-variant/10">
+<p class="text-[10px] text-outline uppercase font-bold tracking-widest">Interior Design</p>
+<p class="text-lg font-bold">1%</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Feed -->
+<div class="lg:col-span-5 glass-card p-8 rounded-2xl flex flex-col gap-6">
+<h2 class="text-2xl font-bold font-headline tracking-tight">Recent Activity</h2>
+<div class="relative space-y-8">
+<!-- Vertical line for feed -->
+<div class="absolute left-4 top-2 bottom-2 w-[1px] bg-outline-variant/30"></div>
+<!-- Feed Item: Guruji Art -->
+<div class="relative pl-10">
+<div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-primary-container flex items-center justify-center ring-4 ring-background">
+<span class="material-symbols-outlined text-sm text-on-primary-container" data-icon="palette">palette</span>
+</div>
+<div>
+<p class="text-on-surface font-medium">New Order: Mandala Canvas</p>
+<p class="text-sm text-outline">Category: <span class="text-primary">Guruji Art</span> • 2 mins ago</p>
+<div class="mt-3 p-3 bg-surface-container-low rounded-lg border border-outline-variant/10 flex items-center gap-3">
+<img class="w-10 h-10 rounded object-cover" data-alt="vibrant abstract indian mandala art painting with golden details and intricate patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1fuomHJ_Wol5_E4T9gEos0K5_KZQMERlbVF6pyYwIHgpfMBzC0YvhjiGvwyIOE9Zpyw6m0i8KmYTzD2uDWXI6VVj9Vtg430Dagr7K0NSYpcZzExmuLy6ZNSpB81EsG_OByf2TgkiiqZ0NIhuxuJ6byME1BEAyqrU2oH0llDQ5uKSO92yycjzoWqAaItGwnlg1OpcluIDtgBcDhJ-MvUsMN9w2tWmtAIurEAh3ewEzo7v-a8cHphWf6wujmvJJGzZAugRhcF4oRA"/>
+<div>
+<p class="text-xs font-bold">Order #GA-8921</p>
+<p class="text-[10px] text-outline">Client: Anaya Sharma</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Feed Item: Wedding -->
+<div class="relative pl-10">
+<div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center ring-4 ring-background">
+<span class="material-symbols-outlined text-sm text-on-secondary-container" data-icon="favorite">favorite</span>
+</div>
+<div>
+<p class="text-on-surface font-medium">Wedding Inquiry: Winter 2024</p>
+<p class="text-sm text-outline">Category: <span class="text-secondary">Wedding</span> • 45 mins ago</p>
+<p class="text-xs mt-1 text-on-surface-variant italic">"Looking for a complete cinematic photo package for a destination wedding in Udaipur."</p>
+</div>
+</div>
+<!-- Feed Item: Photo Editor -->
+<div class="relative pl-10">
+<div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-tertiary-container flex items-center justify-center ring-4 ring-background">
+<span class="material-symbols-outlined text-sm text-on-tertiary-container" data-icon="photo_camera">photo_camera</span>
+</div>
+<div>
+<p class="text-on-surface font-medium">Task Completed: Editorial Retouch</p>
+<p class="text-sm text-outline">Category: <span class="text-tertiary">Photo Editor</span> • 3 hours ago</p>
+<div class="mt-2 flex -space-x-2">
+<img class="w-8 h-8 rounded-full border border-background" data-alt="editorial fashion portrait of a woman with high fashion makeup and lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFDRJf94rsA5FRrCg6pCQJODlTktMWVV1ppISFdP-BIrcxMTpLh2qbDQ6ZhMo72hnRpwCqzy3nJUHuf1PYGz7MxAbxKCYG6Qm3sBRxsy2YQVFSVor3h6G8EQdZKM714Bb1huXbfKNcyOZxVdOGu1Q_YfTdzpppDlI2rRYKacmuNYeO5cjwC51Yeh7o2zdltC2k93_TAT4529bxpfShGMpjoAAz2KdhAbaO5VG28i8ANSxlSi2wUbng-xyVFtnzlN9hsWXOuSV2KA"/>
+<img class="w-8 h-8 rounded-full border border-background" data-alt="professional portrait of a man in a business suit with moody low-key lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw1O3jolklkb0yRAD7zFNsP36ovI4wKqGxfZwl_ghtc69hnYZfdfXKl0UijbZwqiU21ubYqM7N_eDJmb24SPedbMgOxkrmASb_Urh5uCZoMzFtvkYKHeEKrlkowTzO5kv27GxmlFin65RjnTWOkp27wADoMJQgnbmFeX4tKAo6XiulWBzcSTnEmr4xi8kv3-G0Y5ED53TdgGeZ7Ejb5FwaeRxDiEwYpmvVAOY_Wm73nyc8bCYz3puA5pwJG42FP0aqgGpiCh4i_A"/>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-background flex items-center justify-center text-[10px] text-outline font-bold">+12</div>
+</div>
+</div>
+</div>
+</div>
+<button class="mt-4 w-full py-3 rounded-xl border border-outline-variant/20 text-on-surface font-bold text-sm hover:bg-surface-container-highest transition-all">View All Activity</button>
+</div>
+</section>
+<!-- Projects Table / Grid (Minimalist High-End) -->
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="text-2xl font-bold font-headline tracking-tight">Active Projects Deep-Dive</h2>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg bg-surface-container-highest text-primary">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+</button>
+<button class="p-2 rounded-lg text-outline">
+<span class="material-symbols-outlined" data-icon="list">list</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+<!-- Project Card -->
+<div class="bg-surface-container-low rounded-2xl overflow-hidden border border-outline-variant/10 group">
+<div class="h-40 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="modern minimalist interior design with luxury furniture and soft neutral tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdDBGhEpdDQulNmjNnxYmFziU9qUQHVwY5YbDh_9L7toS6sS_O3-VLqc0TIrInxlmeU_POwILNrDvt7BVKL5x9_PaZLkPqvxcIN1oIuaWrL5nzesYmJQZeKvS37R7EYNZp0iK92u3GHLHvjKs6YR9NZSOMNdv_rplaxG8BuLXrLk59H2JXO93Tw9bOwxFFPXSQA70VaeMmZbWMp60ReKwTtK1HaEv6xK5ghSx5sIoqnpnIWiN3ZtTME0j-LJkfDO99Lp3EOaZ_2w"/>
+<div class="absolute top-4 right-4 bg-[#131313]/60 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-primary border border-primary/20">Interior Design</div>
+</div>
+<div class="p-5 space-y-4">
+<h4 class="font-bold text-on-surface">Neo-Modernist Apartment</h4>
+<div class="flex items-center justify-between text-xs">
+<span class="text-outline">Progress</span>
+<span class="text-on-surface font-bold">65%</span>
+</div>
+<div class="h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[65%]"></div>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="flex -space-x-1">
+<div class="w-6 h-6 rounded-full bg-secondary ring-2 ring-background"></div>
+<div class="w-6 h-6 rounded-full bg-primary ring-2 ring-background"></div>
+</div>
+<span class="text-[10px] font-bold text-outline">Due in 4 days</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-2xl overflow-hidden border border-outline-variant/10 group">
+<div class="h-40 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="futuristic game design concept art with neon lights and digital environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcA4lsqmdjRYgXXSCzwF16r5hQZWPvji2CBB8ss4VuZASdwnGEnsUoyAG9xWSzgKUNLpYw8VAdct0tc6nMuCm_d5BwRf0yUqEK_jOxmpg1ZBCo3e-FCL5r4Vf9ZYQbslxOpOBzoQQkbmABmy87ardWYu4Qi-8fY2U7hz0kGUcc3RPsSgdSNMc0A6xra0KWaV3LtIHop5Oi5xJyCFobBm5QibCTd2RLnw3xh3hCg0HfEvwXt4dkN0HxiOojytP0p_uJN0mbvxy9vg"/>
+<div class="absolute top-4 right-4 bg-[#131313]/60 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-secondary border border-secondary/20">Game Design</div>
+</div>
+<div class="p-5 space-y-4">
+<h4 class="font-bold text-on-surface">Cyberpunk Asset Pack</h4>
+<div class="flex items-center justify-between text-xs">
+<span class="text-outline">Progress</span>
+<span class="text-on-surface font-bold">20%</span>
+</div>
+<div class="h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[20%]"></div>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="flex -space-x-1">
+<div class="w-6 h-6 rounded-full bg-tertiary ring-2 ring-background"></div>
+</div>
+<span class="text-[10px] font-bold text-outline">Due in 12 days</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-2xl overflow-hidden border border-outline-variant/10 group">
+<div class="h-40 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="elegant wedding photography session with bride and groom in a classic outdoor setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLAYBG4_SwOp2nW5WCnXDoM2f7XQ2X2P_vcrl14pf75MUG-skSzWO--ayptFLxE7wW6Ju8ukaz9kEN8La7wkdMqY8T8OxzUFGktVHxa7Ax_iSlhtjaMtuolVtWY_Xei3o-Z9YcjVhstSgLdkkB1INswAdOxbf09VvPXsHkGzGPff0HNg2K862oKc80VbIATYDVtTZi4kSKUUeFrGclpCBUStbpKyl1C7v2wJl20qeAsdIAzmYwZfyE9mriWAo0REPMxgdlXF9ryw"/>
+<div class="absolute top-4 right-4 bg-[#131313]/60 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-tertiary border border-tertiary/20">Wedding</div>
+</div>
+<div class="p-5 space-y-4">
+<h4 class="font-bold text-on-surface">The Mehta Wedding Film</h4>
+<div class="flex items-center justify-between text-xs">
+<span class="text-outline">Progress</span>
+<span class="text-on-surface font-bold">90%</span>
+</div>
+<div class="h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[90%]"></div>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="flex -space-x-1">
+<div class="w-6 h-6 rounded-full bg-primary ring-2 ring-background"></div>
+<div class="w-6 h-6 rounded-full bg-outline ring-2 ring-background"></div>
+</div>
+<span class="text-[10px] font-bold text-tertiary">Final Polish</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-2xl overflow-hidden border border-outline-variant/10 group">
+<div class="h-40 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="professional graphic design moodboard with typography and minimalist branding elements" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbcWxhiClnNdaUYJdiFm0su1GafV9TDd1inBSgkiFCpISa95eo7f9BKgeWPSazwnktzfe80AZJqmmnOuqoiyAygrYRBBY6Xi9y7ZHdUmMuUH_DzCQSOq-uo0JMnRcJvcu2iRJJBp7zgPX9xf2hVpx88gdGkpB9d2aoKvoZiQAGpRjH3hICnrLYyUO_4N4vgBTMV8pD3A_3lIiK4HYuDRQ3MV-sgh8lrBtWnzjedjb5AuLV_qzw5fe4ZUs-xlnXlOtuqJXwWOUvSQ"/>
+<div class="absolute top-4 right-4 bg-[#131313]/60 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-primary border border-primary/20">Graphic Design</div>
+</div>
+<div class="p-5 space-y-4">
+<h4 class="font-bold text-on-surface">Fintech Rebrand 2.0</h4>
+<div class="flex items-center justify-between text-xs">
+<span class="text-outline">Progress</span>
+<span class="text-on-surface font-bold">45%</span>
+</div>
+<div class="h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[45%]"></div>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="flex -space-x-1">
+<div class="w-6 h-6 rounded-full bg-secondary ring-2 ring-background"></div>
+</div>
+<span class="text-[10px] font-bold text-outline">Due in 7 days</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer / System Status -->
+<footer class="mt-auto p-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-outline">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary glow-primary"></span> System Online</span>
+<span>v4.8.2-Editorial</span>
+</div>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">System Logs</a>
+<a class="hover:text-primary transition-colors" href="#">Support Portal</a>
+</div>
+<p>© 2024 Gurucraftpro. The Digital Alchemist Design System.</p>
+</footer>
+</main>
+<!-- Floating Action Button (As per instruction logic check: Suppressed on focused views, but suitable for dashboard) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-br from-primary to-primary-container rounded-full shadow-2xl flex items-center justify-center text-on-primary hover:scale-110 transition-transform z-50">
+<span class="material-symbols-outlined text-2xl" data-icon="add" style="font-variation-settings: 'FILL' 0;">add</span>
+</button>
+</body></html>

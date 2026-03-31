@@ -1,0 +1,347 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#1f1f1f",
+              "background": "#131313",
+              "primary-fixed": "#e1e0ff",
+              "on-surface": "#e2e2e2",
+              "on-tertiary-fixed": "#3d0026",
+              "surface-container-low": "#1b1b1b",
+              "error-container": "#93000a",
+              "primary-container": "#8083ff",
+              "outline-variant": "#464554",
+              "on-secondary-fixed-variant": "#6900b3",
+              "surface-container-highest": "#353535",
+              "on-surface-variant": "#c7c4d7",
+              "surface-container-lowest": "#0e0e0e",
+              "on-secondary": "#490080",
+              "primary-fixed-dim": "#c0c1ff",
+              "on-tertiary-container": "#560038",
+              "inverse-surface": "#e2e2e2",
+              "on-primary-fixed-variant": "#2f2ebe",
+              "secondary-fixed-dim": "#ddb7ff",
+              "surface-tint": "#c0c1ff",
+              "on-background": "#e2e2e2",
+              "secondary": "#ddb7ff",
+              "error": "#ffb4ab",
+              "on-primary-container": "#0d0096",
+              "tertiary-fixed-dim": "#ffafd3",
+              "surface-dim": "#131313",
+              "tertiary-fixed": "#ffd8e7",
+              "on-secondary-container": "#d6a9ff",
+              "surface-bright": "#393939",
+              "inverse-on-surface": "#303030",
+              "on-primary": "#1000a9",
+              "on-tertiary-fixed-variant": "#85145a",
+              "on-error-container": "#ffdad6",
+              "on-primary-fixed": "#07006c",
+              "surface": "#131313",
+              "on-tertiary": "#620040",
+              "on-error": "#690005",
+              "surface-variant": "#353535",
+              "secondary-fixed": "#f0dbff",
+              "outline": "#908fa0",
+              "surface-container-high": "#2a2a2a",
+              "inverse-primary": "#494bd6",
+              "primary": "#c0c1ff",
+              "tertiary": "#ffafd3",
+              "on-secondary-fixed": "#2c0051",
+              "secondary-container": "#6f00be",
+              "tertiary-container": "#e364a7"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-morphism {
+            background: rgba(53, 53, 53, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #c0c1ff 0%, #8083ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .pillar-card:hover .pillar-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="bg-[#131313]/40 backdrop-blur-3xl text-[#c0c1ff] font-['Plus_Jakarta_Sans'] font-bold tracking-tight fixed top-0 w-full z-50 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+<nav class="flex justify-between items-center px-8 py-4 w-full">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center overflow-hidden">
+<img alt="Digital Alchemist Logo" class="w-full h-full object-cover" data-alt="Stylized metallic silver logo of Gurucraftpro with iridescent purple highlights on a dark carbon fiber background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMAngsX61iCRZCCRepm5sGWa-_SivCFZ3lRinmqWy5LrEK6dM8VZzQwsESz9ORKSSzR7fmuLvUA55_ou8hURqrgUAlG0fGgHS6c3B31nTxYZFuP0_hJDm1ZXjfuAuTD2pbdxy5RQITzJxlQ165IM4ViCOKcBd3khngOOI70_KQdTUq8LJQtRbXiJATr_F3RXJAwqIJAaE0B2VzyptG7jnVZQqhqMGlgkchjylU1KX0Xzska9fmnk0M4O4Z1sHgbUStUS0Hd4Y63A" style="">
+</div>
+<span class="text-2xl font-bold bg-gradient-to-r from-[#c0c1ff] to-[#8083ff] bg-clip-text text-transparent" style="">Gurucraftpro</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#e2e2e2]/60 hover:text-[#c0c1ff] transition-all duration-300" href="#" style="">Services</a>
+<a class="text-[#e2e2e2]/60 hover:text-[#c0c1ff] transition-all duration-300" href="#" style="">Art</a>
+<a class="text-[#c0c1ff] border-b-2 border-[#c0c1ff] transition-all duration-300" href="#" style="">About Us</a>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary-container px-6 py-2 rounded-xl font-bold scale-105 transition-transform" style="">
+                    Consult Now
+                </button>
+</div>
+<span class="material-symbols-outlined text-3xl cursor-pointer md:hidden" style="">menu</span>
+</nav>
+</header>
+<main class="pt-24 pb-32">
+<!-- Hero Section -->
+<section class="px-8 max-w-7xl mx-auto py-20 flex flex-col items-center text-center">
+<div class="inline-block px-4 py-1 rounded-full bg-surface-container-highest/50 border border-outline-variant/15 text-primary text-xs font-bold tracking-[0.2em] uppercase mb-6" style="">
+                Established 2024
+            </div>
+<h1 class="font-headline font-extrabold text-6xl md:text-8xl tracking-tighter mb-6 text-gradient" style="">
+                The Digital Alchemists.
+            </h1>
+<p class="font-body text-xl md:text-2xl text-on-surface-variant max-w-3xl leading-relaxed" style="">
+                Crafting bespoke digital experiences across seven creative pillars. We transmute raw code and pixels into premium brand legacies.
+            </p>
+</section>
+<!-- Our Origin -->
+<section class="px-8 py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="relative">
+<div class="absolute -top-10 -left-10 w-64 h-64 bg-primary/10 rounded-full blur-[100px]"></div>
+<img class="rounded-[2rem] shadow-2xl relative z-10 w-full aspect-[4/3] object-cover border border-outline-variant/15" data-alt="Close up of a 3D glass sculpture reflecting vibrant neon purples and teals in a dark minimalist studio setting" src="https://res.cloudinary.com/dyr8guxli/image/upload/v1774862030/shared_image_2_w4fpab.jpg" style="">
+</div>
+<div class="space-y-8">
+<h2 class="font-headline text-4xl font-bold tracking-tight" style="">Our Origin</h2>
+<p class="text-on-surface-variant text-lg leading-loose" style="">
+                        Gurucraftpro began as a radical concept: the <span class="text-primary font-semibold" style="">"Digital Merchant on Demand."</span> We saw a fragmented landscape where high-end design was isolated from technical execution. Our mission was to unify these realms under one roof.
+                    </p>
+<p class="text-on-surface-variant text-lg leading-loose" style="">
+                        By blending meticulous artisan values with the infinite scale of digital technology, we created an ecosystem where creative consulting isn't just a service—it's a process of alchemy.
+                    </p>
+<div class="pt-4">
+<button class="flex items-center gap-3 text-primary font-bold hover:gap-5 transition-all" style="">
+                            View Brand Assets <span class="material-symbols-outlined" style="">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- The Seven Pillars (Bento Grid) -->
+<section class="px-8 py-32 max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div class="max-w-xl">
+<h2 class="font-headline text-4xl font-bold mb-4" style="">The Seven Pillars</h2>
+<p class="text-on-surface-variant" style="">Our expertise is anchored in seven core disciplines, each refined to perfection through years of cross-industry experimentation.</p>
+</div>
+<div class="text-primary font-mono text-sm tracking-widest" style="">07 / DISCIPLINES</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<!-- Graphic Design -->
+<div class="pillar-card bg-surface-container-highest p-8 rounded-[2rem] border border-outline-variant/10 hover:border-primary/30 transition-all duration-500 group">
+<span class="material-symbols-outlined pillar-icon text-5xl text-primary mb-6 block transition-transform duration-500" style="">brush</span>
+<h3 class="font-headline text-xl font-bold mb-3" style="">Graphic Design</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed" style="">Visual identities that command attention and define industry standards.</p>
+</div>
+<!-- Fashion -->
+<div class="pillar-card bg-surface-container-highest p-8 rounded-[2rem] border border-outline-variant/10 hover:border-primary/30 transition-all duration-500">
+<span class="material-symbols-outlined pillar-icon text-5xl text-primary mb-6 block transition-transform" style="">checkroom</span>
+<h3 class="font-headline text-xl font-bold mb-3" style="">Fashion</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed" style="">Conceptual digital textile design and avant-garde brand positioning.</p>
+</div>
+<!-- Wedding -->
+<div class="pillar-card bg-surface-container-highest p-8 rounded-[2rem] border border-outline-variant/10 hover:border-primary/30 transition-all duration-500">
+<span class="material-symbols-outlined pillar-icon text-5xl text-primary mb-6 block transition-transform" style="">favorite</span>
+<h3 class="font-headline text-xl font-bold mb-3" style="">Wedding Planning</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed" style="">Ethereal digital invitations and immersive event visualization.</p>
+</div>
+<!-- Guruji Art -->
+<div class="pillar-card bg-surface-container-highest p-8 rounded-[2rem] border border-outline-variant/10 hover:border-primary/30 transition-all duration-500 lg:col-span-1">
+<span class="material-symbols-outlined pillar-icon text-5xl text-primary mb-6 block transition-transform" style="">palette</span>
+<h3 class="font-headline text-xl font-bold mb-3" style="">Guruji Art</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed" style="">Sacred geometry and traditional art transmuted into modern digital assets.</p>
+</div>
+<!-- Photo Editor -->
+<div class="pillar-card bg-surface-container-highest p-8 rounded-[2rem] border border-outline-variant/10 hover:border-primary/30 transition-all duration-500">
+<span class="material-symbols-outlined pillar-icon text-5xl text-primary mb-6 block transition-transform" style="">photo_camera</span>
+<h3 class="font-headline text-xl font-bold mb-3" style="">Photo Editor</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed" style="">High-end retouching and cinematic color grading for elite portfolios.</p>
+</div>
+<!-- Game Design -->
+<div class="pillar-card bg-surface-container-highest p-8 rounded-[2rem] border border-outline-variant/10 hover:border-primary/30 transition-all duration-500">
+<span class="material-symbols-outlined pillar-icon text-5xl text-primary mb-6 block transition-transform" style="">sports_esports</span>
+<h3 class="font-headline text-xl font-bold mb-3" style="">Game Design</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed" style="">Interactive 3D environments and immersive narrative mechanics.</p>
+</div>
+<!-- Interior Design -->
+<div class="pillar-card bg-surface-container-highest p-8 rounded-[2rem] border border-outline-variant/10 hover:border-primary/30 transition-all duration-500 lg:col-span-2">
+<span class="material-symbols-outlined pillar-icon text-5xl text-primary mb-6 block transition-transform" style="">chair</span>
+<h3 class="font-headline text-xl font-bold mb-3" style="">Interior Design</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed" style="">Hyper-realistic architectural visualizations and virtual spatial planning for modern luxury interiors.</p>
+</div>
+</div>
+</section>
+<!-- Our Philosophy (Glassmorphism Section) -->
+<section class="px-8 py-24 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] -z-10 translate-x-1/2"></div>
+<div class="max-w-7xl mx-auto glass-morphism rounded-[3rem] p-12 md:p-24 border border-outline-variant/20 flex flex-col md:flex-row items-center gap-16">
+<div class="flex-1 space-y-8">
+<h2 class="font-headline text-5xl font-extrabold tracking-tighter" style="">Our Philosophy</h2>
+<div class="space-y-6">
+<div class="flex gap-4">
+<span class="text-primary font-bold" style="">01.</span>
+<div>
+<h4 class="font-bold text-xl mb-1" style="">Precision</h4>
+<p class="text-on-surface-variant" style="">Every pixel serves a purpose. We believe in mathematical accuracy meeting artistic intuition.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="text-primary font-bold" style="">02.</span>
+<div>
+<h4 class="font-bold text-xl mb-1" style="">Creativity</h4>
+<p class="text-on-surface-variant" style="">Breaking the grid to find original solutions that standard templates cannot offer.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="text-primary font-bold" style="">03.</span>
+<div>
+<h4 class="font-bold text-xl mb-1" style="">Alchemy</h4>
+<p class="text-on-surface-variant" style="">The final spark that turns a standard project into a masterpiece of digital craft.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 w-full flex justify-center">
+<div class="w-full aspect-square max-w-md bg-gradient-to-br from-primary/20 to-tertiary/20 rounded-full flex items-center justify-center relative">
+<div class="absolute inset-4 border-2 border-dashed border-primary/30 rounded-full"></div>
+<span class="material-symbols-outlined text-[10rem] text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">auto_awesome</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Meet the Alchemists -->
+<section class="px-8 py-32 max-w-7xl mx-auto">
+<div class="text-center mb-20">
+<h2 class="font-headline text-4xl font-bold mb-4" style="">Meet the Alchemists</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto" style="">The masterminds behind the craft, blending strategy with high-tech execution.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Alchemist 1 -->
+<div class="group">
+<div class="aspect-[3/4] rounded-[2rem] overflow-hidden mb-6 relative">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Portrait of a creative professional with short hair wearing a stylish black blazer in a dramatic studio lighting with blue backlighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiNJm7jGhMEEaXmNbUsG41ZkmDgd8swaoUCwNEkSEjYbAZt7HWe9Lfxx5mzcI5vBedwBbNTzayt8esQCQOoLJdOPo5a1iH3yGwTGjyaePJybQr3MV8Z8ao7rpfN6Lcy_4z5fymiYgYARKBgwparGDNxYXKvyWm7dS_mnwUUXcLSMWq2w6FZfW5N1kBqyIeorFsb4i7IcKql7XflBdbfa0HsMN0WdLbr-RJh72pNQ1-WtJkW9CW3ncY3NR6OTKFKClIG39-qPbzeA" style="">
+<div class="absolute bottom-6 left-6 right-6 p-4 glass-morphism rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-xs font-bold uppercase tracking-widest text-primary" style="">Master of Pixels</p>
+</div>
+</div>
+<h4 class="font-headline text-2xl font-bold" style="">Design Lead</h4>
+<p class="text-on-surface-variant" style="">Orchestrating visual narratives with surgical precision.</p>
+</div>
+<!-- Alchemist 2 -->
+<div class="group">
+<div class="aspect-[3/4] rounded-[2rem] overflow-hidden mb-6 relative">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Close up portrait of a futuristic architect in a techwear outfit with soft purple ambient light reflecting on their glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSP6oD49B2pp10dyETgUVapqok6mrMQEu6dWIqgaoApO2MgMwTiAfQYFl-EhYdgH2Npp7B9RCtF1syoGDu4PaP2I9eYPwVB75V4fRuASSESDxfEh5M9SZ0UH_zXMcehn2s6SBdK13Iqy56GQ8eXQDkZGL6-s6f6FH3sSSau98_oP6ygQXzWGgKyRuuchzYaVWAjHn1-7iczVirPvuX_Ycz8Od7lPDZ75JQDUsK32znp2iqHBP_WqSWdUGDaRY-V6oYLRjH4_rKzA" style="">
+<div class="absolute bottom-6 left-6 right-6 p-4 glass-morphism rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-xs font-bold uppercase tracking-widest text-primary" style="">Space Architect</p>
+</div>
+</div>
+<h4 class="font-headline text-2xl font-bold" style="">3D Architect</h4>
+<p class="text-on-surface-variant" style="">Building immersive dimensions beyond the screen.</p>
+</div>
+<!-- Alchemist 3 -->
+<div class="group">
+<div class="aspect-[3/4] rounded-[2rem] overflow-hidden mb-6 relative">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Portrait of a smiling creative strategist in a professional studio setting with warm cinematic lighting and bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyZVACIGyi6LijSafNDAo55Cwhwb9zZAyDMO4_IQmMjlioqfl4FfBEEmKbPzQWP9OUGr42uUvpDc_uL28Ntn7PzP7fUP_KQSGAnHaQ_Q-diZTkVX9td_hxjuklOUPHbbpDbCtfIl74BknOE7oP3I4siwgOSK-IcC9TzYN_4Ki3nzDTrdL4TP9dD1q1uvJwjI7PtV6qrHxXLaJxyf2ebsq8otjrlzAOLSnySUptt9F3acUmw-z4cnZVXHDMGZdi9NG5NTCGAamE1w" style="">
+<div class="absolute bottom-6 left-6 right-6 p-4 glass-morphism rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-xs font-bold uppercase tracking-widest text-primary" style="">The Visionary</p>
+</div>
+</div>
+<h4 class="font-headline text-2xl font-bold" style="">Creative Strategist</h4>
+<p class="text-on-surface-variant" style="">Bridging the gap between business logic and pure art.</p>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="px-8 py-20">
+<div class="max-w-4xl mx-auto bg-primary rounded-[2.5rem] p-12 text-center text-on-primary-container relative overflow-hidden shadow-2xl shadow-primary/20">
+<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/10 to-transparent"></div>
+<h2 class="font-headline text-4xl font-black mb-6 relative z-10" style="">Ready to begin the transmutation?</h2>
+<div class="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
+<button class="bg-[#131313] text-primary px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:scale-105 transition-transform active:scale-95" style="">
+<span class="material-symbols-outlined" style="">chat</span>
+                        Chat with an Alchemist
+                    </button>
+<button class="bg-primary-container/20 border-2 border-on-primary-container/30 px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-primary-container/40 transition-all" style="">
+<span class="material-symbols-outlined" style="">download</span>
+                        Download Media Kit
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#131313] w-full py-12 border-t border-[#464554]/15">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-['Plus_Jakarta_Sans'] font-black text-[#e2e2e2] text-xl mb-2" style="">Gurucraftpro</span>
+<p class="font-['Inter'] text-xs text-[#e2e2e2]/40" style="">© 2024 Gurucraftpro. The Digital Alchemist.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-['Inter'] text-xs text-[#e2e2e2]/40 hover:text-[#c0c1ff] transition-opacity" href="#" style="">Privacy</a>
+<a class="font-['Inter'] text-xs text-[#e2e2e2]/40 hover:text-[#c0c1ff] transition-opacity" href="#" style="">Terms</a>
+<a class="font-['Inter'] text-xs text-[#e2e2e2]/40 hover:text-[#c0c1ff] transition-opacity" href="#" style="">Editorial Guidelines</a>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-[#8083ff] cursor-pointer hover:scale-110 transition-transform" style="">public</span>
+<span class="material-symbols-outlined text-[#8083ff] cursor-pointer hover:scale-110 transition-transform" style="">share</span>
+<span class="material-symbols-outlined text-[#8083ff] cursor-pointer hover:scale-110 transition-transform" style="">mail</span>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-[#131313]/60 backdrop-blur-lg rounded-t-[2rem] shadow-[0_-10px_30px_rgba(0,0,0,0.5)] flex justify-around items-center px-6 pb-6 pt-2">
+<div class="flex flex-col items-center justify-center text-[#e2e2e2]/40 p-3">
+<span class="material-symbols-outlined" style="">category</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-tighter mt-1" style="">Services</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e2e2e2]/40 p-3">
+<span class="material-symbols-outlined" style="">format_paint</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-tighter mt-1" style="">Art</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-[#c0c1ff] text-[#131313] rounded-2xl p-3 shadow-[0_0_15px_rgba(192,193,255,0.3)]">
+<span class="material-symbols-outlined" style="">info</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-tighter mt-1 font-bold" style="">About</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e2e2e2]/40 p-3">
+<span class="material-symbols-outlined" style="">videogame_asset</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-tighter mt-1" style="">Game</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#e2e2e2]/40 p-3">
+<span class="material-symbols-outlined" style="">more_horiz</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-tighter mt-1" style="">More</span>
+</div>
+</div>
+</body></html>

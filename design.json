@@ -1,0 +1,89 @@
+# Design System Specification: Editorial Dimension
+
+## 1. Overview & Creative North Star
+The Creative North Star for this design system is **"The Digital Alchemist."** 
+
+We are moving away from the "template-heavy" look of standard SaaS platforms toward a high-end, editorial experience that feels curated and bespoke. The philosophy balances the precision of high-tech "craft" with the fluid, organic nature of creative consulting. To achieve this, the system leverages **intentional asymmetry**, where content is balanced by negative space rather than rigid grids, and **tonal layering**, which replaces traditional borders with sophisticated depth. This is a system built for a premium service-oriented narrative, emphasizing the seven business pillars through immersive, 3D-inspired environments.
+
+---
+
+## 2. Colors & Surface Philosophy
+
+The color palette is derived from deep cosmic purples and vibrant teals, rooted in a "Dark Mode First" mentality to evoke premium sophistication.
+
+### Surface Hierarchy & The "No-Line" Rule
+To maintain a high-end feel, **1px solid borders are prohibited for sectioning.** Boundaries must be defined solely through background color shifts or tonal transitions.
+- **Surface (Base):** `#131313` — The infinite canvas.
+- **Surface-Container-Low:** `#1b1b1b` — Used for secondary sections or background groupings.
+- **Surface-Container-Highest:** `#353535` — Used for interactive cards or "lifted" elements.
+
+### The "Glass & Gradient" Rule
+Floating elements (modals, navigation bars, pillar highlights) must utilize **Glassmorphism**.
+- **Execution:** Use `surface_variant` at 40% opacity with a `backdrop-blur` of 20px to 40px. 
+- **Signature Texture:** Primary actions should use a linear gradient from `primary` (#c0c1ff) to `primary_container` (#8083ff) at a 135-degree angle to provide a "lit from within" 3D soul.
+
+---
+
+## 3. Typography: The Editorial Scale
+
+We pair the precision of **Plus Jakarta Sans** for headlines with the clarity of **Inter** for utility.
+
+*   **Display (The Statement):** `display-lg` (3.5rem / Plus Jakarta Sans). Use for hero sections with tight letter-spacing (-0.02em). This is your "Editorial Hook."
+*   **Headlines (The Pillars):** `headline-lg` (2rem / Plus Jakarta Sans). High-contrast bold weights to define the seven business pillars.
+*   **Body (The Narrative):** `body-lg` (1rem / Inter). Increased line-height (1.6) for maximum readability against dark backgrounds.
+*   **Labels (The Utility):** `label-md` (0.75rem / Inter). All-caps with 0.1em letter-spacing for category tags and small CTAs.
+
+---
+
+## 4. Elevation & Depth
+
+Hierarchy is achieved through **Tonal Layering** rather than structural lines.
+
+*   **The Layering Principle:** Place a `surface-container-highest` card on a `surface-container-low` section. This creates a natural, soft lift.
+*   **Ambient Shadows:** For floating 3D elements, use "The Invisible Lift":
+    *   Shadow: `0 20px 40px rgba(0, 0, 0, 0.4)` mixed with a subtle glow of `primary` at 5% opacity. 
+*   **The Ghost Border:** If a boundary is strictly required for accessibility, use `outline-variant` (#464554) at **15% opacity**. It should be felt, not seen.
+
+---
+
+## 5. Components & Interaction
+
+### Buttons (The 3D Tactile Action)
+*   **Primary:** Gradient fill (`primary` to `primary_container`). Radius: `md` (0.75rem). On hover, add a subtle inner-glow (1px white at 10% opacity) to simulate a 3D glass edge.
+*   **Secondary/Pillar CTA:** Glassmorphic background with a `ghost-border`. 
+*   **Tertiary:** Text-only with an animated underline that expands from the center on hover.
+
+### Service Pillar Cards
+*   **Visual Style:** No dividers. Use `spacing-12` (3rem) of vertical padding.
+*   **Interaction:** On hover, the card should scale to 1.02 and the background should shift from `surface-container` to a very subtle gradient of `secondary_container` at 20% opacity.
+
+### Input Fields
+*   **Style:** Minimalist. No box; only a bottom "Ghost Border." On focus, the border transitions to a `primary` glow, and the label floats upward using `label-sm`.
+
+### High-End Lists
+*   **Rule:** Forbid divider lines. Separate items using `spacing-4` (1rem) and subtle alternating background tints (`surface` vs `surface_container_low`).
+
+---
+
+## 6. Do’s and Don’ts
+
+### Do:
+*   **Use Asymmetry:** Place hero text on the left with 3D abstract assets overlapping the right-side grid boundary.
+*   **Embrace Depth:** Treat the screen like a 3D space where the background is far away and the CTAs are "floating" toward the user.
+*   **Color Transitions:** Use the `tertiary` (#ffafd3) color sparingly as an "accent spark" for notifications or high-priority alerts.
+
+### Don't:
+*   **Don't use 100% white text on #000000:** Always use `on_surface` (#e2e2e2) to reduce eye strain and maintain the premium "soft-dark" aesthetic.
+*   **Don't use "Drop Shadows":** Never use high-contrast, muddy grey shadows. If a shadow doesn't have a hint of the brand's purple or teal, it doesn't belong.
+*   **Don't crowd the pillars:** Each of the seven business pillars needs "Breathing Room" (use `spacing-20` or `spacing-24` between major sections).
+
+---
+
+## 7. Light Mode Adaptation
+
+While this system is optimized for Dark Mode, the Light Mode translation follows a **"Frosted Gallery"** aesthetic:
+*   **Background:** `#FFFFFF`
+*   **Surface-Container:** `#F4F4F9` (Soft cool grey-blue)
+*   **Primary:** `#494bd6` (High-contrast Indigo)
+*   **Glassmorphism:** Use white at 70% opacity with 30px blur. 
+*   **Depth:** Use very soft `primary` tinted shadows (e.g., `rgba(73, 75, 214, 0.08)`) instead of dark grey.

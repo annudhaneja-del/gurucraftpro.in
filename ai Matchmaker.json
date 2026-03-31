@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#131313",
+              "secondary": "#ddb7ff",
+              "tertiary": "#ffafd3",
+              "surface-dim": "#131313",
+              "on-primary-container": "#0d0096",
+              "surface-container": "#1f1f1f",
+              "surface-tint": "#c0c1ff",
+              "surface": "#131313",
+              "on-primary-fixed-variant": "#2f2ebe",
+              "inverse-primary": "#494bd6",
+              "tertiary-container": "#e364a7",
+              "on-secondary-container": "#d6a9ff",
+              "surface-container-highest": "#353535",
+              "inverse-on-surface": "#303030",
+              "on-tertiary-fixed": "#3d0026",
+              "on-background": "#e2e2e2",
+              "on-primary-fixed": "#07006c",
+              "surface-variant": "#353535",
+              "surface-container-low": "#1b1b1b",
+              "inverse-surface": "#e2e2e2",
+              "tertiary-fixed-dim": "#ffafd3",
+              "surface-bright": "#393939",
+              "secondary-container": "#6f00be",
+              "tertiary-fixed": "#ffd8e7",
+              "primary-fixed-dim": "#c0c1ff",
+              "outline": "#908fa0",
+              "on-surface-variant": "#c7c4d7",
+              "primary-fixed": "#e1e0ff",
+              "on-secondary-fixed-variant": "#6900b3",
+              "secondary-fixed-dim": "#ddb7ff",
+              "primary-container": "#8083ff",
+              "primary": "#c0c1ff",
+              "outline-variant": "#464554",
+              "on-primary": "#1000a9",
+              "secondary-fixed": "#f0dbff",
+              "surface-container-high": "#2a2a2a",
+              "on-tertiary-container": "#560038",
+              "error-container": "#93000a",
+              "surface-container-lowest": "#0e0e0e",
+              "on-surface": "#e2e2e2",
+              "on-tertiary": "#620040",
+              "on-error": "#690005",
+              "error": "#ffb4ab",
+              "on-secondary": "#490080",
+              "on-tertiary-fixed-variant": "#85145a",
+              "on-error-container": "#ffdad6",
+              "on-secondary-fixed": "#2c0051"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .glass-card {
+        background: rgba(53, 53, 53, 0.4);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body min-h-screen pb-32 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313]/40 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex justify-between items-center px-6 h-16">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-indigo-400 hover:opacity-80 transition-opacity">menu</button>
+<h1 class="text-xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-indigo-300 to-indigo-600 font-headline uppercase">GURUCRAFTPRO</h1>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8">
+<a class="text-indigo-400 font-headline font-bold text-sm tracking-tight hover:opacity-80 transition-opacity" href="#">Concierge</a>
+<a class="text-gray-400 font-headline font-bold text-sm tracking-tight hover:opacity-80 transition-opacity" href="#">Planner</a>
+<a class="text-gray-400 font-headline font-bold text-sm tracking-tight hover:opacity-80 transition-opacity" href="#">Sacred</a>
+</nav>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-indigo-500/30">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Portrait of a stylish man in a high-end fashion setting, looking confident and professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0eB5aroNsC4f058xjWU8DS-0dg6hWoYpYLKiT0p-Ygi_rA0uuRK2MhEAZ1EE6Wflelut3LoVIj515lLCpzH6sUMrpKmYQ1rwJsPs6tao1igb85InJeZLnhq6bkDkQ4uCf5Kq98sYJS2ho-4Sj6S7qWe2jyp6KlMGuSxp_ScXz4KfFELJcz9N8bw3gfMaNrzcE5SiUCE8EgrAzqlpcwZbGDENkKUFRe2LvD-SN72BAz4PpvY30YZ5To8Oax4v2v7xR8iGmZrr8HA"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 md:px-12 max-w-7xl mx-auto space-y-12">
+<!-- Hero Editorial Section -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="space-y-6">
+<span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary font-label text-[10px] uppercase tracking-[0.1em]">AI Matchmaker Experience</span>
+<h2 class="text-5xl md:text-7xl font-headline font-extrabold tracking-tighter leading-none">Concierge <br/><span class="text-indigo-400">&amp; Matchmaker.</span></h2>
+<p class="text-on-surface-variant text-lg leading-relaxed max-w-md">Your luxury wedding AI ecosystem. Orchestrating moments with data-driven precision and ethereal aesthetic curation.</p>
+</div>
+<div class="relative h-[400px] rounded-3xl overflow-hidden shadow-2xl">
+<img alt="Luxury Wedding Decor" class="w-full h-full object-cover" data-alt="Exquisite wedding ceremony setup with ethereal white floral installations and soft ambient lighting in a high-end contemporary venue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_CxG--Y6AWtuFcEDc9GeIaJZrX4S6K8HCotxSQesPfSTOw6pdCMWcyypDwBvIc_rBSKjpqwDAOeFTU6tSDNAxHLUNdN40OFqieYytiLNqCfIzAAm_uUFMWGWsSUGy-gjdHWTdoDA_GHWJm1S3dWs7NIV09LMci_JUQVWt237utAn9ggiWO38gIIyWPsR7dCNcI6lhs4i_P7rYlmlWbWeFZGLZddnusifE8X0vwmxHnkHOYPMM7BGkd5YCeemFabSfRtEg4t_ZkQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 glass-card p-6 rounded-2xl border border-white/10">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-xs text-indigo-300 font-label tracking-widest uppercase">Currently Curating</p>
+<h3 class="font-headline font-bold text-xl">Velvet Dusk Theme</h3>
+</div>
+<span class="material-symbols-outlined text-primary text-3xl">auto_awesome</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Mood Matchmaker & Bento Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Analysis Panel -->
+<div class="lg:col-span-1 space-y-6 flex flex-col">
+<div class="glass-card p-8 rounded-[2rem] border border-white/5 flex-grow space-y-8">
+<div class="flex justify-between items-start">
+<h4 class="font-headline font-bold text-2xl">Mood Matchmaker</h4>
+<span class="material-symbols-outlined text-indigo-400">psychology</span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between text-xs font-label uppercase tracking-wider text-on-surface-variant">
+<span>Analyzing Pinterest Feed</span>
+<span class="text-primary">84%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-primary-container w-[84%] rounded-full shadow-[0_0_10px_rgba(192,193,255,0.5)]"></div>
+</div>
+</div>
+<div class="space-y-4">
+<p class="text-sm text-on-surface-variant">Top detected aesthetics:</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-lg bg-surface-container text-xs font-medium border border-white/5">Modern Minimalist</span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container text-xs font-medium border border-white/5">Sunset Warmth</span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container text-xs font-medium border border-white/5">Industrial Chic</span>
+</div>
+</div>
+<button class="w-full py-4 rounded-xl bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold text-sm tracking-tight shadow-xl hover:scale-[1.02] transition-transform">Refresh Analysis</button>
+</div>
+</div>
+<!-- Personality-Matched Vendors -->
+<div class="lg:col-span-2 space-y-6">
+<div class="flex justify-between items-end px-2">
+<h4 class="font-headline font-bold text-2xl">Personality-Matched Vendors</h4>
+<a class="text-sm text-primary hover:underline font-medium" href="#">View All Matches</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Vendor Card 1 -->
+<div class="glass-card p-4 rounded-2xl border border-white/5 space-y-4 hover:bg-surface-container-high transition-colors group">
+<div class="h-40 rounded-xl overflow-hidden relative">
+<img alt="Vendor" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="High-end wedding DJ booth with neon lighting and premium audio equipment in a luxury nightclub atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtoifUt61tQTApT4YDUtCdBIdSLhcWNlc27HCszfWTJGRxbHA7tYw5hilyGaa7HfIyERSCCjzmtCl3GXch5uPggEaPVeZKAvKq4rx11u_wfM3q0R1ciO2OEZjOypr4DognyT-mw9YYG8FEV-DRyByTz3KEOv6enr8lCLneZVVQMTAfuNyIAMWdsl9k8sSccBHsRmJXCMRo6LEcpn-3xoS3UgSOQE5CmpT_C8TZP1fxowDp3cT0EU5NA3WILgHifJuMwjedX5MK6Q"/>
+<div class="absolute top-2 right-2 px-2 py-1 rounded bg-background/80 backdrop-blur-md text-[10px] font-bold text-tertiary uppercase">98% Match</div>
+</div>
+<div>
+<h5 class="font-headline font-bold">Sonic Soul Collective</h5>
+<p class="text-xs text-on-surface-variant">Avant-Garde Entertainment</p>
+</div>
+</div>
+<!-- Vendor Card 2 -->
+<div class="glass-card p-4 rounded-2xl border border-white/5 space-y-4 hover:bg-surface-container-high transition-colors group">
+<div class="h-40 rounded-xl overflow-hidden relative">
+<img alt="Vendor" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Artistic wedding floral arrangement with rare orchids and minimalist glass vases on a sleek dark table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_C7Whl00IXrSIX3pMDZZK7CgloUqYS2R85pv9K88hY_V5OfhqQdKsfEgt_Blqr2JsmPGMrhpLM7CAWGshY0xQ1Gj9YhdLrMuOp9qXPrSTajMyIof8af4DLr3utOSjIE4u9Uma5-dO_mtiF8PryMOfO7gUfOj8DhBcu9v4wsJVlldLJPITI1XuZsLPhI0yLAB8kLLkOft8zTj4BNIcPoc9ULd7YNl-WKLcKrLEDA2leHutUJpdTcD0DHSAtn_pYGchtD7LZTKy3Q"/>
+<div class="absolute top-2 right-2 px-2 py-1 rounded bg-background/80 backdrop-blur-md text-[10px] font-bold text-tertiary uppercase">94% Match</div>
+</div>
+<div>
+<h5 class="font-headline font-bold">Bloom Lab Architecture</h5>
+<p class="text-xs text-on-surface-variant">Floral Sculptors</p>
+</div>
+</div>
+<!-- Vendor Card 3 -->
+<div class="glass-card p-4 rounded-2xl border border-white/5 space-y-4 hover:bg-surface-container-high transition-colors group">
+<div class="h-40 rounded-xl overflow-hidden relative">
+<img alt="Vendor" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Professional sommelier pouring vintage wine in a dimly lit, high-end cellar environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw4tDDquSBLSedrTkwR8UTm0yCEwVwpgcviA5zXU0sU6_xOX1SmWASFtD5TrK4FPsfntr5LJ88WGaYEWHJUfiRIacgNRPkxUDnhl_5IwsZ3agXUg_0jUcnprYudz7DJYFVW64xjJ9gLujVvJUiMR4ixLBgxOGZW17DZJxh4G-rUnn9gd-HMoOCp2iEy0JQybeYI4bp0UXibftNl4k3xtZJi51xfYMV1WQTpXgznbB9vnfy5sDX8j9qVE0W0CLCxHvQ0n1wE0rY-g"/>
+<div class="absolute top-2 right-2 px-2 py-1 rounded bg-background/80 backdrop-blur-md text-[10px] font-bold text-tertiary uppercase">91% Match</div>
+</div>
+<div>
+<h5 class="font-headline font-bold">The Cellar Master</h5>
+<p class="text-xs text-on-surface-variant">Bespoke Mixology</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- WhatsApp Guest Bot & Face Recognition -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- Bot Control Center -->
+<div class="space-y-8">
+<div class="flex items-center gap-4">
+<span class="w-12 h-12 rounded-2xl bg-indigo-500/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-indigo-400">forum</span>
+</span>
+<div>
+<h4 class="font-headline font-bold text-2xl">WhatsApp Guest Bot</h4>
+<p class="text-on-surface-variant text-sm">Automated Luxury Concierge</p>
+</div>
+</div>
+<div class="glass-card p-8 rounded-[2rem] border border-white/5 space-y-8">
+<!-- Main Toggle -->
+<div class="flex items-center justify-between p-4 rounded-2xl bg-white/5">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="font-medium">Bot Active Status</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Dress Code Set -->
+<div class="p-6 rounded-2xl border border-white/5 bg-surface-container-low/50 space-y-4">
+<p class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">Dress Code</p>
+<p class="font-bold text-lg">Black Tie Opt.</p>
+<button class="text-xs text-primary font-bold hover:opacity-80 transition-opacity">Change Rules</button>
+</div>
+<!-- Cab Status -->
+<div class="p-6 rounded-2xl border border-white/5 bg-surface-container-low/50 space-y-4">
+<p class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">Guest Cabs</p>
+<p class="font-bold text-lg">12 En Route</p>
+<button class="text-xs text-primary font-bold hover:opacity-80 transition-opacity">Track Map</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Face Recognition Gallery -->
+<div class="space-y-8">
+<div class="flex items-center gap-4">
+<span class="w-12 h-12 rounded-2xl bg-tertiary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">face_retouching_natural</span>
+</span>
+<div>
+<h4 class="font-headline font-bold text-2xl">Smart Photo Delivery</h4>
+<p class="text-on-surface-variant text-sm">Real-time Facial Recognition</p>
+</div>
+</div>
+<div class="relative group">
+<div class="grid grid-cols-4 gap-2 h-64">
+<div class="col-span-2 row-span-2 rounded-2xl overflow-hidden relative">
+<img alt="Wedding Guest" class="w-full h-full object-cover" data-alt="Close-up of a smiling wedding guest in a soft-focus background, identified by a digital facial recognition frame" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsYDtJwyqphs1h8Ia1Mn-dnY1Xo_G6z8ghEtbMf-jzRAh0fYXoZ3X3llo1KMFyqhOGg98hr7oKO4rP8mfMxV606LXHpqwKzvZgfj8yqs4C961Hdx5UJXX-v3uaYMw4jac0eegTjaA_OaLq4JmGIsSfWWqfH_sefkswVPv5TdS6-xV2JtKHsAR5ojlRW6MSP1jr3V4gbc7ZD8f3Ls406G-05iVuhdoJaBD6J-cOTFcCvd738zsmuM7iwqzTS2R2HNiZpEOw-zenxQ"/>
+<div class="absolute inset-0 border-2 border-primary/40 m-8 rounded-full pointer-events-none"></div>
+</div>
+<div class="rounded-2xl overflow-hidden">
+<img alt="Wedding Guest" class="w-full h-full object-cover" data-alt="Portrait of two guests laughing during a wedding reception, high-quality candid shot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKbbLJCjcEaMNWYV3RmkhTelzi9XqexRxX-O2yZcBpMxJZFbsvL1pRQokwq8BdSotvvPG42wC5hgPEM4ROYd3V1peAvWi7-aPjKKQRuPTY5c9SFE8ziJLK3S7ahiVLIijCFGaVZW2MJoMmp_VzY6SDlySIo9hSAHWfz0ebhiDx-fgcbnzZn0OCEOKe1gO_sxz2E0hZ-rS90c6eYrsGa_55WGr0TRz75vq5kyyVTwv6vI8S3Cvp7GHAvvURtrihm5VIfxA6c7y7sw"/>
+</div>
+<div class="rounded-2xl overflow-hidden">
+<img alt="Wedding Guest" class="w-full h-full object-cover" data-alt="Elegant guest at a wedding dinner, holding a glass, artistic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABgYLz2YOlVEQRQBUC2ubs3EHitSzWzZbikj0Kvi2uB3OMmEzFKXkgXsnQcIN5ypJa-RSGvIreHZ9j9SanQrop_a8AJrAcK-AhvTpEo9raVl0jwS0D824Tha1NXcxjF_MPOdrE6bMG7gexYhKp_N0s3vXuJ8Vjmg8_qIDUVY17zVMto7kzg1n_I-qu67L4ZOysHcXp0UmqSKmGxx8o9_L3VMzSW8_-R9e2XnbKG-ALnczwq8XQhplE8-LnlDIGkhEo7upGkiBadA"/>
+</div>
+<div class="rounded-2xl overflow-hidden relative bg-surface-container flex items-center justify-center border border-white/5">
+<span class="text-primary font-bold text-xl">+420</span>
+</div>
+</div>
+<div class="mt-6 flex items-center justify-between p-4 rounded-2xl glass-card border border-white/5">
+<div class="flex -space-x-3">
+<div class="w-8 h-8 rounded-full border-2 border-background overflow-hidden">
+<img alt="User" data-alt="Profile of a woman guest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBZ6AQxxXZJ32Z0aYU5crdZOkdeD2_9knY3-nluB_RIQ1IPOZe1GzvUoi_gAuf38xUzXtw9F0_Pa4B8P-xOGEpjXWeFna8MrswVVUjnmYBpNHMUHjGsHO18pc2FfO_LcPrdot_lIaVEO24h0rtzFofWxX_Jriy2_yGvnk_qoHIeQxzdykwDvJhHCwOnyI5hqtJOqEVK4MCThTBSDru6l2-hQxETB2bm3CQ_Khqxxn-p6t5-CTw4rqhRNkWuAT0_P-SK5ZshoWHyA"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-background overflow-hidden">
+<img alt="User" data-alt="Profile of a man guest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmOt9zcC8ckw1xwKNGWsgnWoMiQjNIEtweKV2TWbtsM674NrqsuPzbI60fkmN1VXmHVJtNYaF8XvIIxl1FINRTD_GK99b_zsgcQJRP-udgNcs0X31bX9w8RSrjfMPXvIt55e8yWlpANBSPTl-zzvrxZQGKPxBrfZC-Z3U2J9f1iqFh_rD4MZkpqIJBe275tnvmy426jD0TApYunrxDPmP91ML7MWvli3vYGyYsCG2Ut_4QEgVFtT1hz8jbNu5p7nvH4jSVMoXPpQ"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-background overflow-hidden bg-surface-container flex items-center justify-center text-[8px] font-bold">JD</div>
+</div>
+<p class="text-sm font-medium">Auto-delivering to <span class="text-primary">82 guests</span> now</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Spacer for Bottom Nav -->
+<div class="h-12"></div>
+</main>
+<!-- Navigation Components Logic -->
+<!-- Mobile BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 w-full rounded-t-[2rem] z-50 bg-[#1b1b1b]/40 backdrop-blur-3xl shadow-[0_-10px_30px_rgba(0,0,0,0.5)] flex justify-around items-center px-4 pb-6 pt-3 border-t border-white/5">
+<div class="flex flex-col items-center justify-center text-gray-500 p-2 hover:text-indigo-300 transition-colors">
+<span class="material-symbols-outlined mb-1">view_in_ar</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.1em]">Preview</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#c0c1ff] to-[#8083ff] text-white rounded-xl p-2 shadow-[0_0_15px_rgba(99,102,241,0.3)]">
+<span class="material-symbols-outlined mb-1">smart_toy</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.1em]">Concierge</span>
+</div>
+<div class="flex flex-col items-center justify-center text-gray-500 p-2 hover:text-indigo-300 transition-colors">
+<span class="material-symbols-outlined mb-1">payments</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.1em]">Planner</span>
+</div>
+<div class="flex flex-col items-center justify-center text-gray-500 p-2 hover:text-indigo-300 transition-colors">
+<span class="material-symbols-outlined mb-1">self_improvement</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.1em]">Sacred</span>
+</div>
+</nav>
+</body></html>

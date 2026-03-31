@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Virtual Wedding Preview | GURUCRAFTPRO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#131313",
+              "secondary": "#ddb7ff",
+              "tertiary": "#ffafd3",
+              "surface-dim": "#131313",
+              "on-primary-container": "#0d0096",
+              "surface-container": "#1f1f1f",
+              "surface-tint": "#c0c1ff",
+              "surface": "#131313",
+              "on-primary-fixed-variant": "#2f2ebe",
+              "inverse-primary": "#494bd6",
+              "tertiary-container": "#e364a7",
+              "on-secondary-container": "#d6a9ff",
+              "surface-container-highest": "#353535",
+              "inverse-on-surface": "#303030",
+              "on-tertiary-fixed": "#3d0026",
+              "on-background": "#e2e2e2",
+              "on-primary-fixed": "#07006c",
+              "surface-variant": "#353535",
+              "surface-container-low": "#1b1b1b",
+              "inverse-surface": "#e2e2e2",
+              "tertiary-fixed-dim": "#ffafd3",
+              "surface-bright": "#393939",
+              "secondary-container": "#6f00be",
+              "tertiary-fixed": "#ffd8e7",
+              "primary-fixed-dim": "#c0c1ff",
+              "outline": "#908fa0",
+              "on-surface-variant": "#c7c4d7",
+              "primary-fixed": "#e1e0ff",
+              "on-secondary-fixed-variant": "#6900b3",
+              "secondary-fixed-dim": "#ddb7ff",
+              "primary-container": "#8083ff",
+              "primary": "#c0c1ff",
+              "outline-variant": "#464554",
+              "on-primary": "#1000a9",
+              "secondary-fixed": "#f0dbff",
+              "surface-container-high": "#2a2a2a",
+              "on-tertiary-container": "#560038",
+              "error-container": "#93000a",
+              "surface-container-lowest": "#0e0e0e",
+              "on-surface": "#e2e2e2",
+              "on-tertiary": "#620040",
+              "on-error": "#690005",
+              "error": "#ffb4ab",
+              "on-secondary": "#490080",
+              "on-tertiary-fixed-variant": "#85145a",
+              "on-error-container": "#ffdad6",
+              "on-secondary-fixed": "#2c0051"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        background-color: #131313;
+        color: #e2e2e2;
+        font-family: 'Inter', sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-panel {
+        background: rgba(53, 53, 53, 0.4);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .text-gradient-indigo {
+        background: linear-gradient(135deg, #c0c1ff 0%, #8083ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313]/40 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex justify-between items-center px-6 h-16">
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 transition-opacity text-indigo-400">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-indigo-300 to-indigo-600 font-['Plus_Jakarta_Sans']">GURUCRAFTPRO</h1>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8 font-['Plus_Jakarta_Sans'] font-bold tracking-tight text-sm">
+<a class="text-indigo-400" href="#">Preview</a>
+<a class="text-gray-400 hover:opacity-80 transition-opacity" href="#">Concierge</a>
+<a class="text-gray-400 hover:opacity-80 transition-opacity" href="#">Planner</a>
+<a class="text-gray-400 hover:opacity-80 transition-opacity" href="#">Sacred</a>
+</nav>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-indigo-500/30">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="close-up portrait of a stylish groom in a charcoal wedding suit with soft dramatic lighting and neutral studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_2KZ0x14AmREHdBugxiCrIW25S0wJ-rs2M0KG_vaAQ74BDQxghXUHbdrh0BWgmqEu0DV3NT_p__0r01tGoTMSal1NJwj8HcBN8Iyp6mC4nk_jpPvDBIBgc7nQkU8azCJKPD05h1aMpf3XBiymX_bs-ApsBdNs9LkQXwO7z6NhKCzeksFPBfBSR82XQejfN7ldgdSAX5Lp_62B5i_pJnxNATFrM461WZN8hcDBrnv-ErDsh7YOOjfJjYoncbZPWsktKQQqgTXprw"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto space-y-12">
+<!-- Hero Section: 3D AR Viewport -->
+<section class="relative rounded-[2.5rem] overflow-hidden aspect-[16/10] md:aspect-[21/9] shadow-2xl group border border-white/5">
+<img alt="AR Venue Walkthrough" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="cinematic wide shot of a luxury grand ballroom with floral archways and purple ambient lighting at dusk with realistic lens flare" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHOvpWyyacb1-TVcGcW_o4aMTIXgQu9WhD755j8r5i9q-bAPUMn46AbxMtEuPfmo8K3pM2bwXHDhuhPb5pIsSzsnC8utydZwBy22FpuSbhbTuNDMYdO4dUaI5nOvyxdyuQA0QZpzAVFJPGO5dhz1J57cftzebjo5d09ZrqSgkab0rT-18c1VJs6PNseOFAbbyLJfYLqXwzf4gUE15qlpooMLwWD78ebymlBVj6WpCr1oxIEzxXLqJ60mpA8yM1rhFQxJncYHAZ7w"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#131313] via-transparent to-transparent"></div>
+<!-- Floating AR Overlay Controls -->
+<div class="absolute inset-x-8 bottom-8 flex flex-wrap items-end justify-between gap-6">
+<div class="glass-panel p-6 rounded-3xl border border-white/10 max-w-md">
+<span class="text-[10px] font-bold tracking-[0.2em] text-indigo-400 uppercase mb-2 block">Live Rendering</span>
+<h2 class="text-2xl font-['Plus_Jakarta_Sans'] font-extrabold text-on-surface mb-2">Grand Crystal Pavilion</h2>
+<p class="text-sm text-on-surface-variant leading-relaxed">Experience the ethereal beauty of your venue in 8K fidelity. Walk through every aisle and corner before the first guest arrives.</p>
+</div>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 bg-gradient-to-br from-[#c0c1ff] to-[#8083ff] text-on-primary-container px-6 py-3 rounded-xl font-bold shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-transform active:scale-95">
+<span class="material-symbols-outlined">view_in_ar</span>
+                        Enter AR Mode
+                    </button>
+<button class="flex items-center justify-center glass-panel p-3 rounded-xl border border-white/10 text-white hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">fullscreen</span>
+</button>
+</div>
+</div>
+<!-- Lighting Quick Toggle -->
+<div class="absolute top-8 right-8 flex flex-col gap-2">
+<div class="glass-panel p-2 rounded-2xl flex flex-col gap-2 border border-white/10">
+<button class="w-10 h-10 rounded-lg flex items-center justify-center text-indigo-300 bg-white/10">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">light_mode</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center text-gray-500 hover:text-white transition-colors">
+<span class="material-symbols-outlined">wb_twilight</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center text-gray-500 hover:text-white transition-colors">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Bento Layout for Tools -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Avatar Sync Section -->
+<div class="md:col-span-7 surface-container-low rounded-[2rem] p-8 space-y-8 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-8">
+<span class="material-symbols-outlined text-indigo-500/20 text-8xl rotate-12">person_add</span>
+</div>
+<div class="relative z-10">
+<h3 class="text-2xl font-['Plus_Jakarta_Sans'] font-bold mb-2">Avatar Sync</h3>
+<p class="text-on-surface-variant text-sm max-w-sm">Integrate your 3D digital twins into the venue to test scale, movement, and presence.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-6">
+<div class="flex-1 glass-panel border border-dashed border-indigo-500/30 rounded-2xl p-6 flex flex-col items-center justify-center text-center group-hover:border-indigo-500/60 transition-colors">
+<div class="w-12 h-12 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-4">
+<span class="material-symbols-outlined">face</span>
+</div>
+<p class="text-sm font-bold text-on-surface mb-1">Bride 3D Scan</p>
+<p class="text-xs text-on-surface-variant">Upload .OBJ or .PLY</p>
+</div>
+<div class="flex-1 glass-panel border border-dashed border-indigo-500/30 rounded-2xl p-6 flex flex-col items-center justify-center text-center group-hover:border-indigo-500/60 transition-colors">
+<div class="w-12 h-12 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-4">
+<span class="material-symbols-outlined">person</span>
+</div>
+<p class="text-sm font-bold text-on-surface mb-1">Groom 3D Scan</p>
+<p class="text-xs text-on-surface-variant">Upload .OBJ or .PLY</p>
+</div>
+</div>
+<div class="pt-4">
+<button class="w-full py-4 rounded-xl bg-surface-container-highest border border-white/5 font-bold text-sm hover:bg-surface-bright transition-colors">
+                        Process Photogrammetry Match
+                    </button>
+</div>
+</div>
+<!-- Lighting Simulation Column -->
+<div class="md:col-span-5 flex flex-col gap-6">
+<!-- Simulation Controls -->
+<div class="surface-container rounded-[2rem] p-8 flex-1">
+<h3 class="text-xl font-['Plus_Jakarta_Sans'] font-bold mb-6">Lighting Simulation</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between text-xs font-bold tracking-widest text-on-surface-variant uppercase mb-4">
+<span>Daylight Cycle</span>
+<span class="text-indigo-400">17:30 PM</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden relative">
+<div class="absolute top-0 left-0 h-full w-[70%] bg-gradient-to-r from-indigo-500 to-tertiary"></div>
+<div class="absolute top-1/2 left-[70%] -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-[0_0_10px_white]"></div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-3 pt-4">
+<button class="flex flex-col items-center gap-2 p-3 rounded-xl bg-surface-container-high border border-white/5 hover:border-indigo-500/40 transition-all">
+<span class="material-symbols-outlined text-yellow-200">sunny</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Morning</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-xl bg-indigo-500/20 border border-indigo-500/50">
+<span class="material-symbols-outlined text-orange-400">flare</span>
+<span class="text-[10px] font-bold uppercase tracking-tight text-indigo-200">Golden</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-3 rounded-xl bg-surface-container-high border border-white/5 hover:border-indigo-500/40 transition-all">
+<span class="material-symbols-outlined text-indigo-300">nights_stay</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Evening</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dress & Decor Match Toggle -->
+<div class="surface-container-highest rounded-[2rem] p-8">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-['Plus_Jakarta_Sans'] font-bold">Dress &amp; Decor</h3>
+<span class="material-symbols-outlined text-indigo-400">palette</span>
+</div>
+<div class="flex gap-4 items-center">
+<div class="relative w-full">
+<select class="w-full bg-surface-container-low border-none rounded-xl py-3 px-4 text-sm font-['Plus_Jakarta_Sans'] focus:ring-2 focus:ring-indigo-500">
+<option>Royal Silk Ivory - Wedding Gown</option>
+<option>Midnight Velvet - Tuxedo</option>
+<option>Champagne Lace - Bridesmaid</option>
+</select>
+</div>
+</div>
+<div class="mt-6 flex gap-3">
+<div class="flex-1 flex items-center justify-between bg-surface-container-low p-4 rounded-xl">
+<span class="text-sm font-bold">Stage Bloom Match</span>
+<div class="w-10 h-5 bg-indigo-500 rounded-full relative">
+<div class="absolute right-1 top-1 w-3 h-3 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- High-fidelity Renders Showcase -->
+<section class="space-y-6 pb-12">
+<div class="flex items-end justify-between">
+<div>
+<h3 class="text-3xl font-['Plus_Jakarta_Sans'] font-black tracking-tight mb-2">Venue Snapshots</h3>
+<p class="text-on-surface-variant text-sm">Pre-rendered high-fidelity perspectives from the guest eye-level.</p>
+</div>
+<button class="text-indigo-400 text-sm font-bold flex items-center gap-1 hover:gap-2 transition-all">
+                    View Gallery <span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="aspect-square rounded-3xl overflow-hidden relative group">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="close-up of elegant wedding table setting with purple flowers and crystal glassware in soft focus lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmX-YJzrfX5-l9LbjXvE9mVdhQTrIcDSDRLZDyyS5MxfIBNfVvu6QCgcHPQlvakLCU87I96o6ZnCH_R-bZdHV3iHdv9wrs3T4qrdEt0saEVbftR_RkQBtL5HHxkdZJoQ0HwHzsS0XiDu2KXFNFu987Zh1omRNM3oZqu5QKPqoIYN02ox4Q-rS-k7I5RXOVKaQJcbwgLDAfSK0PvtrPubEER3YfWqDiwi8oxoSlEgH5rNsuI19Wd1HeeWm-VF8HbVL3HYHfUf8_GQ"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="aspect-square rounded-3xl overflow-hidden relative group">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="ornate lighting fixture and architectural detail of a luxury venue ceiling with warm ambient highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWHl7LwIFBlCzImUrFsd4FIJVKwLiERtZE4jAxsqpXde_yeiu8V9t8TqulMOa6t24Zw8uZv05X0c_7AfL-nFFJOJitb6MqxiQ0KPYxNCtVHrETD-_qBNuyHyyAwnsEAhKTSmKkz3baiMgBSFYsxFHKRJSTRh_tmuWUtgyt1m6lIR-sDWi0y9q0Z4RSmLKIeWMyCeDWpgp72gw0tLf4escUmBrrhhDihyJXBA3YGq_GFbHvw3YGbXR7Wc1ykuVFSEaJS8sEuwA4Lw"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="aspect-square rounded-3xl overflow-hidden relative group">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="luxury wedding cake on a pedestal in a grand hall with dramatic indigo and teal spotlighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvLunhATE8IsldhMECtqqz1yz6mONxWvL1bNdFvyC8gyBPKjBcY9RWO_eGl-wtovbWP39W-V0lVtKMUDbPwwgd998TSWetUF5vm81hHMxj4ew59Ln3GqAEC1_9ZeSeYg03kkRKd_9YCHvy_dBIFW2GHIi-NxGwo3e1yv_T6_Pd0w6krbUzAPOQgyOigXIx0xvLOApewzQWGnvmezLWqbiXqrBiJwGheMW3cQD-bA0nOR6vZxIabjGI1JpRmZhM6gXWbtSPyGIEQg"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="aspect-square rounded-3xl overflow-hidden relative group">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="modern floral sculpture installation with neon accents in a dark contemporary wedding venue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsp0Ewi9IaU-PYUIS49YxkeoVikEEJXn1d8YdFcJ9dxorikeT2pCpyMkQHkHJ9RGIl3dEZ7TH1ATRNyCrih9PkxWYKxODoMeA-nwSsFigS-taeXyGw1XV2ZQ6Z8hbL-y3DqcQsd4FUzBOTBc_KwXO8O0KSAEbLfW_5Udx_kh60tabGREr5AiGrQYVNUZymjZwL7ernAY4583OpqOFNAQvvszh2-2lHx9yOFixlzLoHxYaZheQYJKb1oW6q2NH_7CN9yNh_VpCb4w"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- NavigationDrawer (Hidden on mobile by default, but conceptually part of the shell) -->
+<aside class="hidden fixed left-0 top-0 h-full w-80 bg-[#131313] shadow-2xl z-50 flex flex-col py-8 px-4 rounded-r-3xl">
+<div class="flex items-center gap-4 px-4 mb-12">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center font-black text-xl">G</div>
+<div>
+<h4 class="font-['Plus_Jakarta_Sans'] font-bold text-sm">Gurucraft Pro</h4>
+<p class="text-xs text-indigo-400 font-bold tracking-tighter uppercase">Premium</p>
+</div>
+</div>
+<nav class="space-y-2">
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl bg-indigo-500/10 text-indigo-400 font-bold border-r-4 border-indigo-500" href="#">
+<span class="material-symbols-outlined">apartment</span>
+<span class="text-sm">AR Venue</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-sm">Matchmaker</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-sm">Budget</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">flare</span>
+<span class="text-sm">Sacred AR</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-400 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 w-full bg-[#1b1b1b]/40 backdrop-blur-3xl shadow-[0_-10px_30px_rgba(0,0,0,0.5)] flex justify-around items-center px-4 pb-6 pt-3 z-50 border-t border-white/5 rounded-t-[2rem]">
+<button class="flex flex-col items-center justify-center bg-gradient-to-br from-[#c0c1ff] to-[#8083ff] text-white rounded-xl p-2 shadow-[0_0_15px_rgba(99,102,241,0.3)] scale-95 transition-transform">
+<span class="material-symbols-outlined">view_in_ar</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.1em] mt-1">Preview</span>
+</button>
+<button class="flex flex-col items-center justify-center text-gray-500 p-2 hover:text-indigo-300 transition-colors">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.1em] mt-1">Concierge</span>
+</button>
+<button class="flex flex-col items-center justify-center text-gray-500 p-2 hover:text-indigo-300 transition-colors">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.1em] mt-1">Planner</span>
+</button>
+<button class="flex flex-col items-center justify-center text-gray-500 p-2 hover:text-indigo-300 transition-colors">
+<span class="material-symbols-outlined">self_improvement</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.1em] mt-1">Sacred</span>
+</button>
+</nav>
+</body></html>

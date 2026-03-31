@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GURUCRAFTPRO | AI Dressing Room</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-on-surface": "#303030",
+              "on-secondary-container": "#d6a9ff",
+              "surface-container-highest": "#353535",
+              "surface-bright": "#393939",
+              "surface": "#131313",
+              "on-surface": "#e2e2e2",
+              "primary": "#c0c1ff",
+              "on-tertiary-fixed-variant": "#85145a",
+              "on-surface-variant": "#c7c4d7",
+              "secondary-fixed-dim": "#ddb7ff",
+              "tertiary-fixed-dim": "#ffafd3",
+              "on-primary-container": "#0d0096",
+              "error-container": "#93000a",
+              "on-tertiary-fixed": "#3d0026",
+              "surface-variant": "#353535",
+              "tertiary-fixed": "#ffd8e7",
+              "on-secondary-fixed": "#2c0051",
+              "on-primary-fixed": "#07006c",
+              "outline-variant": "#464554",
+              "primary-container": "#8083ff",
+              "outline": "#908fa0",
+              "on-error-container": "#ffdad6",
+              "inverse-surface": "#e2e2e2",
+              "surface-tint": "#c0c1ff",
+              "on-primary-fixed-variant": "#2f2ebe",
+              "surface-container": "#1f1f1f",
+              "on-error": "#690005",
+              "inverse-primary": "#494bd6",
+              "error": "#ffb4ab",
+              "tertiary-container": "#e364a7",
+              "on-secondary": "#490080",
+              "on-tertiary": "#620040",
+              "background": "#131313",
+              "surface-container-lowest": "#0e0e0e",
+              "on-primary": "#1000a9",
+              "secondary-fixed": "#f0dbff",
+              "primary-fixed-dim": "#c0c1ff",
+              "surface-container-high": "#2a2a2a",
+              "on-secondary-fixed-variant": "#6900b3",
+              "surface-container-low": "#1b1b1b",
+              "secondary": "#ddb7ff",
+              "on-background": "#e2e2e2",
+              "surface-dim": "#131313",
+              "secondary-container": "#6f00be",
+              "primary-fixed": "#e1e0ff",
+              "tertiary": "#ffafd3",
+              "on-tertiary-container": "#560038"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-layering-no-border {
+            border: none !important;
+        }
+        .glass-panel {
+            background: rgba(53, 53, 53, 0.4);
+            backdrop-filter: blur(20px);
+        }
+        .active-pill {
+            background: linear-gradient(135deg, #c0c1ff 0%, #8083ff 100%);
+        }
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(192, 193, 255, 0.3);
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #353535;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary-container">
+<!-- Top Navigation Anchor -->
+<nav class="fixed top-0 w-full z-50 bg-transparent backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#c0c1ff] hover:opacity-80 transition-opacity scale-95 active:scale-90 transition-transform cursor-pointer" data-icon="menu">menu</span>
+<span class="text-xl font-black tracking-tighter bg-gradient-to-br from-[#c0c1ff] to-[#8083ff] bg-clip-text text-transparent font-['Plus_Jakarta_Sans']">GURUCRAFTPRO</span>
+</div>
+<div class="hidden md:flex gap-8 items-center font-label text-[10px] uppercase tracking-[0.1em] font-semibold">
+<a class="text-[#c0c1ff] transition-opacity" href="#">AR Try-On</a>
+<a class="text-gray-400 hover:text-[#c0c1ff] transition-colors" href="#">Avatar</a>
+<a class="text-gray-400 hover:text-[#c0c1ff] transition-colors" href="#">Wardrobe</a>
+<a class="text-gray-400 hover:text-[#c0c1ff] transition-colors" href="#">Explore</a>
+</div>
+<span class="material-symbols-outlined text-[#c0c1ff] hover:opacity-80 transition-opacity scale-95 active:scale-90 transition-transform cursor-pointer" data-icon="account_circle">account_circle</span>
+</div>
+</nav>
+<main class="pt-20 pb-32 px-4 md:px-8 max-w-[1600px] mx-auto min-h-screen">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 h-full">
+<!-- Left Column: AR Feed & Avatar Sync (Asymmetric Layout) -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Main AR Display -->
+<div class="relative w-full aspect-[4/5] md:aspect-video rounded-3xl overflow-hidden bg-surface-container-low group shadow-2xl">
+<img alt="AR Try-On View" class="w-full h-full object-cover opacity-90" data-alt="Cinematic shot of a high-end designer wedding gown displayed on a digital holographic mannequin in a minimalist dark studio setting with soft indigo lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9ZMGiUzm0QbWY6XtVl-GVSKE1QGMIiT0a7xqE3_JUBfcMSKflGf_JvMjsSxlPLIf7QJIGsbWOl_euPq27ZU1LP_rORr1xq5NMoWbDvLb0VuTnNUaNCqUngsQTMw_v3WSXVScp8ILs36lmJMg4slpAcaLNag6LBmxwxCtZ3XD8wcnxVx9nPq3sGUtgtE15GH0gpbbBDAkuLR1Lk1DyRIzG2c5lzNcs4vCm9UMfxZ29cxUgiVTNBr5-YzehgeTPKfp4OVzqV5jXNg"/>
+<!-- Overlay Controls -->
+<div class="absolute inset-0 p-6 flex flex-col justify-between pointer-events-none">
+<div class="flex justify-between items-start">
+<div class="glass-panel px-4 py-2 rounded-full flex items-center gap-3 pointer-events-auto">
+<div class="w-2 h-2 rounded-full bg-error animate-pulse"></div>
+<span class="text-[10px] font-bold tracking-widest uppercase">Live AR Rendering</span>
+</div>
+<div class="flex flex-col gap-2 pointer-events-auto">
+<button class="p-3 glass-panel rounded-xl hover:bg-surface-container-highest transition-colors group">
+<span class="material-symbols-outlined text-primary" data-icon="photo_camera">photo_camera</span>
+</button>
+<button class="p-3 glass-panel rounded-xl hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="3d_rotation">3d_rotation</span>
+</button>
+</div>
+</div>
+<!-- 3D Avatar Sync Panel -->
+<div class="flex justify-end pointer-events-auto">
+<div class="glass-panel p-4 rounded-2xl w-48 md:w-64 border border-outline-variant/20 neon-glow">
+<div class="flex items-center justify-between mb-3">
+<span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">Avatar Sync</span>
+<span class="material-symbols-outlined text-xs text-primary" data-icon="sync">sync</span>
+</div>
+<div class="relative h-40 bg-surface-container-lowest rounded-xl overflow-hidden flex items-center justify-center">
+<img alt="Digital Twin" class="w-full h-full object-cover" data-alt="Abstract 3D wireframe female avatar figure glowing with soft violet light on a dark background showing body measurement points" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzjnbOHu85dRPKjhcojiwSUWOxZyAFZum2Ml8zZUh3kY7gIBUYn7f-NzqJ7OJe-3TJSlrUMmxyqc3CnaPCLEcLZzgN6bGD2KNxuZIqXT3FpAaJ7RUu2PyBc8B9LFCBGldIhT8gOtC6UZNPQw5y7aTbIE2ShylWMOizBZP_coX_yv4DxTPlQjHroWERHnBZT2Jl506K6Ik_FO-RZzD7zo2iUYUXDVZP_t48Qd3jn4t9SRHd89C11Qx1ucQ6I4eISjRwlGelJAKwnQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+<div class="absolute bottom-2 left-2 right-2 flex gap-1">
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-primary/20 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Material & Fabric Detail Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 glass-panel p-8 rounded-3xl flex flex-col justify-center">
+<div class="flex items-center gap-4 mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="texture">texture</span>
+<h3 class="font-headline font-bold text-xl tracking-tight">AI Fabric Analysis</h3>
+</div>
+<p class="text-on-surface-variant leading-relaxed text-sm">
+                            Real-time simulation of <span class="text-primary font-semibold">Italian Silk Mikado</span>. 
+                            The AI predicts a structured drape with high-sheen reflection, weighing 240g/m² for optimal silhouette retention.
+                        </p>
+<div class="mt-6 flex gap-3">
+<span class="px-3 py-1 bg-surface-container-highest rounded-full text-[10px] font-bold text-primary">WRINKLE-RESISTANT</span>
+<span class="px-3 py-1 bg-surface-container-highest rounded-full text-[10px] font-bold text-primary">PREMIUM LUSTRE</span>
+</div>
+</div>
+<div class="bg-primary-container/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center border border-primary/10">
+<span class="text-4xl font-black text-primary mb-2">98%</span>
+<span class="text-[10px] font-bold tracking-widest uppercase opacity-70">Fit Accuracy</span>
+<div class="mt-4 w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[98%] shadow-[0_0_10px_rgba(192,193,255,1)]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Wardrobe & AI Stylist -->
+<div class="lg:col-span-4 flex flex-col gap-8">
+<!-- Wardrobe Selection -->
+<section class="flex flex-col gap-6 h-full">
+<div class="flex items-end justify-between">
+<div>
+<h2 class="font-headline font-bold text-2xl tracking-tighter">Wardrobe</h2>
+<p class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">Curated Collection</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="filter_list">filter_list</span>
+</div>
+<div class="space-y-4 overflow-y-auto max-h-[500px] pr-2">
+<!-- Item Card 1 -->
+<div class="group relative flex gap-4 p-3 rounded-2xl bg-surface-container hover:bg-surface-container-high transition-all duration-300 cursor-pointer border border-transparent hover:border-primary/20">
+<div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+<img alt="Wedding Gown" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Close-up of intricate lace embroidery on a luxury white wedding dress bodice" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6d5Kv7uVmopXDhhfE4J-7qfOzcd4h9kj6ZsniDcnoZWD-nTlWtE4zGRmXRCfOZ0C3xdSYjjtuP3iWij3EJcrBLvVYO6GUoZk3aESH0rTKE2JCFSp_YVWt98gKSbXdXMmk9aXheNNKpcHYFs6RvG8NqN5CUMBQGIS19XKnCK9PQXSZbpvJCyw2IyFhXBXn7w459Yg_ol2nfRnpUdAQB6R-HHQu9AdTmR5-ChFvklA3RXpCkKY2-fPXZQnUkiWdO8DIVV8CsWGr2g"/>
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-[10px] font-bold text-primary tracking-widest uppercase mb-1">Gown</span>
+<h4 class="font-bold text-sm tracking-tight">The Ethereal Muse</h4>
+<p class="text-xs text-on-surface-variant mt-1">Chantilly Lace &amp; Tulle</p>
+</div>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Item Card 2 -->
+<div class="group relative flex gap-4 p-3 rounded-2xl bg-surface-container-high border-2 border-primary shadow-[0_0_20px_rgba(192,193,255,0.1)]">
+<div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+<img alt="Designer Suit" class="w-full h-full object-cover" data-alt="Sleek midnight blue tuxedo suit with satin lapels on a dark wooden mannequin" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD490A0AEs-oicsa2Dx0q7n70GA-QckD_eCOwf1Mk4NFn3hl5wn_2mafP0Q1-BWpFX6uJT5KXwrX4SwPHzfvmlSmslYtoQ7Npv-QEwZmaX_g8L7OV1g2I9p3u_NkVCMy1J_KToDQrMq9opxIdo6ZnuR8GzEd3SksgfSvMHIWqVzAConka9kzKtdXxvkCLVsDPyYuSVkajsjtdJ4r4huzCkdNNdn5phZfJQCs0x_n_ftTWM8HLAkgYa2FgebZgLC2ADhZf8OKDcMXA"/>
+</div>
+<div class="flex flex-col justify-center">
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold text-primary tracking-widest uppercase mb-1">Elite Suit</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+</div>
+<h4 class="font-bold text-sm tracking-tight">Midnight Velvet Peak</h4>
+<p class="text-xs text-on-surface-variant mt-1">Wool-Silk Blend</p>
+</div>
+</div>
+<!-- Item Card 3 -->
+<div class="group relative flex gap-4 p-3 rounded-2xl bg-surface-container hover:bg-surface-container-high transition-all duration-300 cursor-pointer">
+<div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+<img alt="Accessories" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Elegant diamond necklace and matching earrings laid out on a soft grey velvet cushion" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr61CSMpSa7UBbDvriHyuw5DU8qHLNkV7fvlpN2irtoo_TemRStTiJJPPSoi6JOhwrzd23-8CDIpuSD_7PCefbmznU33pI9B0VcOZnwIjaxSOgH-nLfEfQx1GQNVXYq4N9Tu9tn5Q4hFNZiJ7m_VhFvAlrNtXIcxk3Ln3A-5x6L830_8pOjIGtQNBNeVVBq6YaF8bhVk0qg0zxx2lDS-7S8Fyg9wd6ms-d4KZ5Vx9wU_eUWgzQghyzQeirCkKEG_RvIVPkdbK_7Q"/>
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-[10px] font-bold text-primary tracking-widest uppercase mb-1">Jewelry</span>
+<h4 class="font-bold text-sm tracking-tight">Aurora Crystal Veil</h4>
+<p class="text-xs text-on-surface-variant mt-1">Swarovski Accents</p>
+</div>
+</div>
+</div>
+<!-- AI Stylist Chatbot Overlay -->
+<div class="mt-auto glass-panel p-6 rounded-[2rem] border border-primary/10 relative overflow-hidden group">
+<div class="absolute -right-10 -top-10 w-40 h-40 bg-primary/10 blur-[60px] rounded-full"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-xl" data-icon="smart_toy" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div>
+<h4 class="font-bold text-sm">AI Stylist</h4>
+<p class="text-[10px] text-primary/80 uppercase font-bold">Online &amp; Analyzing</p>
+</div>
+</div>
+<div class="bg-surface-container-low/50 p-4 rounded-2xl rounded-tl-none mb-4">
+<p class="text-xs leading-relaxed text-on-surface">
+                                    "Based on your body type and the Midnight Velvet suit, I recommend the <span class="text-primary">Slim-Fit Silk Shirt</span> and a <span class="text-primary">Silver Lapel Pin</span> for a balanced look."
+                                </p>
+</div>
+<div class="flex gap-2">
+<input class="bg-surface-container-highest/50 border-none rounded-xl text-xs w-full focus:ring-1 focus:ring-primary placeholder:text-on-surface-variant" placeholder="Ask for suggestions..." type="text"/>
+<button class="bg-primary text-on-primary-container p-2 rounded-xl scale-100 hover:scale-105 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="send" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#1b1b1b]/40 backdrop-blur-2xl rounded-t-[2rem] shadow-[0_-10px_30px_rgba(99,102,241,0.1)]">
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#c0c1ff] to-[#8083ff] text-[#131313] rounded-2xl p-3 shadow-[0_0_15px_rgba(192,193,255,0.4)] scale-105 duration-300 ease-out cursor-pointer">
+<span class="material-symbols-outlined text-xl mb-1" data-icon="view_in_ar">view_in_ar</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.1em] font-semibold">AR Try-On</span>
+</div>
+<div class="flex flex-col items-center justify-center text-gray-500 p-3 hover:text-[#c0c1ff] transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-xl mb-1" data-icon="accessibility_new">accessibility_new</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.1em] font-semibold">Avatar</span>
+</div>
+<div class="flex flex-col items-center justify-center text-gray-500 p-3 hover:text-[#c0c1ff] transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-xl mb-1" data-icon="checkroom">checkroom</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.1em] font-semibold">Wardrobe</span>
+</div>
+<div class="flex flex-col items-center justify-center text-gray-500 p-3 hover:text-[#c0c1ff] transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-xl mb-1" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.1em] font-semibold">Explore</span>
+</div>
+</nav>
+</body></html>

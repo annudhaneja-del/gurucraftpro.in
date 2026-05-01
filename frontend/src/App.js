@@ -24,6 +24,7 @@ import Admin from "./pages/Admin";
 import Checkout from "./pages/Checkout";
 import DressingRoom from "./pages/DressingRoom";
 import ARArtwork from "./pages/ARArtwork";
+import Sell from "./pages/Sell";
 
 function Layout({ children }) {
   return (
@@ -55,6 +56,7 @@ export default function App() {
             <Route path="/checkout" element={<Layout><Checkout /></Layout>} />
             <Route path="/dressing-room" element={<Layout><DressingRoom /></Layout>} />
             <Route path="/ar-view" element={<Layout><ARArtwork /></Layout>} />
+            <Route path="/sell" element={<Layout><Sell /></Layout>} />
             <Route path="/dashboard" element={<ProtectedRoute><Layout><Dashboard /></Layout></ProtectedRoute>} />
             <Route path="/admin" element={<ProtectedRoute admin><Layout><Admin /></Layout></ProtectedRoute>} />
           </Routes>

@@ -873,6 +873,40 @@ async def delete_look(look_id: str, user=Depends(get_current_user)):
     await db.looks.delete_one({"id": look_id, "user_id": user["id"]})
     return {"ok": True}
 
+# ---------- CREATOR SUBMISSIONS (Sell) ----------
+class CreatorSubmission(BaseModel):
+    name: str
+    email: str
+    phone: Optional[str] = None
+    content_type: Literal["prompt_pack", "template", "pdf_course", "artwork", "clothing", "other"]
+    title: str
+    description: str
+    price: float = 0
+    sample_url: Optional[str] = None
+    portfolio_url: Optional[str] = None
+
+@api_router.post("/creators/submit")
+async def submit_creator_content(data: CreatorSubmission):
+    doc = {
+        "id": str(uuid.uuid4()),
+        **data.model_dump(),
+        "status": "pending",
+        "created_at": utcnow().isoformat(),
+    }
+    await db.creator_submissions.insert_one(doc)
+    doc.pop("_id", None)
+    return doc
+
+@api_router.get("/creators/submissions")
+async def list_creator_submissions(_=Depends(admin_required)):
+    items = await db.creator_submissions.find({}, {"_id": 0}).sort("created_at", -1).to_list(500)
+    return items
+
+@api_router.put("/creators/submissions/{sub_id}/status")
+async def update_creator_status(sub_id: str, status_val: Literal["pending", "approved", "rejected"], _=Depends(admin_required)):
+    await db.creator_submissions.update_one({"id": sub_id}, {"$set": {"status": status_val}})
+    return {"ok": True}
+
 app.include_router(api_router)
 
 app.add_middleware(

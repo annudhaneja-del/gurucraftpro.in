@@ -8,12 +8,12 @@ const LOGO = "https://customer-assets.emergentagent.com/job_a9385893-2db1-4c60-9
 
 const links = [
   { to: "/", label: "Home" },
-  { to: "/services", label: "Services" },
-  { to: "/studio", label: "Design Studio" },
   { to: "/dressing-room", label: "Try-On" },
   { to: "/ar-view", label: "AR Wall" },
   { to: "/shop", label: "Shop" },
   { to: "/learn", label: "Learn" },
+  { to: "/sell", label: "Sell" },
+  { to: "/studio", label: "Studio" },
   { to: "/contact", label: "Contact" },
 ];
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight, MessageCircle, Phone, Sparkles, Star, MapPin, Clock,
   Palette, ShoppingBag, GraduationCap, Heart, Award, Zap, Users, ShieldCheck,
-  Instagram, ChevronRight, Play
+  Instagram, ChevronRight, Play, Shirt, Frame, Bot, BookOpen, Store, Wand2
 } from "lucide-react";
 import api from "../lib/api";
 
@@ -19,9 +19,8 @@ const STATS_DEFAULT = [
 ];
 
 const MARQUEE_ITEMS = [
-  "Wedding Invites", "Guruji Frames", "E-commerce Stores", "Canva Templates",
-  "Logo Design", "Brand Identity", "AI Prompt Packs", "Product Photography",
-  "Social Media Kits", "Learning Courses",
+  "AR Try-On", "AR Wall Art", "AI Prompt Packs", "Learn AI", "Sell Content",
+  "Wedding Invites", "Guruji Frames", "Canva Templates", "Logo Design", "E-commerce Setup",
 ];
 
 function useReveal() {
@@ -123,9 +122,9 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 min-h-[92vh] flex flex-col justify-center">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 glass px-3 py-1.5 rounded-full text-xs text-white/80 mb-6 animate-rise" data-testid="home-badge">
-              <MapPin size={12} className="text-[#14b8a6]" /> Rohini, Delhi
+              <Sparkles size={12} className="text-[#7c3aed]" /> AI + AR Marketplace
               <span className="w-1 h-1 bg-white/30 rounded-full" />
-              <Clock size={12} /> 8 AM – 8 PM
+              <MapPin size={12} className="text-[#14b8a6]" /> Rohini, Delhi
               <span className="w-1 h-1 bg-white/30 rounded-full" />
               <span className="text-[#25D366]">● LIVE</span>
             </div>
@@ -177,6 +176,56 @@ export default function Home() {
               <span className="font-display text-2xl md:text-3xl text-white/30 hover:text-white transition-colors">{item}</span>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* 5-PILLAR AI + AR MARKETPLACE HUB */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24" data-testid="home-marketplace">
+        <div className="text-center mb-12 reveal-on-scroll">
+          <p className="text-[#14b8a6] text-sm tracking-widest uppercase mb-2">One Platform, Five Pillars</p>
+          <h2 className="font-display text-4xl sm:text-6xl leading-tight">
+            The <span className="shimmer-text">AI + AR</span> Marketplace
+          </h2>
+          <p className="text-white/60 mt-4 max-w-2xl mx-auto">
+            Try clothes in AR · Place artwork on your wall · Buy AI prompts · Learn AI · Sell your own content — all in one place.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-5">
+          {[
+            { to: "/dressing-room", title: "Try Clothes (AR)", subtitle: "Virtual dressing room powered by AI body tracking", icon: Shirt, color: "#7c3aed", span: "md:col-span-3 md:row-span-2", tall: true, img: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?crop=entropy&cs=srgb&fm=jpg&q=85&w=900" },
+            { to: "/ar-view", title: "Try Wall Art (AR)", subtitle: "Place Guruji frames & posters on your wall", icon: Frame, color: "#14b8a6", span: "md:col-span-3", img: "https://customer-assets.emergentagent.com/job_a9385893-2db1-4c60-9d30-98a00b2907c1/artifacts/90y404uo_IMG-20260313-WA0029.jpg" },
+            { to: "/shop", title: "Buy AI Prompts", subtitle: "500+ Midjourney, GPT, Nano Banana packs", icon: Bot, color: "#f59e0b", span: "md:col-span-2", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?crop=entropy&cs=srgb&fm=jpg&q=85&w=900" },
+            { to: "/learn", title: "Learn AI", subtitle: "Courses, PDFs & playbooks for creators", icon: BookOpen, color: "#ec4899", span: "md:col-span-1", img: "https://images.unsplash.com/photo-1758872014929-174e4ccdf01f?crop=entropy&cs=srgb&fm=jpg&q=85&w=600" },
+            { to: "/sell", title: "Sell Content", subtitle: "Upload your prompts, art, templates · Earn up to 70%", icon: Store, color: "#06b6d4", span: "md:col-span-6", wide: true, img: "https://customer-assets.emergentagent.com/job_a9385893-2db1-4c60-9d30-98a00b2907c1/artifacts/1z5p7qlm_tmp_8573562d-5d66-4082-af3e-8a6292a431ad.jpeg" },
+          ].map((p, i) => {
+            const Ic = p.icon;
+            return (
+              <Link
+                key={p.to}
+                to={p.to}
+                className={`card-dark group relative overflow-hidden reveal-on-scroll ${p.span} ${p.tall ? "min-h-[440px]" : p.wide ? "min-h-[220px]" : "min-h-[220px]"}`}
+                style={{ transitionDelay: `${i * 90}ms` }}
+                data-testid={`home-pillar-${p.to.slice(1) || "home"}`}
+              >
+                <img src={p.img} alt={p.title} className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-55 group-hover:scale-110 transition-all duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#05050A]/95 via-[#05050A]/60 to-transparent" />
+
+                <div className="relative p-6 h-full flex flex-col justify-between">
+                  <div>
+                    <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-3 animate-glow-pulse" style={{ background: `${p.color}22`, color: p.color, boxShadow: `0 0 20px ${p.color}44` }}>
+                      <Ic size={20} />
+                    </div>
+                    <h3 className="font-display text-2xl md:text-3xl leading-tight">{p.title}</h3>
+                    <p className="text-sm text-white/60 mt-2 max-w-md">{p.subtitle}</p>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs mt-4" style={{ color: p.color }}>
+                    Launch <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
 

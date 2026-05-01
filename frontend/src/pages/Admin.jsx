@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import ImageUpload from "../components/ImageUpload";
 import {
   LayoutDashboard, Package, Box, Star, Image as Img, GraduationCap, LayoutTemplate,
-  Ticket, MessageSquare, Users, TrendingUp, Plus, Trash2, Save, Inbox, Settings, Tag, ShieldCheck
+  Ticket, MessageSquare, Users, TrendingUp, Plus, Trash2, Save, Inbox, Settings, Tag, ShieldCheck, Store, ExternalLink
 } from "lucide-react";
 
 const TABS = [
@@ -21,6 +21,7 @@ const TABS = [
   { id: "coupons", label: "Coupons", icon: Ticket },
   { id: "orders", label: "Orders", icon: TrendingUp },
   { id: "contacts", label: "Messages", icon: MessageSquare },
+  { id: "creators", label: "Creators", icon: Store },
   { id: "users", label: "Users", icon: Users },
 ];
 
@@ -61,6 +62,7 @@ export default function Admin() {
         {tab === "coupons" && <CrudPanel name="coupons" endpoint="/coupons" fields={couponFields} titleKey="code" />}
         {tab === "orders" && <OrdersList />}
         {tab === "contacts" && <ContactsList />}
+        {tab === "creators" && <CreatorsList />}
         {tab === "users" && <UsersList />}
       </main>
     </div>
@@ -437,6 +439,53 @@ function HomepageSettings() {
             <Save size={14} /> Save Homepage
           </button>
         </div>
+      </div>
+    </div>
+  );
+}
+
+// ---- Creator Submissions ----
+function CreatorsList() {
+  const [list, setList] = useState([]);
+  const load = () => api.get("/creators/submissions").then((r) => setList(r.data));
+  useEffect(() => { load(); }, []);
+  const updateStatus = async (id, status) => {
+    try {
+      await api.put(`/creators/submissions/${id}/status`, null, { params: { status_val: status } });
+      toast.success(`Marked ${status}`);
+      load();
+    } catch (e) { toast.error("Failed"); }
+  };
+  return (
+    <div data-testid="admin-creators">
+      <h1 className="font-display text-4xl mb-6">Creator Submissions ({list.length})</h1>
+      <div className="space-y-3">
+        {list.map((c) => (
+          <div key={c.id} className="card-dark p-5" data-testid={`admin-creator-${c.id}`}>
+            <div className="flex flex-wrap items-start justify-between gap-3 mb-2">
+              <div className="min-w-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-medium">{c.title}</span>
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-[#7c3aed]/20 text-[#7c3aed]">{c.content_type.replace("_", " ")}</span>
+                  <span className={`text-xs px-2 py-0.5 rounded-full ${c.status === "approved" ? "bg-[#25D366]/20 text-[#25D366]" : c.status === "rejected" ? "bg-red-500/20 text-red-400" : "bg-[#f59e0b]/20 text-[#f59e0b]"}`}>{c.status}</span>
+                </div>
+                <p className="text-xs text-white/60 mt-1">{c.name} · {c.email} · {c.phone || "—"}</p>
+                <p className="text-sm text-white/80 mt-2">{c.description}</p>
+                <div className="flex gap-3 text-xs text-white/50 mt-2">
+                  <span>₹{c.price}</span>
+                  {c.sample_url && <a href={c.sample_url} target="_blank" rel="noreferrer" className="text-[#14b8a6] inline-flex items-center gap-1">Sample <ExternalLink size={10} /></a>}
+                  {c.portfolio_url && <a href={c.portfolio_url} target="_blank" rel="noreferrer" className="text-[#14b8a6] inline-flex items-center gap-1">Portfolio <ExternalLink size={10} /></a>}
+                </div>
+              </div>
+              <div className="flex flex-col gap-1">
+                <button onClick={() => updateStatus(c.id, "approved")} className="text-xs bg-[#25D366]/20 text-[#25D366] px-3 py-1 rounded-full" data-testid={`creator-approve-${c.id}`}>Approve</button>
+                <button onClick={() => updateStatus(c.id, "rejected")} className="text-xs bg-red-500/20 text-red-400 px-3 py-1 rounded-full" data-testid={`creator-reject-${c.id}`}>Reject</button>
+                <a href={`https://wa.me/${(c.phone || "").replace(/\D/g, "")}`} target="_blank" rel="noreferrer" className="text-xs bg-[#25D366]/20 text-[#25D366] px-3 py-1 rounded-full text-center">WhatsApp</a>
+              </div>
+            </div>
+          </div>
+        ))}
+        {list.length === 0 && <div className="text-white/50 flex items-center gap-2"><Inbox size={16} /> No creator submissions yet.</div>}
       </div>
     </div>
   );

@@ -691,6 +691,7 @@ async def root():
 
 # ---------- FILE UPLOAD ----------
 ALLOWED_EXT = {"png", "jpg", "jpeg", "webp", "gif", "pdf", "svg"}
+ALLOWED_IMG_EXT = {"png", "jpg", "jpeg", "webp", "gif"}
 
 @api_router.post("/upload")
 async def upload_file(file: UploadFile = File(...), _=Depends(admin_required)):
@@ -702,6 +703,20 @@ async def upload_file(file: UploadFile = File(...), _=Depends(admin_required)):
     content = await file.read()
     if len(content) > 10 * 1024 * 1024:
         raise HTTPException(status_code=400, detail="File too large (max 10MB)")
+    dest.write_bytes(content)
+    return {"url": f"/api/uploads/{name}", "filename": name, "size": len(content)}
+
+@api_router.post("/upload/creator")
+async def upload_creator_sample(file: UploadFile = File(...)):
+    """Public upload for creator submission samples — images only, 5MB cap."""
+    ext = (file.filename.rsplit(".", 1)[-1] if "." in file.filename else "").lower()
+    if ext not in ALLOWED_IMG_EXT:
+        raise HTTPException(status_code=400, detail=f"Only images allowed: {', '.join(ALLOWED_IMG_EXT)}")
+    name = f"creator_{uuid.uuid4().hex}.{ext}"
+    dest = UPLOAD_DIR / name
+    content = await file.read()
+    if len(content) > 5 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="File too large (max 5MB)")
     dest.write_bytes(content)
     return {"url": f"/api/uploads/{name}", "filename": name, "size": len(content)}
 

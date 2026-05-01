@@ -5,7 +5,7 @@ import { toast } from "sonner";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
-export default function ImageUpload({ value, onChange, testId = "upload" }) {
+export default function ImageUpload({ value, onChange, testId = "upload", endpoint = "/upload", accept = "image/*,application/pdf" }) {
   const [uploading, setUploading] = useState(false);
   const fileRef = useRef(null);
 
@@ -15,7 +15,7 @@ export default function ImageUpload({ value, onChange, testId = "upload" }) {
     try {
       const fd = new FormData();
       fd.append("file", file);
-      const r = await api.post("/upload", fd, { headers: { "Content-Type": "multipart/form-data" } });
+      const r = await api.post(endpoint, fd, { headers: { "Content-Type": "multipart/form-data" } });
       const fullUrl = `${BACKEND_URL}${r.data.url}`;
       onChange(fullUrl);
       toast.success("Uploaded");
@@ -35,7 +35,7 @@ export default function ImageUpload({ value, onChange, testId = "upload" }) {
         data-testid={`${testId}-url`}
       />
       <input
-        ref={fileRef} type="file" accept="image/*,application/pdf"
+        ref={fileRef} type="file" accept={accept}
         className="hidden" onChange={(e) => upload(e.target.files?.[0])}
       />
       <button

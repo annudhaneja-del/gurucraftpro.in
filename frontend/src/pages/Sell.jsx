@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import api from "../lib/api";
+import ImageUpload from "../components/ImageUpload";
 import {
   Upload, Send, Sparkles, IndianRupee, CheckCircle2, ArrowRight,
-  Shirt, Frame, Bot, BookOpen, PencilRuler, Palette
+  Shirt, Frame, Bot, BookOpen, PencilRuler, Palette, MessageCircle, Mail
 } from "lucide-react";
 
 const CATEGORIES = [
@@ -24,14 +25,39 @@ export default function Sell() {
   });
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
+  const [submissionId, setSubmissionId] = useState(null);
+
+  const notifyAnnu = (submission) => {
+    const msg = `🆕 *New Creator Submission on GurucraftPro*
+
+*Type:* ${submission.content_type.replace("_", " ")}
+*Title:* ${submission.title}
+*Creator:* ${submission.name} (${submission.email}${submission.phone ? ", " + submission.phone : ""})
+*Suggested Price:* ₹${submission.price || "—"}
+
+*Description:*
+${submission.description}
+
+${submission.sample_url ? "*Sample:* " + submission.sample_url + "\n" : ""}${submission.portfolio_url ? "*Portfolio:* " + submission.portfolio_url + "\n" : ""}
+Submission ID: ${submission.id.slice(0, 8)}
+Review in admin → /admin`;
+    const waUrl = `https://wa.me/918527837527?text=${encodeURIComponent(msg)}`;
+    const subject = `New creator submission: ${submission.title}`;
+    const mailUrl = `mailto:annudhaneja@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(msg.replace(/\*/g, ""))}`;
+    return { waUrl, mailUrl };
+  };
 
   const submit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
     try {
-      await api.post("/creators/submit", f);
+      const r = await api.post("/creators/submit", f);
+      setSubmissionId(r.data.id);
       setDone(true);
-      toast.success("Submission received! We'll review within 48h.");
+      toast.success("Submission received! Notifying Annu ji on WhatsApp…");
+      // Auto-open WhatsApp notification to Annu ji after short delay
+      const { waUrl } = notifyAnnu(r.data);
+      setTimeout(() => window.open(waUrl, "_blank", "noopener"), 800);
     } catch (err) {
       toast.error(err.response?.data?.detail || "Submission failed");
     } finally { setSubmitting(false); }
@@ -67,10 +93,27 @@ export default function Sell() {
         <div className="card-dark p-10 text-center max-w-xl mx-auto" data-testid="sell-success">
           <CheckCircle2 className="text-[#25D366] mx-auto mb-4" size={56} />
           <h2 className="font-display text-3xl mb-2">Submission Received!</h2>
-          <p className="text-white/60 mb-6">We'll review your content within 48 hours and reach out on WhatsApp/email with next steps.</p>
+          <p className="text-white/60 mb-2">We've auto-notified Annu ji on WhatsApp. She'll review within 48 hours and reach out directly.</p>
+          <p className="text-xs text-white/40 mb-6">Submission ID: <span className="font-mono text-[#14b8a6]">{submissionId?.slice(0, 8)}</span></p>
+          <div className="flex flex-wrap gap-3 justify-center mb-4">
+            {submissionId && (() => {
+              const dummy = { id: submissionId, content_type: f.content_type, title: f.title, name: f.name, email: f.email, phone: f.phone, price: f.price, description: f.description, sample_url: f.sample_url, portfolio_url: f.portfolio_url };
+              const { waUrl, mailUrl } = notifyAnnu(dummy);
+              return (
+                <>
+                  <a href={waUrl} target="_blank" rel="noreferrer" className="btn-whatsapp text-sm" data-testid="sell-success-whatsapp">
+                    <MessageCircle size={14} /> Re-send WhatsApp notification
+                  </a>
+                  <a href={mailUrl} className="btn-secondary text-sm" data-testid="sell-success-email">
+                    <Mail size={14} /> Also notify via email
+                  </a>
+                </>
+              );
+            })()}
+          </div>
           <div className="flex gap-3 justify-center">
             <Link to="/" className="btn-secondary text-sm">Back to Home</Link>
-            <button onClick={() => { setDone(false); setF({ ...f, title: "", description: "", price: 0, sample_url: "" }); }} className="btn-primary text-sm">
+            <button onClick={() => { setDone(false); setSubmissionId(null); setF({ ...f, title: "", description: "", price: 0, sample_url: "" }); }} className="btn-primary text-sm">
               Submit Another
             </button>
           </div>
@@ -118,7 +161,16 @@ export default function Sell() {
                 <IndianRupee size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
                 <input type="number" placeholder="Suggested Price" min="0" value={f.price || ""} onChange={(e) => setF({ ...f, price: Number(e.target.value) })} className="w-full pl-8 pr-4 py-3 rounded-lg" data-testid="sell-price" />
               </div>
-              <input placeholder="Sample / Preview URL" value={f.sample_url} onChange={(e) => setF({ ...f, sample_url: e.target.value })} className="px-4 py-3 rounded-lg" data-testid="sell-sample" />
+              <div>
+                <ImageUpload
+                  value={f.sample_url}
+                  onChange={(v) => setF({ ...f, sample_url: v })}
+                  endpoint="/upload/creator"
+                  accept="image/*"
+                  testId="sell-sample"
+                />
+                {f.sample_url && <img src={f.sample_url} alt="sample" className="mt-2 h-16 rounded object-cover" />}
+              </div>
             </div>
 
             <button type="submit" disabled={submitting} className="btn-primary w-full justify-center" data-testid="sell-submit">

@@ -831,6 +831,48 @@ async def my_downloads(user=Depends(get_current_user)):
                 })
     return downloads
 
+# ---------- AR / TRY-ON ----------
+@api_router.get("/tryon/clothing")
+async def tryon_clothing():
+    items = await db.products.find({"category": "Clothing"}, {"_id": 0}).to_list(100)
+    return items
+
+@api_router.get("/tryon/artwork")
+async def tryon_artwork():
+    items = await db.products.find({"category": {"$in": ["Spiritual", "Wall Art", "Wedding"]}}, {"_id": 0}).to_list(100)
+    return items
+
+class LookCreate(BaseModel):
+    name: str
+    thumbnail: str
+    mode: Literal["dressing", "artwork"]
+    meta: dict = {}
+
+@api_router.post("/looks")
+async def create_look(data: LookCreate, user=Depends(get_current_user)):
+    obj = {
+        "id": str(uuid.uuid4()),
+        "user_id": user["id"],
+        "name": data.name,
+        "thumbnail": data.thumbnail,
+        "mode": data.mode,
+        "meta": data.meta,
+        "created_at": utcnow().isoformat(),
+    }
+    await db.looks.insert_one(obj)
+    obj.pop("_id", None)
+    return obj
+
+@api_router.get("/looks/me")
+async def my_looks(user=Depends(get_current_user)):
+    items = await db.looks.find({"user_id": user["id"]}, {"_id": 0}).sort("created_at", -1).to_list(200)
+    return items
+
+@api_router.delete("/looks/{look_id}")
+async def delete_look(look_id: str, user=Depends(get_current_user)):
+    await db.looks.delete_one({"id": look_id, "user_id": user["id"]})
+    return {"ok": True}
+
 app.include_router(api_router)
 
 app.add_middleware(
@@ -1032,6 +1074,37 @@ async def seed_data():
             x["created_at"] = utcnow().isoformat()
         await db.templates.insert_many(tmpl)
         logger.info(f"Seeded {len(tmpl)} templates")
+
+    # Seed clothing + artwork products for AR try-on (one-time)
+    if await db.products.count_documents({"category": "Clothing"}) == 0:
+        clothing = [
+            {"title": "Neon Neru Tee", "category": "Clothing", "description": "Premium crew-neck tee — neon purple accent", "price": 699, "original_price": 1299, "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?crop=entropy&cs=srgb&fm=jpg&q=85&w=600", "stock": 999},
+            {"title": "Royal Kurta", "category": "Clothing", "description": "Festive kurta for men", "price": 1499, "original_price": 2499, "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?crop=entropy&cs=srgb&fm=jpg&q=85&w=600", "stock": 999},
+            {"title": "Designer Saree", "category": "Clothing", "description": "Teal-toned designer saree", "price": 2999, "original_price": 4999, "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?crop=entropy&cs=srgb&fm=jpg&q=85&w=600", "stock": 999},
+            {"title": "Denim Jacket", "category": "Clothing", "description": "Classic denim jacket", "price": 1999, "original_price": 2999, "image": "https://images.unsplash.com/photo-1551537482-f2075a1d41f2?crop=entropy&cs=srgb&fm=jpg&q=85&w=600", "stock": 999},
+            {"title": "Graphic Hoodie", "category": "Clothing", "description": "Neon graphic hoodie", "price": 1299, "original_price": 1999, "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?crop=entropy&cs=srgb&fm=jpg&q=85&w=600", "stock": 999},
+            {"title": "Ethnic Sherwani", "category": "Clothing", "description": "Wedding sherwani with dupatta", "price": 4999, "original_price": 7999, "image": "https://images.unsplash.com/photo-1594938374182-a57061deaf3b?crop=entropy&cs=srgb&fm=jpg&q=85&w=600", "stock": 999},
+        ]
+        for c in clothing:
+            c["id"] = str(uuid.uuid4())
+            c["created_at"] = utcnow().isoformat()
+        await db.products.insert_many(clothing)
+        logger.info(f"Seeded {len(clothing)} clothing items")
+
+    if await db.products.count_documents({"category": "Wall Art"}) == 0:
+        artwork = [
+            {"title": "Guruji Framed Portrait", "category": "Wall Art", "description": "Premium framed devotional portrait", "price": 1999, "original_price": 2999, "image": "https://customer-assets.emergentagent.com/job_craftpro-services/artifacts/qfqd193x_tmp_8573562d-5d66-4082-af3e-8a6292a431ad.jpeg", "stock": 999},
+            {"title": "Om Sacred Wall Poster", "category": "Wall Art", "description": "Minimalist Om wall art", "price": 799, "original_price": 1299, "image": "https://images.unsplash.com/photo-1618221941543-3e2094e23bd7?crop=entropy&cs=srgb&fm=jpg&q=85&w=600", "stock": 999},
+            {"title": "Ganesha Canvas Print", "category": "Wall Art", "description": "Lord Ganesha canvas print", "price": 1499, "original_price": 2299, "image": "https://images.unsplash.com/photo-1578762560042-46ad127c95ea?crop=entropy&cs=srgb&fm=jpg&q=85&w=600", "stock": 999},
+            {"title": "Mandala Wall Art", "category": "Wall Art", "description": "Intricate mandala wall art", "price": 999, "original_price": 1799, "image": "https://images.unsplash.com/photo-1582582621959-48d27397dc69?crop=entropy&cs=srgb&fm=jpg&q=85&w=600", "stock": 999},
+            {"title": "Buddha Zen Frame", "category": "Wall Art", "description": "Calming Buddha frame", "price": 1299, "original_price": 1999, "image": "https://images.unsplash.com/photo-1507434965515-61970f2bd7c6?crop=entropy&cs=srgb&fm=jpg&q=85&w=600", "stock": 999},
+            {"title": "Radha Krishna Canvas", "category": "Wall Art", "description": "Radha Krishna large canvas", "price": 2499, "original_price": 3999, "image": "https://images.unsplash.com/photo-1604848698030-c434ba08ece1?crop=entropy&cs=srgb&fm=jpg&q=85&w=600", "stock": 999},
+        ]
+        for a in artwork:
+            a["id"] = str(uuid.uuid4())
+            a["created_at"] = utcnow().isoformat()
+        await db.products.insert_many(artwork)
+        logger.info(f"Seeded {len(artwork)} wall art items")
 
     # Seed coupons
     if await db.coupons.count_documents({}) == 0:

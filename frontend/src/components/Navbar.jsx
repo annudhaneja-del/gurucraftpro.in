@@ -10,6 +10,8 @@ const links = [
   { to: "/", label: "Home" },
   { to: "/services", label: "Services" },
   { to: "/studio", label: "Design Studio" },
+  { to: "/dressing-room", label: "Try-On" },
+  { to: "/ar-view", label: "AR Wall" },
   { to: "/shop", label: "Shop" },
   { to: "/learn", label: "Learn" },
   { to: "/contact", label: "Contact" },

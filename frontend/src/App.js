@@ -22,6 +22,8 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Admin from "./pages/Admin";
 import Checkout from "./pages/Checkout";
+import DressingRoom from "./pages/DressingRoom";
+import ARArtwork from "./pages/ARArtwork";
 
 function Layout({ children }) {
   return (
@@ -51,6 +53,8 @@ export default function App() {
             <Route path="/login" element={<Layout><Login /></Layout>} />
             <Route path="/signup" element={<Layout><Signup /></Layout>} />
             <Route path="/checkout" element={<Layout><Checkout /></Layout>} />
+            <Route path="/dressing-room" element={<Layout><DressingRoom /></Layout>} />
+            <Route path="/ar-view" element={<Layout><ARArtwork /></Layout>} />
             <Route path="/dashboard" element={<ProtectedRoute><Layout><Dashboard /></Layout></ProtectedRoute>} />
             <Route path="/admin" element={<ProtectedRoute admin><Layout><Admin /></Layout></ProtectedRoute>} />
           </Routes>

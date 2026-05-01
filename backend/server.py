@@ -829,21 +829,43 @@ async def list_categories():
 @api_router.get("/downloads/me")
 async def my_downloads(user=Depends(get_current_user)):
     orders = await db.orders.find({"user_id": user["id"], "status": "paid"}, {"_id": 0}).to_list(500)
+
+    # Collect unique item IDs by type (batch instead of N+1)
+    product_ids = set()
+    learning_ids = set()
+    for o in orders:
+        for it in o.get("items", []):
+            if it.get("item_type") == "product":
+                product_ids.add(it["item_id"])
+            elif it.get("item_type") == "learning":
+                learning_ids.add(it["item_id"])
+
+    products = {}
+    if product_ids:
+        async for p in db.products.find({"id": {"$in": list(product_ids)}}, {"_id": 0, "id": 1, "file_url": 1, "image": 1}):
+            products[p["id"]] = p
+    learning = {}
+    if learning_ids:
+        async for l in db.learning.find({"id": {"$in": list(learning_ids)}}, {"_id": 0, "id": 1, "file_url": 1, "image": 1}):
+            learning[l["id"]] = l
+
     downloads = []
     for o in orders:
         for it in o.get("items", []):
-            if it.get("item_type") in ("product", "learning"):
-                # Look up file_url from source collection
-                coll = db.products if it["item_type"] == "product" else db.learning
-                src = await coll.find_one({"id": it["item_id"]}, {"_id": 0, "file_url": 1, "image": 1})
-                downloads.append({
-                    "order_id": o["id"],
-                    "title": it["title"],
-                    "type": it["item_type"],
-                    "image": (src or {}).get("image", ""),
-                    "file_url": (src or {}).get("file_url", ""),
-                    "date": o.get("created_at", ""),
-                })
+            if it.get("item_type") == "product":
+                src = products.get(it["item_id"], {})
+            elif it.get("item_type") == "learning":
+                src = learning.get(it["item_id"], {})
+            else:
+                continue
+            downloads.append({
+                "order_id": o["id"],
+                "title": it["title"],
+                "type": it["item_type"],
+                "image": src.get("image", ""),
+                "file_url": src.get("file_url", ""),
+                "date": o.get("created_at", ""),
+            })
     return downloads
 
 # ---------- AR / TRY-ON ----------

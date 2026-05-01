@@ -1,0 +1,116 @@
+{
+  "theme": "dark",
+  "archetype": "Neon Editorial (Custom: Jewel & Luxury + Electric & Neon)",
+  "colors": {
+    "background": "#05050A",
+    "surface": "#12121A",
+    "surface_glass": "rgba(18, 18, 26, 0.7)",
+    "primary": "#7c3aed",
+    "primary_hover": "#8b5cf6",
+    "secondary": "#14b8a6",
+    "secondary_hover": "#2dd4bf",
+    "text_primary": "#FFFFFF",
+    "text_secondary": "#A1A1AA",
+    "border": "rgba(255, 255, 255, 0.1)",
+    "accent_whatsapp": "#25D366"
+  },
+  "typography": {
+    "fonts": {
+      "headings": "Playfair Display, serif",
+      "body": "Outfit, sans-serif"
+    },
+    "scales": {
+      "h1": "text-5xl sm:text-6xl lg:text-7xl tracking-tight leading-none",
+      "h2": "text-4xl sm:text-5xl tracking-tight",
+      "h3": "text-2xl sm:text-3xl",
+      "h4": "text-xl",
+      "body": "text-base leading-relaxed",
+      "small": "text-sm tracking-wide"
+    }
+  },
+  "components": {
+    "navbar": "Glassmorphism (backdrop-blur-xl bg-[#12121A]/70) with delicate bottom border (border-white/10). Sticky at the top, z-50. Must include Logo, Links, Call CTA, and WhatsApp CTA.",
+    "buttons": {
+      "primary": "bg-[#7c3aed] text-white hover:bg-[#8b5cf6] rounded-md transition-all duration-300 hover:-translate-y-1 shadow-[0_0_15px_rgba(124,58,237,0.4)]",
+      "secondary": "bg-transparent border border-[#14b8a6] text-[#14b8a6] hover:bg-[#14b8a6] hover:text-[#05050A] rounded-md transition-all duration-300",
+      "whatsapp": "fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-[0_4px_14px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform flex items-center justify-center"
+    },
+    "cards": {
+      "default": "bg-[#12121A] border border-white/5 rounded-xl overflow-hidden hover:border-[#7c3aed]/50 transition-colors duration-300 relative group",
+      "glass": "backdrop-blur-md bg-white/5 border border-white/10 rounded-xl",
+      "neon_trace": "Use tracing beam effect or neon subtle glow on hover (box-shadow or inset shadow)."
+    },
+    "inputs": "bg-[#12121A] border border-white/10 text-white rounded-md focus:border-[#14b8a6] focus:ring-1 focus:ring-[#14b8a6] transition-all",
+    "footer": "Darker background #020205, generous padding py-20, subtle top border border-white/10. Contrast shift against body."
+  },
+  "layouts": {
+    "hero": "Asymmetric bento grid or layered 3D feel. Use Neon Storefront asset as main visual or hero background overlay. Overlay max bg-black/50. Include floating design tools (SVG or small absolute positioned glass cards). Primary CTA and WhatsApp CTA prominent.",
+    "services_grid": "Mode A: Tetris Grid. 8 or 12 column grid with asymmetric spans. E.g., Guruji Art Works spans 2 rows, 7-Day Consultation is a wide card, VantageEcom is tall. Generous gaps (gap-8).",
+    "design_editor": "Mode B: Control Room Grid. Strict density. Full height layout h-[calc(100vh-header)]. Left sidebar for tools (shapes, text, uploads), large center canvas area (Canva-clone), right sidebar for layer/properties. Minimal spacing, functional focus.",
+    "gallery": "Dynamic masonry or asymmetric grid for images. Hover effects to reveal details. Use Guruji portrait and Fashion Try-On here alongside additional images.",
+    "admin_panel": "Dense data dashboard. Sidebar navigation. High contrast tables, Shadcn UI customized with dark/neon accents. Minimal borders, clear typography."
+  },
+  "media": {
+    "logos": [
+      {
+        "url": "https://customer-assets.emergentagent.com/job_a9385893-2db1-4c60-9d30-98a00b2907c1/artifacts/31j8kh2p_tmp_4c1cc7d1-61c9-4235-b652-ccc5ce1cff98.jpeg",
+        "category": "logo",
+        "description": "GurucraftPro Main Logo - Use in Navbar and Footer"
+      }
+    ],
+    "hero": [
+      {
+        "url": "https://customer-assets.emergentagent.com/job_a9385893-2db1-4c60-9d30-98a00b2907c1/artifacts/1z5p7qlm_tmp_8573562d-5d66-4082-af3e-8a6292a431ad.jpeg",
+        "category": "hero",
+        "description": "Neon storefront 3D hero visual"
+      }
+    ],
+    "services": [
+      {
+        "url": "https://customer-assets.emergentagent.com/job_a9385893-2db1-4c60-9d30-98a00b2907c1/artifacts/90y404uo_IMG-20260313-WA0029.jpg",
+        "category": "service",
+        "description": "Guruji portrait for Guruji Art Works service section"
+      },
+      {
+        "url": "https://customer-assets.emergentagent.com/job_a9385893-2db1-4c60-9d30-98a00b2907c1/artifacts/00ouwg4m_images_1_tkxu3j.jpg",
+        "category": "service",
+        "description": "Fashion/Try-On neon display for VantageEcom service"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1766393030563-fc2e2ef87acb?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHwyfHxpbmRpYW4lMjB3ZWRkaW5nJTIwZGVjb3IlMjBlbGVnYW50JTIwZGFya3xlbnwwfHx8fDE3Nzc2MzcwMDd8MA&ixlib=rb-4.1.0&q=85",
+        "category": "service",
+        "description": "Elegant Indian Wedding Planner decor"
+      }
+    ],
+    "gallery_and_shop": [
+      {
+        "url": "https://images.unsplash.com/photo-1765539160785-e7953620488f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MjJ8MHwxfHNlYXJjaHwxfHxncmFwaGljJTIwZGVzaWduJTIwd29ya3NwYWNlJTIwbmVvbnxlbnwwfHx8fDE3Nzc2MzcwMDd8MA&ixlib=rb-4.1.0&q=85",
+        "category": "gallery",
+        "description": "Graphic design workspace with neon"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1764509195128-e2f389ac3235?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjB3ZWRkaW5nJTIwZGVjb3IlMjBlbGVnYW50JTIwZGFya3xlbnwwfHx8fDE3Nzc2MzcwMDd8MA&ixlib=rb-4.1.0&q=85",
+        "category": "gallery",
+        "description": "Ornate elegant metal box - suitable for premium digital product thumbnail"
+      }
+    ],
+    "learning": [
+      {
+        "url": "https://images.unsplash.com/photo-1758872014929-174e4ccdf01f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHwyfHxkaWdpdGFsJTIwbGVhcm5pbmclMjBsYXB0b3AlMjBuaWdodHxlbnwwfHx8fDE3Nzc2MzcwMDd8MA&ixlib=rb-4.1.0&q=85",
+        "category": "learning",
+        "description": "Digital learning setup at night"
+      }
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Follow the neon/dark theme stringently. Use #7c3aed (Neon Purple) and #14b8a6 (Teal) as accents against a #05050A (Dark) background.",
+    "Typography: Apply Playfair Display strictly for headings and Outfit for body text.",
+    "Ensure all interactive components include the data-testid attribute in kebab-case format.",
+    "Implement the asymmetric Tetris bento layout for the Services section.",
+    "Design Editor should utilize Shadcn components heavily customized to be dense, cardless, and functional, resembling Canva.",
+    "Add a fixed floating WhatsApp CTA on all main pages.",
+    "Hero section must integrate the Neon Storefront image with parallax or subtle float animations on overlapping design tool icons.",
+    "Include an interactive Google Maps embed for Rohini, Delhi in the Contact section.",
+    "Ensure all provided media URLs are utilized in their respective designated sections without using placeholders."
+  ]
+}

@@ -9,8 +9,11 @@ export default function Footer() {
     <footer className="border-t border-white/10 bg-[#020205] pt-16 pb-8 mt-24" data-testid="site-footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10">
         <div>
-          <div className="flex items-center gap-2 mb-4">
-            <img src={LOGO} alt="GurucraftPro" className="h-10 w-10 rounded-md object-cover" />
+          <div className="flex items-center gap-2.5 mb-4">
+            <div className="relative">
+              <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-[#7c3aed] to-[#14b8a6] blur-lg opacity-50" />
+              <img src={LOGO} alt="GurucraftPro" className="relative h-12 w-12 rounded-lg object-cover logo-glow" />
+            </div>
             <span className="font-display text-xl font-bold">
               Guru<span className="text-[#7c3aed]">craft</span><span className="text-[#14b8a6]">Pro</span>
             </span>

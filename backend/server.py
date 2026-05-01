@@ -699,6 +699,21 @@ logger = logging.getLogger(__name__)
 # ---------- SEED ----------
 @app.on_event("startup")
 async def seed_data():
+    # Update Guruji Art Works image to new portrait if it still uses the old URL (one-time migration)
+    new_guruji = "https://customer-assets.emergentagent.com/job_craftpro-services/artifacts/qfqd193x_tmp_8573562d-5d66-4082-af3e-8a6292a431ad.jpeg"
+    await db.services.update_many(
+        {"slug": "guruji-art-works"},
+        {"$set": {"image": new_guruji}},
+    )
+    await db.products.update_many(
+        {"title": "Guruji Devotional Poster Set"},
+        {"$set": {"image": new_guruji}},
+    )
+    await db.gallery.update_many(
+        {"title": "Guruji Frame"},
+        {"$set": {"image": new_guruji}},
+    )
+
     # Seed admin
     admin = await db.users.find_one({"email": ADMIN_EMAIL})
     if not admin:

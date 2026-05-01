@@ -24,10 +24,14 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10" data-testid="site-navbar">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2" data-testid="nav-logo">
-          <img src={LOGO} alt="GurucraftPro" className="h-9 w-9 rounded-md object-cover" />
-          <span className="font-display text-lg font-bold tracking-tight">
+        <Link to="/" className="flex items-center gap-2.5 group" data-testid="nav-logo">
+          <div className="relative">
+            <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-[#7c3aed] to-[#14b8a6] blur-lg opacity-60 group-hover:opacity-90 transition-opacity" />
+            <img src={LOGO} alt="GurucraftPro" className="relative h-11 w-11 rounded-lg object-cover logo-glow" />
+          </div>
+          <span className="font-display text-xl font-bold tracking-tight leading-none">
             Guru<span className="text-[#7c3aed]">craft</span><span className="text-[#14b8a6]">Pro</span>
+            <span className="block text-[9px] font-normal text-white/40 tracking-[0.25em] uppercase mt-0.5 font-sans">Crafting Digital Experiences</span>
           </span>
         </Link>
 

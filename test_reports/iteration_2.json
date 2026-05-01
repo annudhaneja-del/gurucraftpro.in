@@ -1,0 +1,52 @@
+{
+  "summary": "Iteration 2 testing of GurucraftPro admin/user dashboard expansion. 49/49 pytest backend tests passed (31 regression + 18 new). New endpoints verified: POST /api/upload (admin-only, 403 for user, 400 for bad ext, static mount GET /api/uploads/{name} serves file), GET/PUT /api/settings/homepage (default schema, admin-only PUT, persistence confirmed), PUT /api/auth/me (name+phone update, new_password requires current_password, min length 6, login with new password works), PUT /api/admin/users/{id}/role (promote/demote toggle, refuses self 400), DELETE /api/admin/users/{id} (refuses self 400), GET /api/categories (services/products/gallery/templates), GET /api/downloads/me (401 unauth, list with order_id/title/type/image/file_url/date after paid product order). Razorpay now runs in REAL test mode (razor_client enabled) — /payments/verify enforces HMAC signature. Frontend verified: /admin shows all 13 tabs; Homepage tab saves via PUT and /home reflects updated hero title on reload; Users tab has toggle/delete testids; Admin Services form has Upload button with URL input; /services has search (filters to matching titles), price range slider, 7 category filter buttons (all/6 cats) — filters work in combination; /dashboard shows all 5 tabs (overview/orders/downloads/designs/profile) with correct data-testid; profile name+phone update persisted and verified after reload.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "/api/auth/me (PUT)", "issue": "Does not return 401 when called with invalid token; depends on get_current_user — OK but no explicit test for wrong-token flow here."},
+      {"endpoint": "/api/admin/users/{id}/role", "issue": "Updates role silently with 200 even when user_id does not exist (Mongo update_one with no match). Consider 404 when modified_count==0."},
+      {"endpoint": "/api/admin/users/{id} DELETE", "issue": "Returns 200 even if user did not exist (deleted_count may be 0). Consider 404."},
+      {"endpoint": "/api/upload", "issue": "10MB cap is enforced AFTER full read into memory — large uploads could OOM. Use file.size (Starlette >= 0.30) or stream-with-limit."},
+      {"endpoint": "/api/payments/verify", "issue": "Still unauthenticated. With real Razorpay keys signature is checked, but endpoint should also require an authenticated user and confirm the order belongs to them."},
+      {"endpoint": "/api/settings/homepage (PUT)", "issue": "Accepts entire HomepageSettings object — partial updates not supported (must send all fields). Consider PATCH or make fields Optional."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "/admin Services form", "issues": ["Create form is always visible above the grid (not a modal). Works but looks crowded; consider collapsible panel."]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/backend_test.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "(Optional) Make PUT /api/settings/homepage accept partial updates (Optional[...] fields) for better UX.",
+    "(Recommended) Return 404 from /api/admin/users/{id}/role PUT and /api/admin/users/{id} DELETE when the user doesn't exist (currently returns 200).",
+    "(Recommended) Enforce upload size BEFORE reading full bytes (streaming / file.size) to avoid OOM on malicious large uploads.",
+    "(Recommended) Require authentication on /api/payments/verify and bind order to current user to prevent any unauth caller from marking another user's order as paid.",
+    "(Carried over) Server-side price lookup in /api/orders instead of trusting client items[].price.",
+    "(Carried over) Migrate deprecated FastAPI on_event startup to lifespan."
+  ],
+  "critical_code_review_comments": [
+    "server.py is now 1047 lines — strongly recommend splitting into routers/ (auth, services, products, orders, admin, settings, uploads, payments).",
+    "HomepageSettings fields are not Optional in the PUT payload → partial updates impossible without replaying entire doc.",
+    "File upload reads whole file into memory before size check — flip the order or use streaming.",
+    "Admin user-management endpoints don't verify existence before update/delete (silent no-op returning 200).",
+    "/api/payments/verify still lacks auth — with real keys the HMAC check mitigates, but the order ownership is not tied to caller.",
+    "Downloads endpoint performs N+1 queries (one per item). Fine for MVP but note for future pagination/caching.",
+    "Seeded DEFAULT_SETTINGS duplicates model defaults — OK, but could be a single source."
+  ],
+  "updated_files": [
+    "/app/backend/tests/backend_test.py (added TestUpload, TestHomepageSettings, TestProfile, TestAdminUserMgmt, TestCategories, TestDownloads; updated TestOrdersPayments & TestDownloads to compute real Razorpay HMAC signatures since razor_client is now real-mode)"
+  ],
+  "success_rate": {"backend": "100% (49/49)", "frontend": "100%"},
+  "test_credentials": "Admin: admin@gurucraftpro.in / Gurucraftpro (seeded). Test users created dynamically by tests with prefix TEST_/uitest_/dl_/pwd_/mgr_.",
+  "seed_data_creation": "No additional seed data created. Tests create & clean up their own TEST_-prefixed rows. One persistent paid order was created by TestDownloads::test_downloads_after_paid_order (user dl_*). Admin Users list contains accumulated test accounts from prior iterations (dl_*, pwd_*, profile_*) — consider periodic cleanup.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "49-test pytest suite at /app/backend/tests/backend_test.py is the regression baseline (31 orig + 18 new for iteration 2). Razorpay is in REAL test mode (razor_client != None); tests handle both mock and real paths by computing HMAC signature when response says mock=False. RAZORPAY_KEY_SECRET is read from env (falls back to the known test secret). Frontend data-testids verified: admin tabs (button text), dash-tab-{overview|orders|downloads|designs|profile}, profile-{name|phone|save|current-password|new-password|change-password}, services-search, services-price-range, services-filter-{cat}, admin-homepage-settings, admin-homepage-save, admin-user-toggle-{id}, admin-user-delete-{id}, upload-{field}-btn.",
+  "rca of the issue": "N/A — no bug investigated. Two pre-existing tests (test_order_with_coupon, test_downloads_after_paid_order) initially failed because razor_client was previously None in iteration 1 but is now a real client. Fix was to compute HMAC signature with RAZORPAY_KEY_SECRET to satisfy /api/payments/verify. No backend code change required."
+}

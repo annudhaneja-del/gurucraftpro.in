@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Search, SlidersHorizontal } from "lucide-react";
 import api from "../lib/api";
 
 export default function Services() {
   const [services, setServices] = useState([]);
   const [cat, setCat] = useState("all");
+  const [q, setQ] = useState("");
+  const [maxPrice, setMaxPrice] = useState(30000);
 
   useEffect(() => { api.get("/services").then((r) => setServices(r.data)); }, []);
 
-  const categories = ["all", ...Array.from(new Set(services.map((s) => s.category)))];
-  const filtered = cat === "all" ? services : services.filter((s) => s.category === cat);
+  const categories = useMemo(() => ["all", ...Array.from(new Set(services.map((s) => s.category)))], [services]);
+  const filtered = services
+    .filter((s) => cat === "all" || s.category === cat)
+    .filter((s) => q === "" || `${s.title} ${s.short_desc} ${s.description}`.toLowerCase().includes(q.toLowerCase()))
+    .filter((s) => s.price <= maxPrice);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" data-testid="services-page">
@@ -20,6 +25,28 @@ export default function Services() {
         <p className="text-white/60 mt-4 max-w-2xl">Hand-picked services designed to grow your brand, celebrate your moments, and launch your dreams.</p>
       </div>
 
+      {/* Search + Filters */}
+      <div className="flex flex-wrap items-center gap-3 mb-6">
+        <div className="relative flex-1 min-w-[240px]">
+          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
+          <input
+            placeholder="Search services..."
+            value={q} onChange={(e) => setQ(e.target.value)}
+            className="w-full pl-10 pr-4 py-3 rounded-full"
+            data-testid="services-search"
+          />
+        </div>
+        <div className="flex items-center gap-2 text-xs text-white/60">
+          <SlidersHorizontal size={14} /> Max ₹{maxPrice.toLocaleString("en-IN")}
+        </div>
+        <input
+          type="range" min="500" max="30000" step="500" value={maxPrice}
+          onChange={(e) => setMaxPrice(Number(e.target.value))}
+          className="w-40 accent-[#7c3aed]"
+          data-testid="services-price-range"
+        />
+      </div>
+
       <div className="flex flex-wrap gap-2 mb-8">
         {categories.map((c) => (
           <button
@@ -27,9 +54,7 @@ export default function Services() {
             onClick={() => setCat(c)}
             className={`px-4 py-2 rounded-full text-sm border transition-all ${cat === c ? "bg-[#7c3aed] border-[#7c3aed] text-white" : "border-white/10 text-white/70 hover:border-[#7c3aed]/50"}`}
             data-testid={`services-filter-${c}`}
-          >
-            {c === "all" ? "All" : c}
-          </button>
+          >{c === "all" ? "All" : c}</button>
         ))}
       </div>
 
@@ -68,6 +93,7 @@ export default function Services() {
             </div>
           </div>
         ))}
+        {filtered.length === 0 && <div className="col-span-3 text-center text-white/50 py-20">No services match your filter.</div>}
       </div>
     </div>
   );

@@ -11,11 +11,11 @@ const HERO_IMG = "https://customer-assets.emergentagent.com/job_a9385893-2db1-4c
 const GURUJI_IMG = "https://customer-assets.emergentagent.com/job_craftpro-services/artifacts/qfqd193x_tmp_8573562d-5d66-4082-af3e-8a6292a431ad.jpeg";
 const LOGO = "https://customer-assets.emergentagent.com/job_a9385893-2db1-4c60-9d30-98a00b2907c1/artifacts/31j8kh2p_tmp_4c1cc7d1-61c9-4235-b652-ccc5ce1cff98.jpeg";
 
-const STATS = [
-  { label: "Clients Served", value: 500, suffix: "+", color: "#7c3aed", icon: Users },
-  { label: "Orders Completed", value: 1200, suffix: "+", color: "#14b8a6", icon: Award },
-  { label: "Response Time", value: 5, suffix: " min", color: "#25D366", icon: Zap },
-  { label: "Years Experience", value: 7, suffix: "+", color: "#f59e0b", icon: ShieldCheck },
+const STATS_DEFAULT = [
+  { label: "Clients Served", key: "stat_clients", fallback: 500, suffix: "+", color: "#7c3aed", icon: Users },
+  { label: "Orders Completed", key: "stat_orders", fallback: 1200, suffix: "+", color: "#14b8a6", icon: Award },
+  { label: "Response Time", key: null, fallback: 5, suffix: " min", color: "#25D366", icon: Zap },
+  { label: "Years Experience", key: "stat_years", fallback: 7, suffix: "+", color: "#f59e0b", icon: ShieldCheck },
 ];
 
 const MARQUEE_ITEMS = [
@@ -63,12 +63,14 @@ export default function Home() {
   const [services, setServices] = useState([]);
   const [testimonials, setTestimonials] = useState([]);
   const [gallery, setGallery] = useState([]);
+  const [settings, setSettings] = useState(null);
   const [parY, setParY] = useState(0);
 
   useEffect(() => {
     api.get("/services").then((r) => setServices(r.data.slice(0, 6)));
     api.get("/testimonials").then((r) => setTestimonials(r.data));
     api.get("/gallery").then((r) => setGallery(r.data));
+    api.get("/settings/homepage").then((r) => setSettings(r.data)).catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -128,12 +130,12 @@ export default function Home() {
               <span className="text-[#25D366]">● LIVE</span>
             </div>
             <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl leading-[1.05] mb-6 animate-rise delay-100" data-testid="home-hero-title">
-              Creative designs &<br />
-              <span className="shimmer-text">digital services</span>
-              <br />tailored for every need
+              {settings?.hero_title_line1 || "Creative designs &"}<br />
+              <span className="shimmer-text">{settings?.hero_title_line2 || "digital services"}</span>
+              <br />{settings?.hero_title_line3 || "tailored for every need"}
             </h1>
             <p className="text-lg text-white/70 max-w-xl mb-8 animate-rise delay-200">
-              From wedding invites and Guruji frames to complete e-commerce stores, AI prompts and Canva-style design tools — GurucraftPro is your one-stop creative studio in Rohini, Delhi.
+              {settings?.hero_subtitle || "From wedding invites and Guruji frames to complete e-commerce stores, AI prompts and Canva-style design tools — GurucraftPro is your one-stop creative studio in Rohini, Delhi."}
             </p>
             <div className="flex flex-wrap gap-3 animate-rise delay-300">
               <a href="https://wa.me/918527837527?text=Hi%2C%20I%20want%20GurucraftPro" target="_blank" rel="noreferrer" className="btn-whatsapp" data-testid="home-hero-whatsapp">
@@ -149,13 +151,14 @@ export default function Home() {
           </div>
 
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl animate-rise delay-400">
-            {STATS.map((s) => {
+            {STATS_DEFAULT.map((s) => {
               const Ic = s.icon;
+              const val = s.key && settings?.[s.key] != null ? settings[s.key] : s.fallback;
               return (
                 <div key={s.label} className="glass rounded-2xl p-4 hover:border-[#7c3aed]/50 transition-colors group" data-testid={`home-stat-${s.label.toLowerCase().replace(/\s+/g, "-")}`}>
                   <Ic size={16} className="mb-2 opacity-70" style={{ color: s.color }} />
                   <div className="font-display text-3xl font-bold" style={{ color: s.color }}>
-                    <Counter value={s.value} suffix={s.suffix} />
+                    <Counter value={val} suffix={s.suffix} />
                   </div>
                   <div className="text-xs text-white/60 mt-1">{s.label}</div>
                 </div>
@@ -199,13 +202,20 @@ export default function Home() {
           <div className="reveal-on-scroll">
             <p className="text-[#14b8a6] text-sm tracking-widest uppercase mb-3">About the Studio</p>
             <h2 className="font-display text-4xl sm:text-5xl mb-6">
-              Crafted with love by <span className="gradient-text">Annu Dhaneja</span>
+              {settings?.about_heading ? (
+                <>
+                  {settings.about_heading.split("Annu Dhaneja")[0]}
+                  {settings.about_heading.includes("Annu Dhaneja") && <span className="gradient-text">Annu Dhaneja</span>}
+                </>
+              ) : (
+                <>Crafted with love by <span className="gradient-text">Annu Dhaneja</span></>
+              )}
             </h2>
             <p className="text-white/70 leading-relaxed mb-4">
-              For over 7 years, GurucraftPro has been Rohini's go-to creative studio — blending traditional Indian aesthetics with cutting-edge digital craft. From intimate wedding invites to complete e-commerce empires, every project carries the same promise: premium quality, personal touch, divine blessings.
+              {settings?.about_para1 || "For over 7 years, GurucraftPro has been Rohini's go-to creative studio — blending traditional Indian aesthetics with cutting-edge digital craft. From intimate wedding invites to complete e-commerce empires, every project carries the same promise: premium quality, personal touch, divine blessings."}
             </p>
             <p className="text-white/70 leading-relaxed mb-6">
-              Whether you need a spiritual Guruji frame for your home mandir, a Canva-style design tool for your business, or a full D2C store launch — we bring craftsmanship, technology, and heart together.
+              {settings?.about_para2 || "Whether you need a spiritual Guruji frame for your home mandir, a Canva-style design tool for your business, or a full D2C store launch — we bring craftsmanship, technology, and heart together."}
             </p>
             <div className="grid grid-cols-2 gap-3 mb-6">
               {[

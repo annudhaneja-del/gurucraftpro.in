@@ -1,4 +1,5 @@
-from fastapi import FastAPI, APIRouter, HTTPException, Depends
+from fastapi import FastAPI, APIRouter, HTTPException, Depends, UploadFile, File
+from fastapi.staticfiles import StaticFiles
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
@@ -44,6 +45,11 @@ if razorpay and RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET:
 app = FastAPI(title="GurucraftPro API")
 api_router = APIRouter(prefix="/api")
 security = HTTPBearer(auto_error=False)
+
+# Uploads directory
+UPLOAD_DIR = ROOT_DIR / "uploads"
+UPLOAD_DIR.mkdir(exist_ok=True)
+app.mount("/api/uploads", StaticFiles(directory=str(UPLOAD_DIR)), name="uploads")
 
 # ---------- UTILS ----------
 def utcnow():
@@ -682,6 +688,148 @@ async def admin_users(_=Depends(admin_required)):
 @api_router.get("/")
 async def root():
     return {"message": "GurucraftPro API", "status": "live"}
+
+# ---------- FILE UPLOAD ----------
+ALLOWED_EXT = {"png", "jpg", "jpeg", "webp", "gif", "pdf", "svg"}
+
+@api_router.post("/upload")
+async def upload_file(file: UploadFile = File(...), _=Depends(admin_required)):
+    ext = (file.filename.rsplit(".", 1)[-1] if "." in file.filename else "").lower()
+    if ext not in ALLOWED_EXT:
+        raise HTTPException(status_code=400, detail=f"Unsupported file type: {ext}")
+    name = f"{uuid.uuid4().hex}.{ext}"
+    dest = UPLOAD_DIR / name
+    content = await file.read()
+    if len(content) > 10 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="File too large (max 10MB)")
+    dest.write_bytes(content)
+    return {"url": f"/api/uploads/{name}", "filename": name, "size": len(content)}
+
+# ---------- HOMEPAGE SETTINGS ----------
+DEFAULT_SETTINGS = {
+    "hero_title_line1": "Creative designs &",
+    "hero_title_line2": "digital services",
+    "hero_title_line3": "tailored for every need",
+    "hero_subtitle": "From wedding invites and Guruji frames to complete e-commerce stores, AI prompts and Canva-style design tools — GurucraftPro is your one-stop creative studio in Rohini, Delhi.",
+    "about_heading": "Crafted with love by Annu Dhaneja",
+    "about_para1": "For over 7 years, GurucraftPro has been Rohini's go-to creative studio — blending traditional Indian aesthetics with cutting-edge digital craft.",
+    "about_para2": "Whether you need a spiritual Guruji frame, a Canva-style design tool, or a full D2C store launch — we bring craftsmanship, technology, and heart together.",
+    "stat_clients": 500,
+    "stat_orders": 1200,
+    "stat_years": 7,
+    "phone": "+918527837527",
+    "whatsapp": "+918527837527",
+    "email": "annudhaneja@gmail.com",
+    "address": "Rohini, Delhi - 110085",
+    "hours": "8 AM – 8 PM",
+}
+
+class HomepageSettings(BaseModel):
+    hero_title_line1: str = DEFAULT_SETTINGS["hero_title_line1"]
+    hero_title_line2: str = DEFAULT_SETTINGS["hero_title_line2"]
+    hero_title_line3: str = DEFAULT_SETTINGS["hero_title_line3"]
+    hero_subtitle: str = DEFAULT_SETTINGS["hero_subtitle"]
+    about_heading: str = DEFAULT_SETTINGS["about_heading"]
+    about_para1: str = DEFAULT_SETTINGS["about_para1"]
+    about_para2: str = DEFAULT_SETTINGS["about_para2"]
+    stat_clients: int = DEFAULT_SETTINGS["stat_clients"]
+    stat_orders: int = DEFAULT_SETTINGS["stat_orders"]
+    stat_years: int = DEFAULT_SETTINGS["stat_years"]
+    phone: str = DEFAULT_SETTINGS["phone"]
+    whatsapp: str = DEFAULT_SETTINGS["whatsapp"]
+    email: str = DEFAULT_SETTINGS["email"]
+    address: str = DEFAULT_SETTINGS["address"]
+    hours: str = DEFAULT_SETTINGS["hours"]
+
+@api_router.get("/settings/homepage", response_model=HomepageSettings)
+async def get_settings():
+    doc = await db.settings.find_one({"key": "homepage"}, {"_id": 0})
+    if not doc:
+        return HomepageSettings()
+    return HomepageSettings(**{k: v for k, v in doc.items() if k != "key"})
+
+@api_router.put("/settings/homepage", response_model=HomepageSettings)
+async def update_settings(data: HomepageSettings, _=Depends(admin_required)):
+    doc = data.model_dump()
+    doc["key"] = "homepage"
+    await db.settings.update_one({"key": "homepage"}, {"$set": doc}, upsert=True)
+    return data
+
+# ---------- USER PROFILE ----------
+class ProfileUpdate(BaseModel):
+    name: Optional[str] = None
+    phone: Optional[str] = None
+    current_password: Optional[str] = None
+    new_password: Optional[str] = None
+
+@api_router.put("/auth/me", response_model=UserOut)
+async def update_profile(data: ProfileUpdate, user=Depends(get_current_user)):
+    update_doc = {}
+    if data.name:
+        update_doc["name"] = data.name
+    if data.phone is not None:
+        update_doc["phone"] = data.phone
+    if data.new_password:
+        if not data.current_password:
+            raise HTTPException(status_code=400, detail="Current password required")
+        full = await db.users.find_one({"id": user["id"]})
+        if not verify_password(data.current_password, full["password"]):
+            raise HTTPException(status_code=400, detail="Current password incorrect")
+        if len(data.new_password) < 6:
+            raise HTTPException(status_code=400, detail="Password must be at least 6 chars")
+        update_doc["password"] = hash_password(data.new_password)
+    if update_doc:
+        await db.users.update_one({"id": user["id"]}, {"$set": update_doc})
+    updated = await db.users.find_one({"id": user["id"]}, {"_id": 0, "password": 0})
+    return UserOut(**updated)
+
+# ---------- ADMIN USER MANAGEMENT ----------
+class RoleUpdate(BaseModel):
+    role: Literal["user", "admin"]
+
+@api_router.put("/admin/users/{user_id}/role")
+async def set_user_role(user_id: str, data: RoleUpdate, admin=Depends(admin_required)):
+    if user_id == admin["id"]:
+        raise HTTPException(status_code=400, detail="Cannot change your own role")
+    await db.users.update_one({"id": user_id}, {"$set": {"role": data.role}})
+    return {"ok": True}
+
+@api_router.delete("/admin/users/{user_id}")
+async def delete_user(user_id: str, admin=Depends(admin_required)):
+    if user_id == admin["id"]:
+        raise HTTPException(status_code=400, detail="Cannot delete yourself")
+    await db.users.delete_one({"id": user_id})
+    return {"ok": True}
+
+# ---------- CATEGORIES ----------
+@api_router.get("/categories")
+async def list_categories():
+    s = await db.services.distinct("category")
+    p = await db.products.distinct("category")
+    g = await db.gallery.distinct("category")
+    t = await db.templates.distinct("category")
+    return {"services": s, "products": p, "gallery": g, "templates": t}
+
+# ---------- DOWNLOADS ----------
+@api_router.get("/downloads/me")
+async def my_downloads(user=Depends(get_current_user)):
+    orders = await db.orders.find({"user_id": user["id"], "status": "paid"}, {"_id": 0}).to_list(500)
+    downloads = []
+    for o in orders:
+        for it in o.get("items", []):
+            if it.get("item_type") in ("product", "learning"):
+                # Look up file_url from source collection
+                coll = db.products if it["item_type"] == "product" else db.learning
+                src = await coll.find_one({"id": it["item_id"]}, {"_id": 0, "file_url": 1, "image": 1})
+                downloads.append({
+                    "order_id": o["id"],
+                    "title": it["title"],
+                    "type": it["item_type"],
+                    "image": (src or {}).get("image", ""),
+                    "file_url": (src or {}).get("file_url", ""),
+                    "date": o.get("created_at", ""),
+                })
+    return downloads
 
 app.include_router(api_router)
 

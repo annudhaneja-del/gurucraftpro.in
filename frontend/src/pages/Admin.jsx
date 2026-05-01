@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import api from "../lib/api";
 import { useAuth } from "../lib/auth";
 import { toast } from "sonner";
+import ImageUpload from "../components/ImageUpload";
 import {
   LayoutDashboard, Package, Box, Star, Image as Img, GraduationCap, LayoutTemplate,
-  Ticket, MessageSquare, Users, TrendingUp, Plus, Trash2, Save, Inbox
+  Ticket, MessageSquare, Users, TrendingUp, Plus, Trash2, Save, Inbox, Settings, Tag, ShieldCheck
 } from "lucide-react";
 
 const TABS = [
   { id: "stats", label: "Overview", icon: LayoutDashboard },
+  { id: "homepage", label: "Homepage", icon: Settings },
   { id: "services", label: "Services", icon: Package },
   { id: "products", label: "Products", icon: Box },
+  { id: "categories", label: "Categories", icon: Tag },
   { id: "learning", label: "Learning", icon: GraduationCap },
   { id: "templates", label: "Templates", icon: LayoutTemplate },
   { id: "testimonials", label: "Testimonials", icon: Star },
@@ -47,8 +50,10 @@ export default function Admin() {
       </aside>
       <main className="flex-1 p-4 md:p-8 overflow-auto">
         {tab === "stats" && <Stats />}
+        {tab === "homepage" && <HomepageSettings />}
         {tab === "services" && <CrudPanel name="services" endpoint="/services" fields={serviceFields} titleKey="title" />}
         {tab === "products" && <CrudPanel name="products" endpoint="/products" fields={productFields} titleKey="title" />}
+        {tab === "categories" && <Categories />}
         {tab === "learning" && <CrudPanel name="learning" endpoint="/learning" fields={learningFields} titleKey="title" />}
         {tab === "templates" && <CrudPanel name="templates" endpoint="/templates" fields={templateFields} titleKey="name" />}
         {tab === "testimonials" && <CrudPanel name="testimonials" endpoint="/testimonials" fields={testimonialFields} titleKey="name" />}
@@ -187,6 +192,12 @@ function FieldInput({ field, value, onChange }) {
       </select>
     </label>
   );
+  if (field.type === "image") return (
+    <label className="text-xs md:col-span-2">{field.label}
+      <div className="mt-1"><ImageUpload value={value} onChange={onChange} testId={`upload-${field.name}`} /></div>
+      {value && <img src={value} alt="" className="mt-2 h-20 rounded object-cover" />}
+    </label>
+  );
   return (
     <label className="text-xs">{field.label}
       <input
@@ -220,7 +231,7 @@ const serviceFields = [
   { name: "description", label: "Full description", type: "textarea" },
   { name: "price", label: "Price (₹)", type: "number" },
   { name: "original_price", label: "Original Price", type: "number" },
-  { name: "image", label: "Image URL", type: "text" },
+  { name: "image", label: "Image", type: "image" },
   { name: "features", label: "Features (comma-sep)", type: "list" },
   { name: "whatsapp_message", label: "WhatsApp Message", type: "text" },
   { name: "featured", label: "Featured", type: "boolean" },
@@ -231,7 +242,7 @@ const productFields = [
   { name: "description", label: "Description", type: "textarea" },
   { name: "price", label: "Price (₹)", type: "number" },
   { name: "original_price", label: "Original Price", type: "number" },
-  { name: "image", label: "Image URL", type: "text" },
+  { name: "image", label: "Image", type: "image" },
   { name: "stock", label: "Stock", type: "number" },
   { name: "file_url", label: "Download URL", type: "text" },
 ];
@@ -241,25 +252,25 @@ const learningFields = [
   { name: "description", label: "Description", type: "textarea" },
   { name: "price", label: "Price (₹)", type: "number" },
   { name: "is_free", label: "Free", type: "boolean" },
-  { name: "image", label: "Image URL", type: "text" },
+  { name: "image", label: "Image", type: "image" },
   { name: "file_url", label: "File URL", type: "text" },
   { name: "content", label: "Content", type: "textarea" },
 ];
 const templateFields = [
   { name: "name", label: "Name", type: "text" },
   { name: "category", label: "Category", type: "text" },
-  { name: "thumbnail", label: "Thumbnail URL", type: "text" },
+  { name: "thumbnail", label: "Thumbnail", type: "image" },
 ];
 const testimonialFields = [
   { name: "name", label: "Name", type: "text" },
   { name: "location", label: "Location", type: "text" },
   { name: "rating", label: "Rating", type: "number" },
   { name: "text", label: "Text", type: "textarea" },
-  { name: "avatar", label: "Avatar URL", type: "text" },
+  { name: "avatar", label: "Avatar", type: "image" },
 ];
 const galleryFields = [
   { name: "title", label: "Title", type: "text" },
-  { name: "image", label: "Image URL", type: "text" },
+  { name: "image", label: "Image", type: "image" },
   { name: "category", label: "Category", type: "text" },
 ];
 const couponFields = [
@@ -327,19 +338,128 @@ function ContactsList() {
 }
 
 function UsersList() {
+  const { user: me } = useAuth();
   const [list, setList] = useState([]);
-  useEffect(() => { api.get("/admin/users").then((r) => setList(r.data)); }, []);
+  const load = () => api.get("/admin/users").then((r) => setList(r.data));
+  useEffect(() => { load(); }, []);
+  const toggleRole = async (u) => {
+    const newRole = u.role === "admin" ? "user" : "admin";
+    try {
+      await api.put(`/admin/users/${u.id}/role`, { role: newRole });
+      toast.success(`Set ${u.email} → ${newRole}`);
+      load();
+    } catch (e) { toast.error(e.response?.data?.detail || "Failed"); }
+  };
+  const del = async (u) => {
+    if (!window.confirm(`Delete ${u.email}?`)) return;
+    try {
+      await api.delete(`/admin/users/${u.id}`);
+      toast.success("Deleted");
+      load();
+    } catch (e) { toast.error(e.response?.data?.detail || "Failed"); }
+  };
   return (
     <div>
-      <h1 className="font-display text-4xl mb-6">Users</h1>
+      <h1 className="font-display text-4xl mb-6">Users ({list.length})</h1>
       <div className="space-y-2">
         {list.map((u) => (
           <div key={u.id} className="card-dark p-4 flex justify-between items-center" data-testid={`admin-user-${u.id}`}>
             <div>
               <p className="font-medium">{u.name} <span className={`ml-2 text-xs px-2 py-0.5 rounded-full ${u.role === "admin" ? "bg-[#7c3aed]" : "bg-white/10"}`}>{u.role}</span></p>
               <p className="text-xs text-white/60">{u.email} · {u.phone || "—"}</p>
+              <p className="text-xs text-white/40 mt-1">Joined {new Date(u.created_at).toLocaleDateString()}</p>
             </div>
-            <span className="text-xs text-white/40">{new Date(u.created_at).toLocaleDateString()}</span>
+            {u.id !== me?.id && (
+              <div className="flex gap-2">
+                <button onClick={() => toggleRole(u)} className="btn-secondary text-xs py-1 px-3" data-testid={`admin-user-toggle-${u.id}`}>
+                  <ShieldCheck size={12} /> {u.role === "admin" ? "Demote" : "Promote"}
+                </button>
+                <button onClick={() => del(u)} className="text-red-400 text-xs py-1 px-3 border border-red-400/30 rounded-full inline-flex items-center gap-1" data-testid={`admin-user-delete-${u.id}`}>
+                  <Trash2 size={10} /> Delete
+                </button>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ---- Homepage Settings ----
+function HomepageSettings() {
+  const [f, setF] = useState(null);
+  useEffect(() => { api.get("/settings/homepage").then((r) => setF(r.data)); }, []);
+  if (!f) return <div className="text-white/60">Loading...</div>;
+  const save = async () => {
+    try { await api.put("/settings/homepage", f); toast.success("Homepage updated"); }
+    catch (e) { toast.error(e.response?.data?.detail || "Failed"); }
+  };
+  const field = (k, label, type = "text") => (
+    <label className="text-xs" key={k}>{label}
+      {type === "textarea" ? (
+        <textarea value={f[k] || ""} onChange={(e) => setF({ ...f, [k]: e.target.value })} className="w-full mt-1 px-3 py-2 rounded-lg text-sm" rows={3} />
+      ) : (
+        <input type={type} value={f[k] ?? ""} onChange={(e) => setF({ ...f, [k]: type === "number" ? Number(e.target.value) : e.target.value })} className="w-full mt-1 px-3 py-2 rounded-lg text-sm" />
+      )}
+    </label>
+  );
+  return (
+    <div data-testid="admin-homepage-settings">
+      <h1 className="font-display text-4xl mb-6">Homepage Content</h1>
+      <div className="grid md:grid-cols-2 gap-4 card-dark p-6">
+        <h3 className="md:col-span-2 font-display text-xl text-[#7c3aed]">Hero</h3>
+        {field("hero_title_line1", "Hero Title Line 1")}
+        {field("hero_title_line2", "Hero Title Line 2 (gradient)")}
+        {field("hero_title_line3", "Hero Title Line 3")}
+        <div className="md:col-span-2">{field("hero_subtitle", "Hero Subtitle", "textarea")}</div>
+
+        <h3 className="md:col-span-2 font-display text-xl text-[#14b8a6] mt-4">About</h3>
+        {field("about_heading", "About Heading")}
+        <div />
+        <div className="md:col-span-2">{field("about_para1", "Paragraph 1", "textarea")}</div>
+        <div className="md:col-span-2">{field("about_para2", "Paragraph 2", "textarea")}</div>
+
+        <h3 className="md:col-span-2 font-display text-xl text-[#f59e0b] mt-4">Trust Stats</h3>
+        {field("stat_clients", "Clients Served", "number")}
+        {field("stat_orders", "Orders Completed", "number")}
+        {field("stat_years", "Years Experience", "number")}
+
+        <h3 className="md:col-span-2 font-display text-xl text-[#ec4899] mt-4">Contact Info</h3>
+        {field("phone", "Phone")}
+        {field("whatsapp", "WhatsApp")}
+        {field("email", "Email")}
+        {field("hours", "Hours")}
+        <div className="md:col-span-2">{field("address", "Address")}</div>
+
+        <div className="md:col-span-2 flex justify-end">
+          <button onClick={save} className="btn-primary" data-testid="admin-homepage-save">
+            <Save size={14} /> Save Homepage
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ---- Categories ----
+function Categories() {
+  const [cats, setCats] = useState({});
+  useEffect(() => { api.get("/categories").then((r) => setCats(r.data)); }, []);
+  return (
+    <div data-testid="admin-categories">
+      <h1 className="font-display text-4xl mb-6">Categories</h1>
+      <p className="text-white/60 text-sm mb-6">Categories are inferred from your content. Add a new category by simply using it when creating a service/product.</p>
+      <div className="grid md:grid-cols-2 gap-5">
+        {Object.entries(cats).map(([key, values]) => (
+          <div key={key} className="card-dark p-5">
+            <p className="text-xs text-white/50 uppercase tracking-wider mb-3">{key} ({values.length})</p>
+            <div className="flex flex-wrap gap-2">
+              {values.map((v) => (
+                <span key={v} className="text-sm px-3 py-1 rounded-full bg-[#7c3aed]/15 border border-[#7c3aed]/30 text-white/90">{v}</span>
+              ))}
+              {values.length === 0 && <span className="text-xs text-white/40">No categories yet.</span>}
+            </div>
           </div>
         ))}
       </div>
